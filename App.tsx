@@ -13,6 +13,7 @@ import NuestroLugar from "./components/NuestroLugar";
 import Proyectos from "./components/Proyectos";
 import Contacto from "./components/Contacto";
 import Footer from "./components/Footer";
+import LoadingScreen from "./components/LoadingScreen";
 
 export default function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -20,6 +21,7 @@ export default function App() {
   const [headerVisible, setHeaderVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
 
   // Imágenes para el carousel del hero
   const heroImages = [
@@ -61,37 +63,54 @@ export default function App() {
     return () => clearInterval(interval);
   }, [heroImages.length]);
 
+  // Función para manejar cuando termine el loading
+  const handleLoadingComplete = () => {
+    setIsLoading(false);
+  };
+
   return (
     <div className="min-h-screen bg-white overflow-x-hidden">
-      {/* Header */}
-   <Header scrolled={scrolled} headerVisible={headerVisible}/>
+      {/* Loading Screen */}
+      <AnimatePresence>
+        {isLoading && (
+          <LoadingScreen onLoadingComplete={handleLoadingComplete} />
+        )}
+      </AnimatePresence>
 
-      {/* Hero Section - Solo imágenes cambiando */}
-    <Hero scrolled={scrolled}/>
+      {/* Contenido principal - solo se muestra cuando no está cargando */}
+      {!isLoading && (
+        <>
+          {/* Header */}
+          <Header scrolled={scrolled} headerVisible={headerVisible}/>
 
-      {/* Sección Estudio - Inspirada en la segunda imagen */}
-   <Estudio/>
+          {/* Hero Section - Solo imágenes cambiando */}
+          <Hero scrolled={scrolled}/>
 
-      {/* Sección Fundador - Inspirada en la tercera imagen */}
-    <Fundador/>
+          {/* Sección Estudio - Inspirada en la segunda imagen */}
+          <Estudio/>
 
-      {/* Interludio Visual - Casa Moderna */}
-   <InterludioVisual/>
+          {/* Sección Fundador - Inspirada en la tercera imagen */}
+          <Fundador/>
 
-      {/* Sección Proceso de Trabajo */}
-    <ProcesosTrabajo/>
+          {/* Interludio Visual - Casa Moderna */}
+          <InterludioVisual/>
 
-      {/* Sección Nuestro Lugar - Inspirada en la primera imagen */}
-    {/* <NuestroLugar/> */}
+          {/* Sección Proceso de Trabajo */}
+          <ProcesosTrabajo/>
 
-      {/* Sección de Proyectos */}
-  <Proyectos/>
+          {/* Sección Nuestro Lugar - Inspirada en la primera imagen */}
+          {/* <NuestroLugar/> */}
 
-      {/* Sección de Contacto */}
-   <Contacto/>
+          {/* Sección de Proyectos */}
+          <Proyectos/>
 
-      {/* Footer */}
-      <Footer />
+          {/* Sección de Contacto */}
+          <Contacto/>
+
+          {/* Footer */}
+          <Footer />
+        </>
+      )}
     </div>
   );
 }
