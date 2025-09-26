@@ -3,5 +3,6 @@
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
   "/": "pages/index.js",
-  "/proyecto": "pages/proyecto.js"
+  "/proyecto": "pages/proyecto.js",
+  "/politicas-privacidad": "pages/politicas-privacidad.js"
 }
