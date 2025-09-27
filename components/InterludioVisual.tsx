@@ -25,7 +25,8 @@ const InterludioVisual: React.FC = () => {
           className="object-cover"
           fill={true}
           sizes="100vw"
-          priority={true}
+          priority={false}
+          loading="lazy"
         />
         <div className="absolute inset-0 bg-black/30"></div>
       </motion.div>

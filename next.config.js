@@ -28,6 +28,21 @@ const nextConfig = {
   // Optimización para mobile - evitar JavaScript legacy
   // swcMinify ya está habilitado por defecto en Next.js 15
   
+  // Configuración de browserslist para evitar transpilación legacy
+  browserslist: {
+    production: [
+      '>0.2%',
+      'not dead',
+      'not op_mini all',
+      'not ie <= 11'
+    ],
+    development: [
+      'last 1 chrome version',
+      'last 1 firefox version',
+      'last 1 safari version'
+    ]
+  },
+  
   // Optimización de bundle
   experimental: {
     optimizePackageImports: ['lucide-react', 'motion/react'],
