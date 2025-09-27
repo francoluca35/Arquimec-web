@@ -46,6 +46,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
             alt="ARQUIMEC Logo" 
             className="w-32 h-32 object-contain drop-shadow-lg"
             style={{maxWidth: '128px', maxHeight: '128px'}}
+            fetchPriority="high"
             onError={(e) => {
               console.error('Error loading logo:', e);
               const target = e.target as HTMLImageElement;

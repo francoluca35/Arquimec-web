@@ -44,8 +44,8 @@ const InterludioVisual: React.FC = () => {
         </span>
       </div>
 
-      {/* Nombre del proyecto en la parte superior */}
-      <div className="absolute top-8 right-8 z-20 text-right">
+      {/* Nombre del proyecto en la parte superior - Solo desktop */}
+      <div className="absolute top-8 right-8 z-20 text-right hidden lg:block">
         <p className="text-white text-2xl font-bold tracking-wider" style={{textShadow: '4px 4px 8px rgba(0,0,0,0.9), -2px -2px 4px rgba(0,0,0,0.9), 2px -2px 4px rgba(0,0,0,0.9), -2px 2px 4px rgba(0,0,0,0.9)'}}>
           {proyectoDestacado.titulo}
         </p>
