@@ -46,22 +46,23 @@ const InterludioVisual: React.FC = () => {
 
       {/* Nombre del proyecto en la parte superior */}
       <div className="absolute top-8 right-8 z-20 text-right">
-        <p className="text-white text-2xl font-bold tracking-wider" style={{textShadow: '4px 4px 8px rgba(0,0,0,0.9), -2px -2px 4px rgba(0,0,0,0.9), 2px -2px 4px rgba(0,0,0,0.9), -2px 2px 4px rgba(0,0,0,0.9)'}}>
-          {proyectoDestacado.titulo}
-        </p>
+        <div className="bg-black/70 backdrop-blur-sm px-6 py-3 rounded-lg">
+          <p className="text-white text-2xl font-bold tracking-wider" style={{textShadow: '1px 1px 2px rgba(0,0,0,0.8)'}}>
+            {proyectoDestacado.titulo}
+          </p>
+        </div>
       </div>
 
       {/* Texto y botón en la esquina inferior derecha */}
       <div className="absolute bottom-8 right-8 z-20 text-right">
-        <p className="text-white text-sm tracking-wider font-bold mb-4" style={{textShadow: '3px 3px 6px rgba(0,0,0,0.9), -1px -1px 2px rgba(0,0,0,0.9), 1px -1px 2px rgba(0,0,0,0.9), -1px 1px 2px rgba(0,0,0,0.9)'}}>
-          {proyectoDestacado.categoria}
-        </p>
+        <div className="bg-black/70 backdrop-blur-sm px-4 py-2 rounded-lg mb-4">
+          <p className="text-white text-sm tracking-wider font-bold" style={{textShadow: '1px 1px 2px rgba(0,0,0,0.8)'}}>
+            {proyectoDestacado.categoria}
+          </p>
+        </div>
         <button 
           onClick={handleProjectClick}
-          className="bg-white/10 backdrop-blur-sm border border-white/50 text-white px-6 py-3 text-sm tracking-wider hover:bg-white/20 transition-all duration-300 hover:scale-105 font-bold"
-          style={{
-            textShadow: '2px 2px 4px rgba(0,0,0,0.9), -1px -1px 2px rgba(0,0,0,0.9), 1px -1px 2px rgba(0,0,0,0.9), -1px 1px 2px rgba(0,0,0,0.9)'
-          }}
+          className="bg-black/80 backdrop-blur-sm border-2 border-white text-white px-6 py-3 text-sm tracking-wider hover:bg-white hover:text-black transition-all duration-300 hover:scale-105 font-bold"
           aria-label={`Ver proyecto ${proyectoDestacado.titulo}`}
         >
           VER PROYECTO

@@ -19,13 +19,12 @@ const Header: React.FC<HeaderProps> = ({ scrolled, headerVisible }) => {
       {/* Skip to main content link */}
       <a 
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 z-[60] bg-blue-600 text-white px-6 py-3 rounded-lg font-bold shadow-lg"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 z-[60] bg-black text-white px-6 py-3 rounded-lg font-bold border-4 border-white shadow-2xl"
         style={{ 
           fontSize: '16px',
           fontWeight: '700',
-          backgroundColor: '#2563eb',
-          color: '#ffffff',
-          textShadow: '1px 1px 2px rgba(0,0,0,0.8)'
+          backgroundColor: '#000000',
+          color: '#ffffff'
         }}
       >
         Saltar al contenido principal
