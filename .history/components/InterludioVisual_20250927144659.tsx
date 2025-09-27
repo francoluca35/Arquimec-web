@@ -58,10 +58,7 @@ const InterludioVisual: React.FC = () => {
         </p>
         <button 
           onClick={handleProjectClick}
-          className="bg-white/10 backdrop-blur-sm border border-white/50 text-white px-6 py-3 text-sm tracking-wider hover:bg-white/20 transition-all duration-300 hover:scale-105 font-bold"
-          style={{
-            textShadow: '2px 2px 4px rgba(0,0,0,0.9), -1px -1px 2px rgba(0,0,0,0.9), 1px -1px 2px rgba(0,0,0,0.9), -1px 1px 2px rgba(0,0,0,0.9)'
-          }}
+          className="bg-black/80 backdrop-blur-sm border-2 border-white text-white px-6 py-3 text-sm tracking-wider hover:bg-white hover:text-black transition-all duration-300 hover:scale-105 font-bold"
           aria-label={`Ver proyecto ${proyectoDestacado.titulo}`}
         >
           VER PROYECTO
