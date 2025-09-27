@@ -25,6 +25,23 @@ const nextConfig = {
     removeConsole: process.env.NODE_ENV === 'production',
   },
   
+  // Optimización para mobile - evitar JavaScript legacy
+  swcMinify: true,
+  
+  // Configuración de browserslist para evitar transpilación legacy
+  browserslist: {
+    production: [
+      '>0.2%',
+      'not dead',
+      'not op_mini all'
+    ],
+    development: [
+      'last 1 chrome version',
+      'last 1 firefox version',
+      'last 1 safari version'
+    ]
+  },
+  
   // Optimización de bundle
   experimental: {
     optimizePackageImports: ['lucide-react', 'motion/react'],
@@ -67,14 +84,28 @@ const nextConfig = {
     if (!dev && !isServer) {
       config.optimization.splitChunks = {
         chunks: 'all',
+        minSize: 20000,
+        maxSize: 244000,
         cacheGroups: {
           vendor: {
             test: /[\\/]node_modules[\\/]/,
             name: 'vendors',
             chunks: 'all',
+            priority: 10,
+          },
+          common: {
+            name: 'common',
+            minChunks: 2,
+            chunks: 'all',
+            priority: 5,
+            reuseExistingChunk: true,
           },
         },
       }
+      
+      // Optimización para reducir JavaScript legacy
+      config.optimization.usedExports = true
+      config.optimization.sideEffects = false
     }
     return config
   },
