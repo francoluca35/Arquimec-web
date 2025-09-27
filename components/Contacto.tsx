@@ -166,6 +166,7 @@ const Contacto: React.FC = () => {
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 className="rounded-lg"
+                title="Mapa de ubicación de Arquimec en Buenos Aires, Argentina"
               ></iframe>
             </div>
 

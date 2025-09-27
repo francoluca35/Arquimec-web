@@ -137,12 +137,12 @@ const Fundador: React.FC = () => {
           viewport={{ once: true }}
         >
           <div className="mb-8">
-            <h3
+            <h2
               className="text-4xl lg:text-5xl text-gray-900 mb-6 leading-tight"
               style={{ fontWeight: 300 }}
             >
               Desde 2010, entregando calidad
-            </h3>
+            </h2>
             <p className="text-gray-600 text-lg leading-relaxed mb-8">
               Arquimec es un estudio dirigido por el Arq. Marcelo Eduardo González Silva, especializado en el diseño y construcción de viviendas unifamiliares, proyectos comerciales y desarrollos urbanísticos. Nuestro propósito es transformar cada idea en una obra concreta, combinando creatividad, calidad y precisión en cada etapa del proceso. Nos enfocamos en brindar soluciones integrales que garanticen resultados estéticos, funcionales y duraderos, con especial atención a los detalles que hacen única cada construcción.
             </p>

@@ -19,8 +19,7 @@ const Header: React.FC<HeaderProps> = ({ scrolled, headerVisible }) => {
       {/* Skip to main content link */}
       <a 
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 z-[60] bg-blue-600 text-white px-4 py-2 rounded-md font-medium"
-        tabIndex={1}
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 z-[60] bg-blue-600 text-white px-4 py-2 rounded-md font-medium border-2 border-blue-800 shadow-lg"
       >
         Saltar al contenido principal
       </a>
