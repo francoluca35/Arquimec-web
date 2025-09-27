@@ -5,7 +5,20 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
     './*.{js,ts,jsx,tsx,mdx}',
+    './App.tsx',
   ],
+  safelist: [
+    // Mantener clases críticas para el funcionamiento
+    'hidden',
+    'lg:block',
+    'sr-only',
+    'focus:not-sr-only',
+    /^motion-/,
+    /^animate-/,
+  ],
+  future: {
+    hoverOnlyWhenSupported: true,
+  },
   theme: {
     extend: {
       colors: {

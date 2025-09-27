@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion } from "motion/react";
+import Image from "next/image";
 
 interface LoadingScreenProps {
   onLoadingComplete: () => void;
@@ -41,12 +42,15 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
           }}
           className="relative"
         >
-          <img 
+          <Image 
             src="/Assets/fondoarq.png" 
             alt="ARQUIMEC Logo" 
-            className="w-32 h-32 object-contain drop-shadow-lg"
-            style={{maxWidth: '128px', maxHeight: '128px'}}
-            fetchPriority="high"
+            width={128}
+            height={128}
+            className="object-contain drop-shadow-lg"
+            priority={true}
+            quality={90}
+            sizes="128px"
             onError={(e) => {
               console.error('Error loading logo:', e);
               const target = e.target as HTMLImageElement;
