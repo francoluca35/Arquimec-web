@@ -66,7 +66,7 @@ const AnimatedLogo: React.FC<AnimatedLogoProps> = ({
         >
           <span className={`text-xl font-light tracking-wider ml-4 lg:-ml-4 drop-shadow-lg ${
             isMainHeader 
-              ? (scrolled ? 'text-black' : 'text-white') // Header principal: siempre blanco
+              ? (scrolled ? 'text-white' : 'text-white') // Header principal: siempre blanco
               : (scrolled ? 'text-white' : 'text-black') // Páginas servicios: blanco cuando scrolled, negro cuando no
           }`} style={{letterSpacing: '0.2em', textShadow: '2px 2px 4px rgba(0,0,0,0.3)'}}>
             ARQUIMEC.

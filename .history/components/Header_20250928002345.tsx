@@ -55,7 +55,7 @@ const Header: React.FC<HeaderProps> = ({ scrolled, headerVisible }) => {
               damping: 10,
             }}
           >
-            <AnimatedLogo scrolled={scrolled} isMainHeader={true} />
+            <AnimatedLogo scrolled={scrolled} />
           </motion.div>
 
           {/* Desktop Navigation */}
@@ -160,8 +160,8 @@ const Header: React.FC<HeaderProps> = ({ scrolled, headerVisible }) => {
                 { name: "TRABAJO", href: "#procesos" },
                 { name: "PROYECTOS", href: "#proyectos" },
                 { name: "SERVICIOS", href: "/servicios" },
-              ].map((item) => 
-                item.href.startsWith('/') ? (
+              ].map((item) => (
+                {item.href.startsWith('/') ? (
                   <button
                     key={item.name}
                     onClick={() => {
@@ -197,8 +197,8 @@ const Header: React.FC<HeaderProps> = ({ scrolled, headerVisible }) => {
                   >
                     {item.name}
                   </a>
-                )
-              )}
+                )}
+              ))}
               <NavbarButton
                 scrolled={scrolled}
                 className="w-full mt-4 hover:-translate-y-1"

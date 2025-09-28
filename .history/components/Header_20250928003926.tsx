@@ -37,7 +37,7 @@ const Header: React.FC<HeaderProps> = ({ scrolled, headerVisible }) => {
         } ${
           scrolled 
             ? "bg-[#e4e4e4] shadow-lg" 
-            : "bg-[#1a2a3c]"
+            : "bg-[#e9e9e9]"
         }`}
         initial={{ opacity: 0, y: -100 }}
         animate={{ opacity: 1, y: 0 }}
@@ -55,7 +55,7 @@ const Header: React.FC<HeaderProps> = ({ scrolled, headerVisible }) => {
               damping: 10,
             }}
           >
-            <AnimatedLogo scrolled={scrolled} isMainHeader={true} />
+            <AnimatedLogo scrolled={scrolled} />
           </motion.div>
 
           {/* Desktop Navigation */}

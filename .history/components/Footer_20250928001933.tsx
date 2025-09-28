@@ -72,10 +72,10 @@ const Footer: React.FC = () => {
             </h2>
             <ul className="space-y-3 text-gray-300">
               {[
-                { name: "Arquitectura Residencial", href: "/arquitectura-residencial" },
-                { name: "Arquitectura Comercial", href: "/arquitectura-comercial" },
+                { name: "Arquitectura Residencial", href: "/servicios" },
+                { name: "Arquitectura Comercial", href: "/servicios" },
                 { name: "Diseño de Interiores", href: "/diseno-interiores" },
-                { name: "Consultorías", href: "/consultorias" },
+                { name: "Consultorías", href: "/servicios" },
               ].map((service) => (
                 <li key={service.name}>
                   {service.href.startsWith('/') ? (
