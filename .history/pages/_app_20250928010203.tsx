@@ -40,20 +40,12 @@ function AppContent({ Component, pageProps }: AppProps) {
       <Component {...pageProps} />
       
       {/* WhatsApp Float Button - Global (solo después del loading) */}
-      {!isLoading && (
+      {showWhatsApp && (
         <WhatsAppFloat 
           phoneNumber="1234567890" 
           message="Hola! Me interesa conocer más sobre sus servicios de arquitectura." 
         />
       )}
     </>
-  )
-}
-
-export default function MyApp(props: AppProps) {
-  return (
-    <LoadingProvider>
-      <AppContent {...props} />
-    </LoadingProvider>
   )
 }
