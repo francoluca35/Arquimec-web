@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 
 const Footer: React.FC = () => {
-  const router = useRouter();
   const [displayText, setDisplayText] = useState("");
   const fullText = "ARQUIMEC.";
   const [isDeleting, setIsDeleting] = useState(false);
@@ -72,27 +71,18 @@ const Footer: React.FC = () => {
             </h2>
             <ul className="space-y-3 text-gray-300">
               {[
-                { name: "Arquitectura Residencial", href: "/arquitectura-residencial" },
-                { name: "Arquitectura Comercial", href: "/arquitectura-comercial" },
-                { name: "Diseño de Interiores", href: "/diseno-interiores" },
-                { name: "Consultorías", href: "/consultorias" },
+                "Arquitectura Residencial",
+                "Arquitectura Comercial",
+                "Diseño de Interiores",
+                "Consultoría",
               ].map((service) => (
-                <li key={service.name}>
-                  {service.href.startsWith('/') ? (
-                    <button
-                      onClick={() => router.push(service.href)}
-                      className="hover:text-white transition-colors underline-offset-2 hover:underline text-left"
-                    >
-                      {service.name}
-                    </button>
-                  ) : (
-                    <a
-                      href={service.href}
-                      className="hover:text-white transition-colors underline-offset-2 hover:underline"
-                    >
-                      {service.name}
-                    </a>
-                  )}
+                <li key={service}>
+                  <a
+                    href="#"
+                    className="hover:text-white transition-colors underline-offset-2 hover:underline"
+                  >
+                    {service}
+                  </a>
                 </li>
               ))}
             </ul>

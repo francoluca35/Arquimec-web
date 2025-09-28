@@ -1,0 +1,115 @@
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  // Optimización de imágenes
+  images: {
+    domains: [
+      'images.unsplash.com',
+      'unsplash.com'
+    ],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+        port: '',
+        pathname: '/**',
+      },
+    ],
+    formats: ['image/webp', 'image/avif'],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    minimumCacheTTL: 60,
+  },
+  
+  // Optimización de compilación
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production',
+  },
+  
+  // Optimización para mobile - evitar JavaScript legacy
+  // swcMinify ya está habilitado por defecto en Next.js 15
+  
+  // Configuración de browserslist para evitar transpilación legacy
+  browserslist: {
+    production: [
+      '>0.2%',
+      'not dead',
+      'not op_mini all',
+      'not ie <= 11'
+    ],
+    development: [
+      'last 1 chrome version',
+      'last 1 firefox version',
+      'last 1 safari version'
+    ]
+  },
+  
+  // Optimización de bundle
+  experimental: {
+    optimizePackageImports: ['lucide-react', 'motion/react'],
+  },
+  
+  // Headers para caching
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
+          {
+            key: 'X-Frame-Options',
+            value: 'DENY',
+          },
+          {
+            key: 'X-XSS-Protection',
+            value: '1; mode=block',
+          },
+        ],
+      },
+      {
+        source: '/Assets/(.*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+    ]
+  },
+  
+  // Optimización de webpack
+  webpack: (config, { dev, isServer }) => {
+    if (!dev && !isServer) {
+      config.optimization.splitChunks = {
+        chunks: 'all',
+        minSize: 20000,
+        maxSize: 244000,
+        cacheGroups: {
+          vendor: {
+            test: /[\\/]node_modules[\\/]/,
+            name: 'vendors',
+            chunks: 'all',
+            priority: 10,
+          },
+          common: {
+            name: 'common',
+            minChunks: 2,
+            chunks: 'all',
+            priority: 5,
+            reuseExistingChunk: true,
+          },
+        },
+      }
+      
+      // Optimización para reducir JavaScript legacy
+      config.optimization.usedExports = true
+      config.optimization.sideEffects = false
+    }
+    return config
+  },
+}
+
+module.exports = nextConfig

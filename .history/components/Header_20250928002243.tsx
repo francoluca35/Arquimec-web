@@ -55,7 +55,7 @@ const Header: React.FC<HeaderProps> = ({ scrolled, headerVisible }) => {
               damping: 10,
             }}
           >
-            <AnimatedLogo scrolled={scrolled} isMainHeader={true} />
+            <AnimatedLogo scrolled={scrolled} />
           </motion.div>
 
           {/* Desktop Navigation */}
@@ -66,49 +66,27 @@ const Header: React.FC<HeaderProps> = ({ scrolled, headerVisible }) => {
                 { name: "TRABAJO", href: "#procesos" },
                 { name: "PROYECTOS", href: "#proyectos" },
                 { name: "SERVICIOS", href: "/servicios" },
-              ].map((item, index) => 
-                item.href.startsWith('/') ? (
-                  <motion.button
-                    key={item.name}
-                    onClick={() => router.push(item.href)}
-                    className={`transition-colors duration-500 text-sm tracking-wider underline-offset-4 hover:underline ${
-                      scrolled 
-                        ? "text-black hover:text-amber-600" 
-                        : "text-white hover:text-amber-600"
-                    }`}
-                    style={{
-                      fontWeight: 400,
-                      letterSpacing: "0.1em",
-                    }}
-                    whileHover={{ scale: 1.05 }}
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                  >
-                    {item.name}
-                  </motion.button>
-                ) : (
-                  <motion.a
-                    key={item.name}
-                    href={item.href}
-                    className={`transition-colors duration-500 text-sm tracking-wider underline-offset-4 hover:underline ${
-                      scrolled 
-                        ? "text-black hover:text-amber-600" 
-                        : "text-white hover:text-amber-600"
-                    }`}
-                    style={{
-                      fontWeight: 400,
-                      letterSpacing: "0.1em",
-                    }}
-                    whileHover={{ scale: 1.05 }}
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                  >
-                    {item.name}
-                  </motion.a>
-                )
-              )}
+              ].map((item, index) => (
+                <motion.a
+                  key={item.name}
+                  href={item.href}
+                  className={`transition-colors duration-500 text-sm tracking-wider underline-offset-4 hover:underline ${
+                    scrolled 
+                      ? "text-black hover:text-amber-600" 
+                      : "text-white hover:text-amber-600"
+                  }`}
+                  style={{
+                    fontWeight: 400,
+                    letterSpacing: "0.1em",
+                  }}
+                  whileHover={{ scale: 1.05 }}
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                >
+                  {item.name}
+                </motion.a>
+              ))}
             </nav>
             <NavbarButton
               scrolled={scrolled}
@@ -160,8 +138,8 @@ const Header: React.FC<HeaderProps> = ({ scrolled, headerVisible }) => {
                 { name: "TRABAJO", href: "#procesos" },
                 { name: "PROYECTOS", href: "#proyectos" },
                 { name: "SERVICIOS", href: "/servicios" },
-              ].map((item) => 
-                item.href.startsWith('/') ? (
+              ].map((item) => (
+                {item.href.startsWith('/') ? (
                   <button
                     key={item.name}
                     onClick={() => {
@@ -197,8 +175,8 @@ const Header: React.FC<HeaderProps> = ({ scrolled, headerVisible }) => {
                   >
                     {item.name}
                   </a>
-                )
-              )}
+                )}
+              ))}
               <NavbarButton
                 scrolled={scrolled}
                 className="w-full mt-4 hover:-translate-y-1"

@@ -10,8 +10,7 @@ interface AnimatedLogoProps {
 const AnimatedLogo: React.FC<AnimatedLogoProps> = ({ 
   className = '', 
   onAnimationComplete, 
-  scrolled = false,
-  isMainHeader = false
+  scrolled = false 
 }) => {
   const [showLogo, setShowLogo] = useState(true);
 
@@ -65,9 +64,7 @@ const AnimatedLogo: React.FC<AnimatedLogoProps> = ({
           className="cursor-pointer hover:scale-105 transition-transform duration-200"
         >
           <span className={`text-xl font-light tracking-wider ml-4 lg:-ml-4 drop-shadow-lg ${
-            isMainHeader 
-              ? (scrolled ? 'text-black' : 'text-white') // Header principal: siempre blanco
-              : (scrolled ? 'text-white' : 'text-black') // Páginas servicios: blanco cuando scrolled, negro cuando no
+            scrolled ? 'text-black' : 'text-white'
           }`} style={{letterSpacing: '0.2em', textShadow: '2px 2px 4px rgba(0,0,0,0.3)'}}>
             ARQUIMEC.
           </span>
