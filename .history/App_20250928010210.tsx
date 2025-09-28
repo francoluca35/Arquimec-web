@@ -22,7 +22,7 @@ export default function App() {
   const [headerVisible, setHeaderVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const { isLoading, setIsLoading } = useLoading();
+  const [isLoading, setIsLoading] = useState(true);
 
   // Imágenes para el carousel del hero
   const heroImages = [

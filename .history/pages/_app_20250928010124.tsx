@@ -1,13 +1,11 @@
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
+import { useState, useEffect } from 'react'
 import '../styles/globals.css'
 import '../styles/critical.css'
 import WhatsAppFloat from '../components/WhatsAppFloat'
-import { LoadingProvider, useLoading } from '../contexts/LoadingContext'
 
-function AppContent({ Component, pageProps }: AppProps) {
-  const { isLoading } = useLoading();
-
+export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
@@ -39,21 +37,11 @@ function AppContent({ Component, pageProps }: AppProps) {
       </Head>
       <Component {...pageProps} />
       
-      {/* WhatsApp Float Button - Global (solo después del loading) */}
-      {!isLoading && (
-        <WhatsAppFloat 
-          phoneNumber="1234567890" 
-          message="Hola! Me interesa conocer más sobre sus servicios de arquitectura." 
-        />
-      )}
+      {/* WhatsApp Float Button - Global */}
+      <WhatsAppFloat 
+        phoneNumber="1234567890" 
+        message="Hola! Me interesa conocer más sobre sus servicios de arquitectura." 
+      />
     </>
-  )
-}
-
-export default function MyApp(props: AppProps) {
-  return (
-    <LoadingProvider>
-      <AppContent {...props} />
-    </LoadingProvider>
   )
 }
