@@ -39,9 +39,17 @@ function AppContent({ Component, pageProps }: AppProps) {
       </Head>
       <Component {...pageProps} />
       
-      {/* Customer Service Bubble - Global (solo después del loading) */}
+      {/* WhatsApp Float Button - Global (solo después del loading) */}
       {!isLoading && (
-        <CustomerServiceBubble phoneNumber="1234567890" />
+        <WhatsAppFloat 
+          phoneNumber="1234567890" 
+          message="Hola! Me interesa conocer más sobre sus servicios de arquitectura." 
+        />
+      )}
+
+      {/* Chatbot - Global (solo después del loading) */}
+      {!isLoading && (
+        <Chatbot phoneNumber="1234567890" />
       )}
     </>
   )

@@ -1,0 +1,85 @@
+{
+  "greetings": {
+    "patterns": ["hola", "buenos días", "buenas tardes", "buenas noches", "hey", "hi"],
+    "responses": [
+      "¡Hola! Soy el asistente de Arquimec. ¿En qué puedo ayudarte hoy?",
+      "¡Buenos días! Bienvenido a Arquimec. ¿Cómo puedo asistirte?",
+      "¡Hola! Estoy aquí para ayudarte con información sobre nuestros servicios de arquitectura. ¿Qué te interesa saber?",
+      "¡Saludos! Soy tu asistente virtual de Arquimec. ¿En qué puedo ayudarte?"
+    ]
+  },
+  "services": {
+    "arquitectura_residencial": {
+      "patterns": ["casa", "hogar", "vivienda", "residencial", "familia", "departamento", "apartamento"],
+      "responses": [
+        "Nuestro servicio de Arquitectura Residencial incluye el diseño de viviendas unifamiliares y complejos residenciales. Creamos espacios que combinan funcionalidad, estética y sostenibilidad. ¿Tienes algún proyecto específico en mente?",
+        "En Arquimec nos especializamos en diseño de viviendas que reflejan la personalidad de nuestros clientes. ¿Qué tipo de proyecto residencial te interesa?",
+        "Nuestro equipo de arquitectos residenciales tiene más de 15 años de experiencia diseñando hogares únicos. ¿Podrías contarme más sobre tu proyecto?"
+      ]
+    },
+    "arquitectura_comercial": {
+      "patterns": ["oficina", "comercial", "negocio", "retail", "restaurante", "corporativo"],
+      "responses": [
+        "Nuestro servicio de Arquitectura Comercial se enfoca en espacios de trabajo, retail y corporativos. Diseñamos ambientes que potencian la productividad y la experiencia del cliente. ¿Qué tipo de espacio comercial necesitas?",
+        "En Arquimec creamos espacios comerciales que combinan funcionalidad y estética. ¿Podrías contarme más sobre tu proyecto comercial?",
+        "Nuestros arquitectos comerciales tienen experiencia en oficinas, restaurantes y espacios retail. ¿Qué tipo de proyecto tienes en mente?"
+      ]
+    },
+    "diseno_interiores": {
+      "patterns": ["interior", "decoración", "diseño interior", "ambiente", "muebles", "colores"],
+      "responses": [
+        "Nuestro servicio de Diseño de Interiores transforma espacios creando ambientes únicos y funcionales. Desde la conceptualización hasta la ejecución, cada proyecto refleja la identidad de nuestros clientes. ¿Qué tipo de ambiente quieres transformar?",
+        "En Arquimec nos especializamos en crear interiores que combinan estética y funcionalidad. ¿Podrías contarme más sobre el espacio que quieres rediseñar?",
+        "Nuestros diseñadores de interiores tienen experiencia en crear ambientes únicos. ¿Qué tipo de proyecto de interiores tienes en mente?"
+      ]
+    },
+    "consultorias": {
+      "patterns": ["consultoría", "técnico", "asesoramiento", "normativa", "permisos", "tramites"],
+      "responses": [
+        "Nuestro servicio de Consultorías Técnicas incluye asesoramiento en normativas de construcción, permisos y reglamentaciones. ¿En qué aspecto técnico necesitas asesoramiento?",
+        "Nuestros consultores técnicos tienen amplia experiencia en normativas y reglamentaciones. ¿Podrías contarme más sobre tu consulta?",
+        "En Arquimec ofrecemos consultorías especializadas en aspectos técnicos de construcción. ¿Qué tipo de asesoramiento necesitas?"
+      ]
+    },
+    "construccion_edificios": {
+      "patterns": ["construcción", "edificio", "edificios", "construir", "obra", "construcción de edificios"],
+      "responses": [
+        "Nuestro servicio de Arquitectura incluye diseño y construcción de edificios residenciales y comerciales. Con más de 7,000 m² construidos, tenemos amplia experiencia en proyectos de diferentes escalas. ¿Qué tipo de edificio necesitas construir?",
+        "En Arquimec nos especializamos en la construcción de edificios que combinan funcionalidad, estética y sostenibilidad. ¿Podrías contarme más detalles sobre tu proyecto de construcción?",
+        "Nuestros arquitectos tienen experiencia en construcción de edificios residenciales y comerciales. ¿Qué tipo de edificio tienes en mente y cuáles son las dimensiones aproximadas?"
+      ]
+    }
+  },
+  "company_info": {
+    "patterns": ["quienes son", "empresa", "estudio", "arquimec", "información", "historia"],
+    "responses": [
+      "Somos Arquimec, un estudio de arquitectura especializado en diseño y construcción de viviendas unifamiliares, proyectos comerciales y desarrollos urbanísticos en Buenos Aires y Córdoba. Con más de 7,000 m² construidos y más de 2,000 clientes satisfechos, combinamos creatividad, funcionalidad y sostenibilidad en cada proyecto.",
+      "Arquimec es un estudio de arquitectura con más de 10 años de experiencia en el mercado argentino. Nos especializamos en arquitectura residencial, comercial, diseño de interiores y consultorías técnicas.",
+      "Somos un equipo de arquitectos y diseñadores especializados en crear espacios únicos. Trabajamos en Buenos Aires y Córdoba, Argentina, con un enfoque en sostenibilidad y funcionalidad."
+    ]
+  },
+  "contact": {
+    "patterns": ["contacto", "teléfono", "email", "dirección", "ubicación", "oficina"],
+    "responses": [
+      "Nuestros datos de contacto son: 📞 Teléfono: +54 11 1234-5678 📧 Email: info@arquimec.com 📍 Ubicación: Buenos Aires y Córdoba, Argentina 🕒 Horarios: Lunes a Viernes 8:00-19:00, Sábado 9:00-16:00",
+      "Puedes contactarnos al +54 11 1234-5678 o escribirnos a info@arquimec.com. Estamos en Buenos Aires y Córdoba, Argentina.",
+      "Para más información, puedes llamarnos al +54 11 1234-5678 o enviarnos un email a info@arquimec.com"
+    ]
+  },
+  "pricing": {
+    "patterns": ["precio", "costo", "presupuesto", "tarifa", "valor", "cuanto cuesta"],
+    "responses": [
+      "Los costos varían según el tipo de proyecto y su complejidad. Para darte un presupuesto preciso, necesito conocer más detalles sobre tu proyecto específico. ¿Podrías contarme qué tipo de proyecto tienes en mente?",
+      "Cada proyecto es único, por lo que los precios se calculan según las dimensiones, complejidad y servicios requeridos. ¿Te gustaría que te conecte con un especialista para una cotización personalizada?",
+      "Para darte una estimación precisa, necesito conocer más detalles: ¿Qué tipo de proyecto es? ¿Cuáles son las dimensiones aproximadas? ¿Tienes alguna preferencia de materiales o estilo?"
+    ]
+  },
+  "fallback": {
+    "patterns": [],
+    "responses": [
+      "Entiendo tu consulta, pero para darte la mejor respuesta posible, te recomiendo contactar directamente con nuestros especialistas. Puedes llamarnos al +54 11 1234-5678 o escribirnos por WhatsApp.",
+      "Para consultas específicas como la tuya, es mejor que hables directamente con uno de nuestros especialistas. ¿Te gustaría que te conecte con ellos?",
+      "Esa es una excelente pregunta. Para darte una respuesta completa y personalizada, te sugiero contactar con nuestros especialistas. ¿Te interesa que te conecte con ellos?"
+    ]
+  }
+}
