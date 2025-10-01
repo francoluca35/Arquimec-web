@@ -45,8 +45,8 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
           <Image 
             src="/Assets/logoarqmec.png" 
             alt="ARQUIMEC Logo" 
-            width={148}
-            height={148}
+            width={128}
+            height={128}
             className="object-contain drop-shadow-lg"
             priority={true}
             quality={90}
@@ -76,7 +76,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
             delay: 0.5,
           }}
         >
-          <h1 className="text-4xl -mt-10 font-light tracking-wider text-[#1a2a3c] drop-shadow-lg">
+          <h1 className="text-4xl font-light tracking-wider text-[#1a2a3c] drop-shadow-lg">
             ARQUIMEC
           </h1>
         </motion.div>

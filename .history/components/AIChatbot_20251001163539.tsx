@@ -63,30 +63,29 @@ const AIChatbot: React.FC<AIChatbotProps> = ({ isOpen, onClose }) => {
     const message = userMessage.toLowerCase();
     
     // Check greetings
-    if (chatbotResponses.greetings.patterns.some((pattern: string) => message.includes(pattern))) {
+    if (chatbotResponses.greetings.patterns.some(pattern => message.includes(pattern))) {
       return chatbotResponses.greetings.responses[Math.floor(Math.random() * chatbotResponses.greetings.responses.length)];
     }
 
     // Check services
     for (const [serviceKey, serviceData] of Object.entries(chatbotResponses.services)) {
-      const service = serviceData as any;
-      if (service.patterns.some((pattern: string) => message.includes(pattern))) {
-        return service.responses[Math.floor(Math.random() * service.responses.length)];
+      if (serviceData.patterns.some(pattern => message.includes(pattern))) {
+        return serviceData.responses[Math.floor(Math.random() * serviceData.responses.length)];
       }
     }
 
     // Check company info
-    if (chatbotResponses.company_info.patterns.some((pattern: string) => message.includes(pattern))) {
+    if (chatbotResponses.company_info.patterns.some(pattern => message.includes(pattern))) {
       return chatbotResponses.company_info.responses[Math.floor(Math.random() * chatbotResponses.company_info.responses.length)];
     }
 
     // Check contact
-    if (chatbotResponses.contact.patterns.some((pattern: string) => message.includes(pattern))) {
+    if (chatbotResponses.contact.patterns.some(pattern => message.includes(pattern))) {
       return chatbotResponses.contact.responses[Math.floor(Math.random() * chatbotResponses.contact.responses.length)];
     }
 
     // Check pricing
-    if (chatbotResponses.pricing.patterns.some((pattern: string) => message.includes(pattern))) {
+    if (chatbotResponses.pricing.patterns.some(pattern => message.includes(pattern))) {
       return chatbotResponses.pricing.responses[Math.floor(Math.random() * chatbotResponses.pricing.responses.length)];
     }
 
@@ -100,7 +99,7 @@ const AIChatbot: React.FC<AIChatbotProps> = ({ isOpen, onClose }) => {
     };
 
     for (const [key, patterns] of Object.entries(complexPatterns)) {
-      if (patterns.some((pattern: string) => message.includes(pattern))) {
+      if (patterns.some(pattern => message.includes(pattern))) {
         return getEnhancedResponse(key, message);
       }
     }
@@ -291,21 +290,65 @@ const AIChatbot: React.FC<AIChatbotProps> = ({ isOpen, onClose }) => {
   };
 
   // Función para terminar el chat
-  const handleTerminateChat = () => {
+  const handleTerminateChat = async () => {
     const farewellMessage: Message = {
       id: Date.now().toString(),
-      text: "¡Gracias por contactarnos! Si tienes más consultas, no dudes en escribirnos. ¡Que tengas un excelente día!",
+      text: "¡Gracias por contactarnos! Generando resumen y enviándolo por email...",
       isUser: false,
       timestamp: new Date()
     };
     setMessages(prev => [...prev, farewellMessage]);
     
-    // Limpiar chat y cerrar después de 2 segundos
+    try {
+      // Enviar PDF por email
+      const response = await fetch('/api/send-chat-pdf', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          messages: messages,
+          userInfo: {
+            name: "Usuario del Chat",
+            email: "usuario@ejemplo.com"
+          }
+        }),
+      });
+
+      if (response.ok) {
+        const successMessage: Message = {
+          id: (Date.now() + 1).toString(),
+          text: "✅ Resumen enviado correctamente a Francolucap1@gmail.com",
+          isUser: false,
+          timestamp: new Date()
+        };
+        setMessages(prev => [...prev, successMessage]);
+      } else {
+        const errorMessage: Message = {
+          id: (Date.now() + 1).toString(),
+          text: "❌ Error al enviar el resumen. Por favor contacta directamente al +54 11 1234-5678",
+          isUser: false,
+          timestamp: new Date()
+        };
+        setMessages(prev => [...prev, errorMessage]);
+      }
+    } catch (error) {
+      console.error('Error sending PDF:', error);
+      const errorMessage: Message = {
+        id: (Date.now() + 1).toString(),
+        text: "❌ Error al enviar el resumen. Por favor contacta directamente al +54 11 1234-5678",
+        isUser: false,
+        timestamp: new Date()
+      };
+      setMessages(prev => [...prev, errorMessage]);
+    }
+    
+    // Limpiar chat y cerrar después de 3 segundos
     setTimeout(() => {
       setMessages([]);
       setShowDepartmentOptions(false);
       onClose();
-    }, 2000);
+    }, 3000);
   };
 
   // Función para enviar resumen por WhatsApp

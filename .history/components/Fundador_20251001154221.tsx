@@ -77,32 +77,14 @@ const Fundador: React.FC = () => {
     };
   }, [hasAnimated]);
 
-  // Efecto para intercalar imagen y logo con tiempos diferentes
+  // Efecto para intercalar imagen y logo cada 3 segundos
   useEffect(() => {
-    let timeoutId: NodeJS.Timeout;
+    const interval = setInterval(() => {
+      setShowLogo(prev => !prev);
+    }, 3000);
 
-    const switchImages = () => {
-      if (showLogo) {
-        // El logo se muestra por 2 segundos
-        timeoutId = setTimeout(() => {
-          setShowLogo(false);
-        }, 3000);
-      } else {
-        // La imagen del fundador se muestra por 5 segundos
-        timeoutId = setTimeout(() => {
-          setShowLogo(true);
-        }, 5000);
-      }
-    };
-
-    switchImages();
-
-    return () => {
-      if (timeoutId) {
-        clearTimeout(timeoutId);
-      }
-    };
-  }, [showLogo]);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <section ref={sectionRef} className="py-32 bg-white">
@@ -127,7 +109,7 @@ const Fundador: React.FC = () => {
               >
                 {showLogo ? (
                   <Image
-                    src="/Assets/Fundador-logo.png"
+                    src="/Assets/logo-Fundador.png"
                     alt="Logo Arquimec"
                     className="object-contain"
                     fill={true}

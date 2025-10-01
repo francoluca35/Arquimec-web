@@ -36,7 +36,7 @@ const Header: React.FC<HeaderProps> = ({ scrolled, headerVisible }) => {
           headerVisible ? "translate-y-0" : "-translate-y-full"
         } ${
           scrolled 
-            ? "bg-[#ffffff] shadow-lg" 
+            ? "bg-[#d9d9d9] shadow-lg" 
             : "bg-[#1a2a3c]"
         }`}
         initial={{ opacity: 0, y: -100 }}

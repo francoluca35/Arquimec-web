@@ -63,30 +63,29 @@ const AIChatbot: React.FC<AIChatbotProps> = ({ isOpen, onClose }) => {
     const message = userMessage.toLowerCase();
     
     // Check greetings
-    if (chatbotResponses.greetings.patterns.some((pattern: string) => message.includes(pattern))) {
+    if (chatbotResponses.greetings.patterns.some(pattern => message.includes(pattern))) {
       return chatbotResponses.greetings.responses[Math.floor(Math.random() * chatbotResponses.greetings.responses.length)];
     }
 
     // Check services
     for (const [serviceKey, serviceData] of Object.entries(chatbotResponses.services)) {
-      const service = serviceData as any;
-      if (service.patterns.some((pattern: string) => message.includes(pattern))) {
-        return service.responses[Math.floor(Math.random() * service.responses.length)];
+      if (serviceData.patterns.some(pattern => message.includes(pattern))) {
+        return serviceData.responses[Math.floor(Math.random() * serviceData.responses.length)];
       }
     }
 
     // Check company info
-    if (chatbotResponses.company_info.patterns.some((pattern: string) => message.includes(pattern))) {
+    if (chatbotResponses.company_info.patterns.some(pattern => message.includes(pattern))) {
       return chatbotResponses.company_info.responses[Math.floor(Math.random() * chatbotResponses.company_info.responses.length)];
     }
 
     // Check contact
-    if (chatbotResponses.contact.patterns.some((pattern: string) => message.includes(pattern))) {
+    if (chatbotResponses.contact.patterns.some(pattern => message.includes(pattern))) {
       return chatbotResponses.contact.responses[Math.floor(Math.random() * chatbotResponses.contact.responses.length)];
     }
 
     // Check pricing
-    if (chatbotResponses.pricing.patterns.some((pattern: string) => message.includes(pattern))) {
+    if (chatbotResponses.pricing.patterns.some(pattern => message.includes(pattern))) {
       return chatbotResponses.pricing.responses[Math.floor(Math.random() * chatbotResponses.pricing.responses.length)];
     }
 
@@ -100,7 +99,7 @@ const AIChatbot: React.FC<AIChatbotProps> = ({ isOpen, onClose }) => {
     };
 
     for (const [key, patterns] of Object.entries(complexPatterns)) {
-      if (patterns.some((pattern: string) => message.includes(pattern))) {
+      if (patterns.some(pattern => message.includes(pattern))) {
         return getEnhancedResponse(key, message);
       }
     }
@@ -241,10 +240,6 @@ const AIChatbot: React.FC<AIChatbotProps> = ({ isOpen, onClose }) => {
       // Check if it's a farewell message
       if (isFarewellMessage(userMessage)) {
         aiResponse = "¡Ha sido un placer ayudarte! Si tienes más consultas, no dudes en escribirnos. ¡Que tengas un excelente día!";
-      } else if (wantsToTalkToSomeone(userMessage)) {
-        // Show department options
-        aiResponse = "¡Perfecto! Te puedo conectar con nuestros especialistas. ¿Con qué departamento te gustaría hablar?";
-        setShowDepartmentOptions(true);
       } else {
         // Use Gemini API for all responses
         setIsLoading(true);
@@ -300,10 +295,8 @@ const AIChatbot: React.FC<AIChatbotProps> = ({ isOpen, onClose }) => {
     };
     setMessages(prev => [...prev, farewellMessage]);
     
-    // Limpiar chat y cerrar después de 2 segundos
+    // Cerrar el chat después de 2 segundos
     setTimeout(() => {
-      setMessages([]);
-      setShowDepartmentOptions(false);
       onClose();
     }, 2000);
   };
@@ -486,43 +479,8 @@ const AIChatbot: React.FC<AIChatbotProps> = ({ isOpen, onClose }) => {
               
               <div ref={messagesEndRef} />
               
-              {/* Opciones de departamentos */}
-              {showDepartmentOptions && (
-                <div className="mt-4 p-4 bg-blue-50 rounded-lg">
-                  <h4 className="font-semibold text-gray-800 mb-3">Selecciona un departamento:</h4>
-                  <div className="space-y-3">
-                    {departments.map((dept, index) => (
-                      <div key={index} className="bg-white p-3 rounded-lg border">
-                        <h5 className="font-medium text-gray-800">{dept.name}</h5>
-                        <p className="text-sm text-gray-600 mb-2">{dept.description}</p>
-                        <div className="flex space-x-2">
-                          <button
-                            onClick={() => contactDepartmentWhatsApp(dept)}
-                            className="flex-1 bg-green-500 text-white px-3 py-1 rounded text-xs hover:bg-green-600 transition-colors"
-                          >
-                            📱 WhatsApp
-                          </button>
-                          <button
-                            onClick={() => contactDepartmentEmail(dept)}
-                            className="flex-1 bg-blue-500 text-white px-3 py-1 rounded text-xs hover:bg-blue-600 transition-colors"
-                          >
-                            📧 Email
-                          </button>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                  <button
-                    onClick={() => setShowDepartmentOptions(false)}
-                    className="mt-3 text-sm text-gray-600 hover:text-gray-800"
-                  >
-                    ← Volver al chat
-                  </button>
-                </div>
-              )}
-              
               {/* Botones de acción al final de los mensajes */}
-              {messages.length > 1 && !isTyping && !isLoading && !showDepartmentOptions && (
+              {messages.length > 1 && !isTyping && !isLoading && (
                 <div className="flex justify-center space-x-2 mt-4">
                   <button
                     onClick={() => handleTerminateChat()}

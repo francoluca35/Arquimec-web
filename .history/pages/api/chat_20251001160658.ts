@@ -72,24 +72,11 @@ INSTRUCCIONES ESPECÍFICAS:
 
 ${companyContext}`;
 
-    // Get current date and time for context
-    const now = new Date();
-    const currentDate = now.toLocaleDateString('es-AR', {
-      weekday: 'long',
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    });
-    const currentTime = now.toLocaleTimeString('es-AR', {
-      hour: '2-digit',
-      minute: '2-digit'
-    });
-
     const contents = [
       {
         role: 'user',
         parts: [{
-          text: `${systemInstruction}\n\nINFORMACIÓN ACTUAL:\n- Fecha: ${currentDate}\n- Hora: ${currentTime}\n\nUsuario: ${userInfo?.name ? `${userInfo.name} (${userInfo.email})` : 'Cliente'} dice: "${message}"`
+          text: `${systemInstruction}\n\nUsuario: ${userInfo?.name ? `${userInfo.name} (${userInfo.email})` : 'Cliente'} dice: "${message}"`
         }]
       }
     ];

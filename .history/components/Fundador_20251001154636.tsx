@@ -86,7 +86,7 @@ const Fundador: React.FC = () => {
         // El logo se muestra por 2 segundos
         timeoutId = setTimeout(() => {
           setShowLogo(false);
-        }, 3000);
+        }, 2000);
       } else {
         // La imagen del fundador se muestra por 5 segundos
         timeoutId = setTimeout(() => {

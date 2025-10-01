@@ -22,7 +22,6 @@ const AIChatbot: React.FC<AIChatbotProps> = ({ isOpen, onClose }) => {
   const [input, setInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [showDepartmentOptions, setShowDepartmentOptions] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   // Scroll to bottom when new messages arrive
@@ -51,42 +50,34 @@ const AIChatbot: React.FC<AIChatbotProps> = ({ isOpen, onClose }) => {
     return farewellWords.some(word => messageLower.includes(word));
   };
 
-  // Función para detectar si quiere hablar con alguien
-  const wantsToTalkToSomeone = (message: string): boolean => {
-    const talkWords = ['necesito hablar con alguien', 'quiero hablar con alguien', 'hablar con alguien', 'contactar con alguien', 'hablar con un especialista', 'hablar con un experto'];
-    const messageLower = message.toLowerCase();
-    return talkWords.some(phrase => messageLower.includes(phrase));
-  };
-
   // Function to find matching response from JSON
   const findMatchingResponse = (userMessage: string): string | null => {
     const message = userMessage.toLowerCase();
     
     // Check greetings
-    if (chatbotResponses.greetings.patterns.some((pattern: string) => message.includes(pattern))) {
+    if (chatbotResponses.greetings.patterns.some(pattern => message.includes(pattern))) {
       return chatbotResponses.greetings.responses[Math.floor(Math.random() * chatbotResponses.greetings.responses.length)];
     }
 
     // Check services
     for (const [serviceKey, serviceData] of Object.entries(chatbotResponses.services)) {
-      const service = serviceData as any;
-      if (service.patterns.some((pattern: string) => message.includes(pattern))) {
-        return service.responses[Math.floor(Math.random() * service.responses.length)];
+      if (serviceData.patterns.some(pattern => message.includes(pattern))) {
+        return serviceData.responses[Math.floor(Math.random() * serviceData.responses.length)];
       }
     }
 
     // Check company info
-    if (chatbotResponses.company_info.patterns.some((pattern: string) => message.includes(pattern))) {
+    if (chatbotResponses.company_info.patterns.some(pattern => message.includes(pattern))) {
       return chatbotResponses.company_info.responses[Math.floor(Math.random() * chatbotResponses.company_info.responses.length)];
     }
 
     // Check contact
-    if (chatbotResponses.contact.patterns.some((pattern: string) => message.includes(pattern))) {
+    if (chatbotResponses.contact.patterns.some(pattern => message.includes(pattern))) {
       return chatbotResponses.contact.responses[Math.floor(Math.random() * chatbotResponses.contact.responses.length)];
     }
 
     // Check pricing
-    if (chatbotResponses.pricing.patterns.some((pattern: string) => message.includes(pattern))) {
+    if (chatbotResponses.pricing.patterns.some(pattern => message.includes(pattern))) {
       return chatbotResponses.pricing.responses[Math.floor(Math.random() * chatbotResponses.pricing.responses.length)];
     }
 
@@ -100,7 +91,7 @@ const AIChatbot: React.FC<AIChatbotProps> = ({ isOpen, onClose }) => {
     };
 
     for (const [key, patterns] of Object.entries(complexPatterns)) {
-      if (patterns.some((pattern: string) => message.includes(pattern))) {
+      if (patterns.some(pattern => message.includes(pattern))) {
         return getEnhancedResponse(key, message);
       }
     }
@@ -241,10 +232,6 @@ const AIChatbot: React.FC<AIChatbotProps> = ({ isOpen, onClose }) => {
       // Check if it's a farewell message
       if (isFarewellMessage(userMessage)) {
         aiResponse = "¡Ha sido un placer ayudarte! Si tienes más consultas, no dudes en escribirnos. ¡Que tengas un excelente día!";
-      } else if (wantsToTalkToSomeone(userMessage)) {
-        // Show department options
-        aiResponse = "¡Perfecto! Te puedo conectar con nuestros especialistas. ¿Con qué departamento te gustaría hablar?";
-        setShowDepartmentOptions(true);
       } else {
         // Use Gemini API for all responses
         setIsLoading(true);
@@ -300,10 +287,8 @@ const AIChatbot: React.FC<AIChatbotProps> = ({ isOpen, onClose }) => {
     };
     setMessages(prev => [...prev, farewellMessage]);
     
-    // Limpiar chat y cerrar después de 2 segundos
+    // Cerrar el chat después de 2 segundos
     setTimeout(() => {
-      setMessages([]);
-      setShowDepartmentOptions(false);
       onClose();
     }, 2000);
   };
@@ -331,50 +316,6 @@ const AIChatbot: React.FC<AIChatbotProps> = ({ isOpen, onClose }) => {
     setTimeout(() => {
       onClose();
     }, 1000);
-  };
-
-  // Opciones de departamentos
-  const departments = [
-    {
-      name: "Administración",
-      whatsapp: "5491112345678",
-      email: "admin@arquimec.com",
-      description: "Consultas generales, facturación y gestión"
-    },
-    {
-      name: "Legales",
-      whatsapp: "5491112345679",
-      email: "legal@arquimec.com", 
-      description: "Permisos, normativas y asuntos legales"
-    },
-    {
-      name: "Diseño",
-      whatsapp: "5491112345680",
-      email: "diseno@arquimec.com",
-      description: "Diseño de interiores y proyectos creativos"
-    },
-    {
-      name: "Arquitectura",
-      whatsapp: "5491112345681",
-      email: "arquitectura@arquimec.com",
-      description: "Proyectos arquitectónicos y construcción"
-    }
-  ];
-
-  // Función para contactar departamento por WhatsApp
-  const contactDepartmentWhatsApp = (department: typeof departments[0]) => {
-    const message = `Hola! Me comunico desde el chat de Arquimec para consultar sobre ${department.name.toLowerCase()}.`;
-    const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/${department.whatsapp}?text=${encodedMessage}`;
-    window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
-  };
-
-  // Función para contactar departamento por email
-  const contactDepartmentEmail = (department: typeof departments[0]) => {
-    const subject = `Consulta desde chat web - ${department.name}`;
-    const body = `Hola,\n\nMe comunico desde el chat de Arquimec para consultar sobre ${department.description}.\n\nGracias.`;
-    const mailtoUrl = `mailto:${department.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    window.open(mailtoUrl, '_blank', 'noopener,noreferrer');
   };
 
   return (
@@ -443,6 +384,24 @@ const AIChatbot: React.FC<AIChatbotProps> = ({ isOpen, onClose }) => {
                         <div className="text-xs opacity-70 mt-1">🤖 Respuesta con IA</div>
                       )}
                     </div>
+                    
+                    {/* Botón Terminar después de cada mensaje del chatbot */}
+                    {!message.isUser && (
+                      <div className="mt-2 flex space-x-2">
+                        <button
+                          onClick={() => handleTerminateChat()}
+                          className="bg-red-500 text-white px-3 py-1 rounded-lg hover:bg-red-600 transition-colors text-xs"
+                        >
+                          Terminar
+                        </button>
+                        <button
+                          onClick={() => handleSendWhatsApp()}
+                          className="bg-green-500 text-white px-3 py-1 rounded-lg hover:bg-green-600 transition-colors text-xs"
+                        >
+                          Enviar WhatsApp
+                        </button>
+                      </div>
+                    )}
                   </div>
                 </div>
               ))}
@@ -485,59 +444,6 @@ const AIChatbot: React.FC<AIChatbotProps> = ({ isOpen, onClose }) => {
               )}
               
               <div ref={messagesEndRef} />
-              
-              {/* Opciones de departamentos */}
-              {showDepartmentOptions && (
-                <div className="mt-4 p-4 bg-blue-50 rounded-lg">
-                  <h4 className="font-semibold text-gray-800 mb-3">Selecciona un departamento:</h4>
-                  <div className="space-y-3">
-                    {departments.map((dept, index) => (
-                      <div key={index} className="bg-white p-3 rounded-lg border">
-                        <h5 className="font-medium text-gray-800">{dept.name}</h5>
-                        <p className="text-sm text-gray-600 mb-2">{dept.description}</p>
-                        <div className="flex space-x-2">
-                          <button
-                            onClick={() => contactDepartmentWhatsApp(dept)}
-                            className="flex-1 bg-green-500 text-white px-3 py-1 rounded text-xs hover:bg-green-600 transition-colors"
-                          >
-                            📱 WhatsApp
-                          </button>
-                          <button
-                            onClick={() => contactDepartmentEmail(dept)}
-                            className="flex-1 bg-blue-500 text-white px-3 py-1 rounded text-xs hover:bg-blue-600 transition-colors"
-                          >
-                            📧 Email
-                          </button>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                  <button
-                    onClick={() => setShowDepartmentOptions(false)}
-                    className="mt-3 text-sm text-gray-600 hover:text-gray-800"
-                  >
-                    ← Volver al chat
-                  </button>
-                </div>
-              )}
-              
-              {/* Botones de acción al final de los mensajes */}
-              {messages.length > 1 && !isTyping && !isLoading && !showDepartmentOptions && (
-                <div className="flex justify-center space-x-2 mt-4">
-                  <button
-                    onClick={() => handleTerminateChat()}
-                    className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-colors text-sm"
-                  >
-                    Terminar
-                  </button>
-                  <button
-                    onClick={() => handleSendWhatsApp()}
-                    className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-colors text-sm"
-                  >
-                    Enviar WhatsApp
-                  </button>
-                </div>
-              )}
             </div>
 
             {/* Input */}

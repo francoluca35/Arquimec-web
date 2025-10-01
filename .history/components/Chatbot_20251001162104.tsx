@@ -62,46 +62,34 @@ const Chatbot: React.FC<ChatbotProps> = ({ phoneNumber = "1234567890" }) => {
     addMessage(messageText, true);
     setIsLoading(true);
 
-    console.log('🔍 Sending message:', messageText);
-    console.log('🔍 User info:', userInfo);
-    console.log('🔍 Messages history:', messages);
-
     try {
-      const requestBody = {
-        message: messageText,
-        history: messages,
-        userInfo: {
-          name: userInfo.name || "Usuario",
-          email: userInfo.email || "usuario@ejemplo.com"
-        }
-      };
-
-      console.log('🔍 Request body:', requestBody);
-
       const response = await fetch('/api/chat', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(requestBody),
+        body: JSON.stringify({
+          message: messageText,
+          history: messages,
+          userInfo: {
+            name: userInfo.name || "Usuario",
+            email: userInfo.email || "usuario@ejemplo.com"
+          }
+        }),
       });
-
-      console.log('🔍 Response status:', response.status);
 
       if (response.ok) {
         const data = await response.json();
-        console.log('🔍 Response data:', data);
         setTimeout(() => {
           addMessage(data.response);
         }, 1000);
       } else {
-        console.error('🔍 API Error:', response.status, response.statusText);
         setTimeout(() => {
           addMessage("Disculpa, hubo un problema técnico. ¿Podrías contactarnos directamente al +54 11 1234-5678? 😊");
         }, 1000);
       }
     } catch (error) {
-      console.error('🔍 Error calling chatbot API:', error);
+      console.error('Error calling chatbot API:', error);
       setTimeout(() => {
         addMessage("Disculpa, hubo un problema técnico. ¿Podrías contactarnos directamente al +54 11 1234-5678? 😊");
       }, 1000);

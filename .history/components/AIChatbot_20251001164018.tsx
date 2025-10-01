@@ -63,7 +63,7 @@ const AIChatbot: React.FC<AIChatbotProps> = ({ isOpen, onClose }) => {
     const message = userMessage.toLowerCase();
     
     // Check greetings
-    if (chatbotResponses.greetings.patterns.some((pattern: string) => message.includes(pattern))) {
+    if (chatbotResponses.greetings.patterns.some(pattern => message.includes(pattern))) {
       return chatbotResponses.greetings.responses[Math.floor(Math.random() * chatbotResponses.greetings.responses.length)];
     }
 
@@ -100,7 +100,7 @@ const AIChatbot: React.FC<AIChatbotProps> = ({ isOpen, onClose }) => {
     };
 
     for (const [key, patterns] of Object.entries(complexPatterns)) {
-      if (patterns.some((pattern: string) => message.includes(pattern))) {
+      if (patterns.some(pattern => message.includes(pattern))) {
         return getEnhancedResponse(key, message);
       }
     }

@@ -76,7 +76,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
             delay: 0.5,
           }}
         >
-          <h1 className="text-4xl -mt-10 font-light tracking-wider text-[#1a2a3c] drop-shadow-lg">
+          <h1 className="text-4xl -mt-4 font-light tracking-wider text-[#1a2a3c] drop-shadow-lg">
             ARQUIMEC
           </h1>
         </motion.div>

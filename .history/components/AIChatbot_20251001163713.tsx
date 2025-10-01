@@ -63,30 +63,29 @@ const AIChatbot: React.FC<AIChatbotProps> = ({ isOpen, onClose }) => {
     const message = userMessage.toLowerCase();
     
     // Check greetings
-    if (chatbotResponses.greetings.patterns.some((pattern: string) => message.includes(pattern))) {
+    if (chatbotResponses.greetings.patterns.some(pattern => message.includes(pattern))) {
       return chatbotResponses.greetings.responses[Math.floor(Math.random() * chatbotResponses.greetings.responses.length)];
     }
 
     // Check services
     for (const [serviceKey, serviceData] of Object.entries(chatbotResponses.services)) {
-      const service = serviceData as any;
-      if (service.patterns.some((pattern: string) => message.includes(pattern))) {
-        return service.responses[Math.floor(Math.random() * service.responses.length)];
+      if (serviceData.patterns.some(pattern => message.includes(pattern))) {
+        return serviceData.responses[Math.floor(Math.random() * serviceData.responses.length)];
       }
     }
 
     // Check company info
-    if (chatbotResponses.company_info.patterns.some((pattern: string) => message.includes(pattern))) {
+    if (chatbotResponses.company_info.patterns.some(pattern => message.includes(pattern))) {
       return chatbotResponses.company_info.responses[Math.floor(Math.random() * chatbotResponses.company_info.responses.length)];
     }
 
     // Check contact
-    if (chatbotResponses.contact.patterns.some((pattern: string) => message.includes(pattern))) {
+    if (chatbotResponses.contact.patterns.some(pattern => message.includes(pattern))) {
       return chatbotResponses.contact.responses[Math.floor(Math.random() * chatbotResponses.contact.responses.length)];
     }
 
     // Check pricing
-    if (chatbotResponses.pricing.patterns.some((pattern: string) => message.includes(pattern))) {
+    if (chatbotResponses.pricing.patterns.some(pattern => message.includes(pattern))) {
       return chatbotResponses.pricing.responses[Math.floor(Math.random() * chatbotResponses.pricing.responses.length)];
     }
 
@@ -100,7 +99,7 @@ const AIChatbot: React.FC<AIChatbotProps> = ({ isOpen, onClose }) => {
     };
 
     for (const [key, patterns] of Object.entries(complexPatterns)) {
-      if (patterns.some((pattern: string) => message.includes(pattern))) {
+      if (patterns.some(pattern => message.includes(pattern))) {
         return getEnhancedResponse(key, message);
       }
     }

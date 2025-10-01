@@ -41,7 +41,7 @@ const AnimatedLogo: React.FC<AnimatedLogoProps> = ({
             src="/Assets/logoarqmec.png" 
             alt="ARQUIMEC Logo" 
             className="w-20 h-20 object-contain drop-shadow-lg"
-            style={{maxWidth: '100px', maxHeight: '100px'}}
+            style={{maxWidth: '70px', maxHeight: '70px'}}
             onError={(e) => {
               console.error('Error loading logo:', e);
               // Si falla, mostrar el logo CSS como fallback
