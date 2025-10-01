@@ -21,37 +21,41 @@ const ServiceNavigation: React.FC<ServiceNavigationProps> = ({ scrolled, current
   ];
 
   const getButtonStyles = (isActive: boolean) => {
-    const baseStyles = "transition-colors font-medium";
+    const baseStyles = "transition-colors duration-500 text-sm tracking-wider underline-offset-4 hover:underline";
     
     if (isActive) {
+      // Página activa - color destacado
       return `${baseStyles} ${
         scrolled 
-          ? "text-amber-400 hover:text-amber-300 font-bold" 
-          : "text-blue-600 hover:text-blue-700 font-bold"
+          ? "text-amber-600 hover:text-amber-700 font-bold" 
+          : "text-amber-400 hover:text-amber-300 font-bold"
       }`;
     } else {
+      // Páginas inactivas - color normal
       return `${baseStyles} ${
         scrolled 
-          ? "text-white hover:text-gray-300" 
-          : "text-gray-600 hover:text-gray-900"
+          ? "text-black hover:text-amber-600" 
+          : "text-white hover:text-amber-400"
       }`;
     }
   };
 
   const getMobileButtonStyles = (isActive: boolean) => {
-    const baseStyles = "transition-colors font-medium py-2 text-sm tracking-wider text-left";
+    const baseStyles = "transition-colors duration-500 py-2 text-sm tracking-wider underline-offset-4 hover:underline text-left";
     
     if (isActive) {
+      // Página activa - color destacado
       return `${baseStyles} ${
         scrolled 
-          ? "text-amber-400 hover:text-amber-300 font-bold" 
-          : "text-blue-600 hover:text-blue-700 font-bold"
+          ? "text-amber-600 hover:text-amber-700 font-bold" 
+          : "text-amber-400 hover:text-amber-300 font-bold"
       }`;
     } else {
+      // Páginas inactivas - color normal
       return `${baseStyles} ${
         scrolled 
-          ? "text-white hover:text-gray-300" 
-          : "text-gray-600 hover:text-gray-900"
+          ? "text-black hover:text-amber-600" 
+          : "text-white hover:text-amber-400"
       }`;
     }
   };
@@ -60,19 +64,22 @@ const ServiceNavigation: React.FC<ServiceNavigationProps> = ({ scrolled, current
     <>
       {/* Desktop Navigation */}
       <div className="hidden lg:flex items-center space-x-6">
-        {services.map((service) => {
-          const isActive = service.key === "inicio" 
-            ? router.pathname === "/" 
-            : currentPage === service.key;
+        {services.map((service, index) => {
+          const isActive = currentPage === service.key;
           
           return (
             <motion.button
               key={service.key}
               onClick={() => router.push(service.href)}
               className={getButtonStyles(isActive)}
+              style={{
+                fontWeight: 400,
+                letterSpacing: "0.1em",
+              }}
               whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ duration: 0.2 }}
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
             >
               {service.name}
             </motion.button>
@@ -86,8 +93,8 @@ const ServiceNavigation: React.FC<ServiceNavigationProps> = ({ scrolled, current
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           className={`p-2 rounded-md transition-colors duration-200 ${
             scrolled 
-              ? 'text-white hover:bg-gray-700' 
-              : 'text-gray-600 hover:bg-gray-100'
+              ? 'text-gray-700 hover:bg-gray-100' 
+              : 'text-white hover:bg-gray-700'
           }`}
           aria-expanded={mobileMenuOpen}
           aria-controls="mobile-service-menu"
@@ -102,7 +109,7 @@ const ServiceNavigation: React.FC<ServiceNavigationProps> = ({ scrolled, current
         <motion.div
           id="mobile-service-menu"
           className={`lg:hidden fixed top-20 right-0 h-[calc(103vh-6rem)] w-80 shadow-lg z-50 ${
-            scrolled ? 'bg-[#1a2a3c]' : 'bg-[#e4e4e4]'
+            scrolled ? 'bg-[#e4e4e4]' : 'bg-[#1a2a3c]'
           }`}
           initial={{ opacity: 0, x: 320 }}
           animate={{ opacity: 1, x: 0 }}
@@ -113,9 +120,7 @@ const ServiceNavigation: React.FC<ServiceNavigationProps> = ({ scrolled, current
         >
           <div className="relative flex flex-col space-y-6 p-8 pt-8 h-full">
             {services.map((service) => {
-              const isActive = service.key === "inicio" 
-                ? router.pathname === "/" 
-                : currentPage === service.key;
+              const isActive = currentPage === service.key;
               
               return (
                 <button

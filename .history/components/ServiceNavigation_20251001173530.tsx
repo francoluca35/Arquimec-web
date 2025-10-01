@@ -112,10 +112,8 @@ const ServiceNavigation: React.FC<ServiceNavigationProps> = ({ scrolled, current
           aria-label="Menú de navegación de servicios móvil"
         >
           <div className="relative flex flex-col space-y-6 p-8 pt-8 h-full">
-            {services.map((service) => {
-              const isActive = service.key === "inicio" 
-                ? router.pathname === "/" 
-                : currentPage === service.key;
+            {services.filter(service => service.key !== "inicio").map((service) => {
+              const isActive = currentPage === service.key;
               
               return (
                 <button

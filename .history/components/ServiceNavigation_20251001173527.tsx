@@ -113,9 +113,7 @@ const ServiceNavigation: React.FC<ServiceNavigationProps> = ({ scrolled, current
         >
           <div className="relative flex flex-col space-y-6 p-8 pt-8 h-full">
             {services.map((service) => {
-              const isActive = service.key === "inicio" 
-                ? router.pathname === "/" 
-                : currentPage === service.key;
+              const isActive = currentPage === service.key;
               
               return (
                 <button

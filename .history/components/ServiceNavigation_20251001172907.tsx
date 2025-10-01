@@ -13,23 +13,24 @@ const ServiceNavigation: React.FC<ServiceNavigationProps> = ({ scrolled, current
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const services = [
-    { name: "INICIO", href: "/", key: "inicio" },
-    { name: "RESIDENCIAL", href: "/arquitectura-residencial", key: "residencial" },
-    { name: "COMERCIAL", href: "/arquitectura-comercial", key: "comercial" },
-    { name: "INTERIORES", href: "/diseno-interiores", key: "interiores" },
-    { name: "CONSULTORÍAS", href: "/consultorias", key: "consultorias" },
+    { name: "Arq Residencial", href: "/arquitectura-residencial", key: "residencial" },
+    { name: "Arq Comercial", href: "/arquitectura-comercial", key: "comercial" },
+    { name: "Diseño de Interiores", href: "/diseno-interiores", key: "interiores" },
+    { name: "Consultorías", href: "/consultorias", key: "consultorias" },
   ];
 
   const getButtonStyles = (isActive: boolean) => {
     const baseStyles = "transition-colors font-medium";
     
     if (isActive) {
+      // Página activa - color destacado
       return `${baseStyles} ${
         scrolled 
           ? "text-amber-400 hover:text-amber-300 font-bold" 
           : "text-blue-600 hover:text-blue-700 font-bold"
       }`;
     } else {
+      // Páginas inactivas - color normal
       return `${baseStyles} ${
         scrolled 
           ? "text-white hover:text-gray-300" 
@@ -39,15 +40,17 @@ const ServiceNavigation: React.FC<ServiceNavigationProps> = ({ scrolled, current
   };
 
   const getMobileButtonStyles = (isActive: boolean) => {
-    const baseStyles = "transition-colors font-medium py-2 text-sm tracking-wider text-left";
+    const baseStyles = "transition-colors font-medium py-2 text-sm tracking-wider";
     
     if (isActive) {
+      // Página activa - color destacado
       return `${baseStyles} ${
         scrolled 
           ? "text-amber-400 hover:text-amber-300 font-bold" 
           : "text-blue-600 hover:text-blue-700 font-bold"
       }`;
     } else {
+      // Páginas inactivas - color normal
       return `${baseStyles} ${
         scrolled 
           ? "text-white hover:text-gray-300" 
@@ -61,9 +64,7 @@ const ServiceNavigation: React.FC<ServiceNavigationProps> = ({ scrolled, current
       {/* Desktop Navigation */}
       <div className="hidden lg:flex items-center space-x-6">
         {services.map((service) => {
-          const isActive = service.key === "inicio" 
-            ? router.pathname === "/" 
-            : currentPage === service.key;
+          const isActive = currentPage === service.key;
           
           return (
             <motion.button
@@ -101,8 +102,8 @@ const ServiceNavigation: React.FC<ServiceNavigationProps> = ({ scrolled, current
       {mobileMenuOpen && (
         <motion.div
           id="mobile-service-menu"
-          className={`lg:hidden fixed top-20 right-0 h-[calc(103vh-6rem)] w-80 shadow-lg z-50 ${
-            scrolled ? 'bg-[#1a2a3c]' : 'bg-[#e4e4e4]'
+          className={`lg:hidden fixed top-20 right-0 h-auto w-80 shadow-lg z-50 ${
+            scrolled ? 'bg-gray-900' : 'bg-white'
           }`}
           initial={{ opacity: 0, x: 320 }}
           animate={{ opacity: 1, x: 0 }}
@@ -111,11 +112,9 @@ const ServiceNavigation: React.FC<ServiceNavigationProps> = ({ scrolled, current
           role="navigation"
           aria-label="Menú de navegación de servicios móvil"
         >
-          <div className="relative flex flex-col space-y-6 p-8 pt-8 h-full">
+          <div className="relative flex flex-col space-y-2 p-6 pt-6 h-auto">
             {services.map((service) => {
-              const isActive = service.key === "inicio" 
-                ? router.pathname === "/" 
-                : currentPage === service.key;
+              const isActive = currentPage === service.key;
               
               return (
                 <button
@@ -125,10 +124,6 @@ const ServiceNavigation: React.FC<ServiceNavigationProps> = ({ scrolled, current
                     setMobileMenuOpen(false);
                   }}
                   className={getMobileButtonStyles(isActive)}
-                  style={{
-                    fontWeight: 400,
-                    letterSpacing: "0.1em",
-                  }}
                 >
                   {service.name}
                 </button>
