@@ -1,0 +1,571 @@
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { MessageCircle, Send, X, Bot, User } from 'lucide-react';
+// Importar respuestas del chatbot
+const chatbotResponses = require('../data/chatbotResponses.json');
+
+interface Message {
+  id: string;
+  text: string;
+  isUser: boolean;
+  timestamp: Date;
+  isAI?: boolean;
+}
+
+interface AIChatbotProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+const AIChatbot: React.FC<AIChatbotProps> = ({ isOpen, onClose }) => {
+  const [messages, setMessages] = useState<Message[]>([]);
+  const [input, setInput] = useState('');
+  const [isTyping, setIsTyping] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [showDepartmentOptions, setShowDepartmentOptions] = useState(false);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  // Scroll to bottom when new messages arrive
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages]);
+
+  // Initialize with welcome message
+  useEffect(() => {
+    if (isOpen && messages.length === 0) {
+      const welcomeMessage: Message = {
+        id: 'welcome',
+        text: '¡Hola! Soy el asistente de Arquimec. ¿En qué puedo ayudarte hoy?',
+        isUser: false,
+        timestamp: new Date(),
+        isAI: false
+      };
+      setMessages([welcomeMessage]);
+    }
+  }, [isOpen, messages.length]);
+
+  // Función para detectar palabras de despedida
+  const isFarewellMessage = (message: string): boolean => {
+    const farewellWords = ['gracias', 'adios', 'adiós', 'chau', 'hasta luego', 'terminamos', 'terminar', 'bye', 'nos vemos', 'hasta pronto'];
+    const messageLower = message.toLowerCase();
+    return farewellWords.some(word => messageLower.includes(word));
+  };
+
+  // Función para detectar si quiere hablar con alguien
+  const wantsToTalkToSomeone = (message: string): boolean => {
+    const talkWords = ['necesito hablar con alguien', 'quiero hablar con alguien', 'hablar con alguien', 'contactar con alguien', 'hablar con un especialista', 'hablar con un experto'];
+    const messageLower = message.toLowerCase();
+    return talkWords.some(phrase => messageLower.includes(phrase));
+  };
+
+  // Function to find matching response from JSON
+  const findMatchingResponse = (userMessage: string): string | null => {
+    const message = userMessage.toLowerCase();
+    
+    // Check greetings
+    if (chatbotResponses.greetings.patterns.some(pattern => message.includes(pattern))) {
+      return chatbotResponses.greetings.responses[Math.floor(Math.random() * chatbotResponses.greetings.responses.length)];
+    }
+
+    // Check services
+    for (const [serviceKey, serviceData] of Object.entries(chatbotResponses.services)) {
+      const service = serviceData as any;
+      if (service.patterns.some((pattern: string) => message.includes(pattern))) {
+        return service.responses[Math.floor(Math.random() * service.responses.length)];
+      }
+    }
+
+    // Check company info
+    if (chatbotResponses.company_info.patterns.some((pattern: string) => message.includes(pattern))) {
+      return chatbotResponses.company_info.responses[Math.floor(Math.random() * chatbotResponses.company_info.responses.length)];
+    }
+
+    // Check contact
+    if (chatbotResponses.contact.patterns.some((pattern: string) => message.includes(pattern))) {
+      return chatbotResponses.contact.responses[Math.floor(Math.random() * chatbotResponses.contact.responses.length)];
+    }
+
+    // Check pricing
+    if (chatbotResponses.pricing.patterns.some((pattern: string) => message.includes(pattern))) {
+      return chatbotResponses.pricing.responses[Math.floor(Math.random() * chatbotResponses.pricing.responses.length)];
+    }
+
+    // Enhanced pattern matching for complex queries
+    const complexPatterns = {
+      'interior_especifico': ['diseño de interior', 'interior', 'decoración', 'ambiente', 'muebles'],
+      'arquitectura_especifica': ['casa', 'hogar', 'vivienda', 'oficina', 'comercial'],
+      'construccion_edificios': ['construcción', 'edificio', 'edificios', 'construir', 'obra', 'construcción de edificios'],
+      'consultoria_especifica': ['consultoría', 'técnico', 'asesoramiento', 'normativa', 'permisos'],
+      'presupuesto_especifico': ['presupuesto', 'precio', 'costo', 'tarifa', 'valor', 'cuanto cuesta']
+    };
+
+    for (const [key, patterns] of Object.entries(complexPatterns)) {
+      if (patterns.some(pattern => message.includes(pattern))) {
+        return getEnhancedResponse(key, message);
+      }
+    }
+
+    return null;
+  };
+
+  // Enhanced response function for complex queries
+  const getEnhancedResponse = (patternType: string, message: string): string => {
+    const responses = {
+      'interior_especifico': [
+        'Nuestro servicio de Diseño de Interiores incluye la transformación completa de espacios. ¿Podrías contarme más detalles sobre el tipo de ambiente que quieres rediseñar?',
+        'En Arquimec nos especializamos en crear interiores únicos y funcionales. ¿Qué tipo de espacio quieres transformar?',
+        'Nuestros diseñadores de interiores tienen experiencia en crear ambientes que reflejan la personalidad de nuestros clientes. ¿Podrías contarme más sobre tu proyecto?'
+      ],
+      'arquitectura_especifica': [
+        'Nuestro servicio de Arquitectura incluye diseño de viviendas y espacios comerciales. ¿Qué tipo de proyecto tienes en mente?',
+        'En Arquimec diseñamos espacios que combinan funcionalidad y estética. ¿Podrías contarme más sobre tu proyecto arquitectónico?',
+        'Nuestros arquitectos tienen amplia experiencia en diferentes tipos de proyectos. ¿Qué tipo de espacio necesitas diseñar?'
+      ],
+      'construccion_edificios': [
+        'Nuestro servicio de Arquitectura incluye diseño y construcción de edificios residenciales y comerciales. Con más de 7,000 m² construidos, tenemos amplia experiencia en proyectos de diferentes escalas. ¿Qué tipo de edificio necesitas construir?',
+        'En Arquimec nos especializamos en la construcción de edificios que combinan funcionalidad, estética y sostenibilidad. ¿Podrías contarme más detalles sobre tu proyecto de construcción?',
+        'Nuestros arquitectos tienen experiencia en construcción de edificios residenciales y comerciales. ¿Qué tipo de edificio tienes en mente y cuáles son las dimensiones aproximadas?'
+      ],
+      'consultoria_especifica': [
+        'Nuestro servicio de Consultorías Técnicas incluye asesoramiento especializado. ¿En qué aspecto técnico necesitas ayuda?',
+        'Nuestros consultores técnicos tienen experiencia en normativas y reglamentaciones. ¿Podrías contarme más sobre tu consulta?',
+        'En Arquimec ofrecemos consultorías especializadas. ¿Qué tipo de asesoramiento necesitas?'
+      ],
+      'presupuesto_especifico': [
+        'Para darte un presupuesto preciso, necesito conocer más detalles sobre tu proyecto. ¿Podrías contarme qué tipo de proyecto tienes en mente?',
+        'Los costos varían según el tipo de proyecto y su complejidad. ¿Te gustaría que te conecte con un especialista para una cotización personalizada?',
+        'Para una estimación precisa, necesito más información sobre tu proyecto. ¿Podrías contarme más detalles?'
+      ]
+    };
+
+    const responseArray = responses[patternType as keyof typeof responses];
+    return responseArray[Math.floor(Math.random() * responseArray.length)];
+  };
+
+  // Smart fallback response function
+  const getSmartFallbackResponse = (userMessage: string): string => {
+    const message = userMessage.toLowerCase();
+    
+    // Check for specific keywords and provide contextual responses
+    if (message.includes('construcción') || message.includes('edificio') || message.includes('edificios')) {
+      return 'Nuestro servicio de Arquitectura incluye diseño y construcción de edificios residenciales y comerciales. Con más de 7,000 m² construidos, tenemos amplia experiencia en proyectos de diferentes escalas. ¿Qué tipo de edificio necesitas construir?';
+    }
+    
+    if (message.includes('proyecto') || message.includes('obra')) {
+      return 'Entiendo que tienes un proyecto en mente. Para darte la mejor asesoría, te recomiendo contactar con nuestros especialistas. Puedes llamarnos al +54 11 1234-5678 o escribirnos por WhatsApp.';
+    }
+    
+    if (message.includes('tiempo') || message.includes('plazo') || message.includes('cuando')) {
+      return 'Los tiempos de desarrollo dependen del tipo de proyecto. Para darte una estimación precisa, te sugiero contactar con nuestros especialistas. ¿Te gustaría que te conecte con ellos?';
+    }
+    
+    if (message.includes('material') || message.includes('estilo') || message.includes('diseño')) {
+      return 'Excelente consulta sobre materiales y estilos. Nuestros especialistas pueden ayudarte a elegir las mejores opciones para tu proyecto. ¿Te gustaría que te conecte con un diseñador?';
+    }
+    
+    if (message.includes('permiso') || message.includes('tramite') || message.includes('normativa')) {
+      return 'Para consultas sobre permisos y normativas, te recomiendo contactar con nuestra consultora técnica Patricia López. ¿Te gustaría que te conecte con ella?';
+    }
+    
+    // Default smart response
+    const smartResponses = [
+      'Entiendo tu consulta. Para darte la mejor respuesta posible, te recomiendo contactar directamente con nuestros especialistas. Puedes llamarnos al +54 11 1234-5678 o escribirnos por WhatsApp.',
+      'Excelente pregunta. Nuestros especialistas pueden ayudarte mejor con esa consulta específica. ¿Te gustaría que te conecte con ellos?',
+      'Para consultas como la tuya, es mejor que hables directamente con uno de nuestros especialistas. ¿Te interesa que te conecte con ellos?',
+      'Esa es una consulta muy específica. Nuestros especialistas tienen la experiencia necesaria para ayudarte. ¿Te gustaría que te conecte con ellos?'
+    ];
+    
+    return smartResponses[Math.floor(Math.random() * smartResponses.length)];
+  };
+
+  // Function to call Gemini API
+  const callGeminiAPI = async (userMessage: string, conversationHistory: Message[]): Promise<string> => {
+    try {
+      console.log('🤖 Calling Gemini API with message:', userMessage);
+      
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          message: userMessage,
+          history: conversationHistory.slice(-6), // Last 6 messages for context
+          userInfo: {
+            name: "Usuario",
+            email: "usuario@ejemplo.com"
+          }
+        }),
+      });
+
+      console.log('🤖 API Response status:', response.status);
+
+      if (!response.ok) {
+        console.error('🤖 API Error:', response.status, response.statusText);
+        // Return a more helpful fallback response
+        return `Entiendo tu consulta, pero para darte la mejor respuesta posible, te recomiendo contactar directamente con nuestros especialistas. Puedes llamarnos al +54 11 1234-5678 o escribirnos por WhatsApp.`;
+      }
+
+      const data = await response.json();
+      console.log('🤖 API Response data:', data);
+      
+      return data.response || data.error || 'Lo siento, no pude procesar tu consulta. Te recomiendo contactar con nuestros especialistas.';
+    } catch (error) {
+      console.error('🤖 Error calling Gemini API:', error);
+      // Return a helpful fallback response
+      return `Entiendo tu consulta, pero para darte la mejor respuesta posible, te recomiendo contactar directamente con nuestros especialistas. Puedes llamarnos al +54 11 1234-5678 o escribirnos por WhatsApp.`;
+    }
+  };
+
+  // Handle sending message
+  const handleSendMessage = async () => {
+    if (!input.trim() || isTyping) return;
+
+    const userMessage = input.trim();
+    setInput('');
+    
+    // Add user message
+    const userMsg: Message = {
+      id: Date.now().toString(),
+      text: userMessage,
+      isUser: true,
+      timestamp: new Date()
+    };
+    
+    setMessages(prev => [...prev, userMsg]);
+    setIsTyping(true);
+
+    try {
+      let aiResponse: string;
+      
+      // Check if it's a farewell message
+      if (isFarewellMessage(userMessage)) {
+        aiResponse = "¡Ha sido un placer ayudarte! Si tienes más consultas, no dudes en escribirnos. ¡Que tengas un excelente día!";
+      } else if (wantsToTalkToSomeone(userMessage)) {
+        // Show department options
+        aiResponse = "¡Perfecto! Te puedo conectar con nuestros especialistas. ¿Con qué departamento te gustaría hablar?";
+        setShowDepartmentOptions(true);
+      } else {
+        // Use Gemini API for all responses
+        setIsLoading(true);
+        aiResponse = await callGeminiAPI(userMessage, messages);
+        setIsLoading(false);
+      }
+
+      // Add AI response
+      const aiMsg: Message = {
+        id: (Date.now() + 1).toString(),
+        text: aiResponse,
+        isUser: false,
+        timestamp: new Date(),
+        isAI: true // Now using real AI (Gemini)
+      };
+      
+      setMessages(prev => [...prev, aiMsg]);
+      
+    } catch (error) {
+      console.error('Error processing message:', error);
+      setIsLoading(false);
+      
+      // Fallback response
+      const fallbackMsg: Message = {
+        id: (Date.now() + 1).toString(),
+        text: "Disculpa, hubo un problema técnico. ¿Podrías contactarnos directamente al +54 11 1234-5678? 😊",
+        isUser: false,
+        timestamp: new Date(),
+        isAI: false
+      };
+      
+      setMessages(prev => [...prev, fallbackMsg]);
+    } finally {
+      setIsTyping(false);
+    }
+  };
+
+  // Handle key press
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      handleSendMessage();
+    }
+  };
+
+  // Función para terminar el chat
+  const handleTerminateChat = () => {
+    const farewellMessage: Message = {
+      id: Date.now().toString(),
+      text: "¡Gracias por contactarnos! Si tienes más consultas, no dudes en escribirnos. ¡Que tengas un excelente día!",
+      isUser: false,
+      timestamp: new Date()
+    };
+    setMessages(prev => [...prev, farewellMessage]);
+    
+    // Limpiar chat y cerrar después de 2 segundos
+    setTimeout(() => {
+      setMessages([]);
+      setShowDepartmentOptions(false);
+      onClose();
+    }, 2000);
+  };
+
+  // Función para enviar resumen por WhatsApp
+  const handleSendWhatsApp = () => {
+    // Obtener los últimos 2 mensajes del chatbot
+    const lastMessages = messages
+      .filter(msg => !msg.isUser)
+      .slice(-2)
+      .map(msg => msg.text)
+      .join('\n\n');
+
+    const summary = `🏗️ *Consulta Arquimec*\n\n` +
+      `💬 *Resumen de la conversación:*\n${lastMessages}\n\n` +
+      `✅ Cliente interesado en continuar conversación por WhatsApp.\n` +
+      `📞 Contacto directo: +54 11 1234-5678\n` +
+      `🕒 Horarios: Lunes a Viernes 8:00-19:00, Sábados 9:00-16:00`;
+
+    const encodedMessage = encodeURIComponent(summary);
+    const whatsappUrl = `https://wa.me/1234567890?text=${encodedMessage}`;
+    window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+    
+    // Cerrar el chat después de enviar WhatsApp
+    setTimeout(() => {
+      onClose();
+    }, 1000);
+  };
+
+  // Opciones de departamentos
+  const departments = [
+    {
+      name: "Administración",
+      whatsapp: "5491112345678",
+      email: "admin@arquimec.com",
+      description: "Consultas generales, facturación y gestión"
+    },
+    {
+      name: "Legales",
+      whatsapp: "5491112345679",
+      email: "legal@arquimec.com", 
+      description: "Permisos, normativas y asuntos legales"
+    },
+    {
+      name: "Diseño",
+      whatsapp: "5491112345680",
+      email: "diseno@arquimec.com",
+      description: "Diseño de interiores y proyectos creativos"
+    },
+    {
+      name: "Arquitectura",
+      whatsapp: "5491112345681",
+      email: "arquitectura@arquimec.com",
+      description: "Proyectos arquitectónicos y construcción"
+    }
+  ];
+
+  // Función para contactar departamento por WhatsApp
+  const contactDepartmentWhatsApp = (department: typeof departments[0]) => {
+    const message = `Hola! Me comunico desde el chat de Arquimec para consultar sobre ${department.name.toLowerCase()}.`;
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/${department.whatsapp}?text=${encodedMessage}`;
+    window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+  };
+
+  // Función para contactar departamento por email
+  const contactDepartmentEmail = (department: typeof departments[0]) => {
+    const subject = `Consulta desde chat web - ${department.name}`;
+    const body = `Hola,\n\nMe comunico desde el chat de Arquimec para consultar sobre ${department.description}.\n\nGracias.`;
+    const mailtoUrl = `mailto:${department.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.open(mailtoUrl, '_blank', 'noopener,noreferrer');
+  };
+
+  return (
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div
+          className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-end justify-end p-4"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={onClose}
+        >
+          <motion.div
+            className="bg-white rounded-t-2xl w-full max-w-md h-96 flex flex-col mr-4"
+            initial={{ y: 400, x: 0 }}
+            animate={{ y: 0, x: 0 }}
+            exit={{ y: 400, x: 0 }}
+            transition={{ type: "spring", damping: 25, stiffness: 200 }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Header */}
+            <div className="flex items-center justify-between p-4 border-b">
+              <div className="flex items-center space-x-2">
+                <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                <span className="font-semibold">Arquimec AI Chat</span>
+                <div className="flex items-center text-xs text-gray-500">
+                  <Bot size={12} className="mr-1" />
+                  Asistente Inteligente
+                </div>
+              </div>
+              <button
+                onClick={onClose}
+                className="p-1 hover:bg-gray-100 rounded-full"
+              >
+                <X size={20} />
+              </button>
+            </div>
+
+            {/* Messages */}
+            <div className="flex-1 overflow-y-auto p-4 space-y-3">
+              {messages.map((message) => (
+                <div
+                  key={message.id}
+                  className={`flex ${message.isUser ? 'justify-end' : 'justify-start'}`}
+                >
+                  <div className={`flex items-start space-x-2 max-w-xs ${message.isUser ? 'flex-row-reverse space-x-reverse' : ''}`}>
+                    {!message.isUser && (
+                      <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
+                        <Bot size={12} className="text-white" />
+                      </div>
+                    )}
+                    {message.isUser && (
+                      <div className="w-6 h-6 bg-gray-500 rounded-full flex items-center justify-center flex-shrink-0">
+                        <User size={12} className="text-white" />
+                      </div>
+                    )}
+                    <div
+                      className={`p-3 rounded-lg ${
+                        message.isUser
+                          ? 'bg-blue-500 text-white'
+                          : 'bg-gray-100 text-gray-800'
+                      }`}
+                    >
+                      <div className="text-sm">{message.text}</div>
+                      {message.isAI && (
+                        <div className="text-xs opacity-70 mt-1">🤖 Respuesta con IA</div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              ))}
+              
+              {/* Typing indicator */}
+              {isTyping && (
+                <div className="flex justify-start">
+                  <div className="flex items-start space-x-2">
+                    <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center">
+                      <Bot size={12} className="text-white" />
+                    </div>
+                    <div className="bg-gray-100 text-gray-800 p-3 rounded-lg">
+                      <div className="flex space-x-1">
+                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
+                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Loading indicator for AI */}
+              {isLoading && (
+                <div className="flex justify-start">
+                  <div className="flex items-start space-x-2">
+                    <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center">
+                      <Bot size={12} className="text-white" />
+                    </div>
+                    <div className="bg-gray-100 text-gray-800 p-3 rounded-lg">
+                      <div className="flex space-x-1">
+                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
+                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
+                      </div>
+                      <div className="text-xs mt-1 text-gray-600">🤖 Consultando con Gemini...</div>
+                    </div>
+                  </div>
+                </div>
+              )}
+              
+              <div ref={messagesEndRef} />
+              
+              {/* Opciones de departamentos */}
+              {showDepartmentOptions && (
+                <div className="mt-4 p-4 bg-blue-50 rounded-lg">
+                  <h4 className="font-semibold text-gray-800 mb-3">Selecciona un departamento:</h4>
+                  <div className="space-y-3">
+                    {departments.map((dept, index) => (
+                      <div key={index} className="bg-white p-3 rounded-lg border">
+                        <h5 className="font-medium text-gray-800">{dept.name}</h5>
+                        <p className="text-sm text-gray-600 mb-2">{dept.description}</p>
+                        <div className="flex space-x-2">
+                          <button
+                            onClick={() => contactDepartmentWhatsApp(dept)}
+                            className="flex-1 bg-green-500 text-white px-3 py-1 rounded text-xs hover:bg-green-600 transition-colors"
+                          >
+                            📱 WhatsApp
+                          </button>
+                          <button
+                            onClick={() => contactDepartmentEmail(dept)}
+                            className="flex-1 bg-blue-500 text-white px-3 py-1 rounded text-xs hover:bg-blue-600 transition-colors"
+                          >
+                            📧 Email
+                          </button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  <button
+                    onClick={() => setShowDepartmentOptions(false)}
+                    className="mt-3 text-sm text-gray-600 hover:text-gray-800"
+                  >
+                    ← Volver al chat
+                  </button>
+                </div>
+              )}
+              
+              {/* Botones de acción al final de los mensajes */}
+              {messages.length > 1 && !isTyping && !isLoading && !showDepartmentOptions && (
+                <div className="flex justify-center space-x-2 mt-4">
+                  <button
+                    onClick={() => handleTerminateChat()}
+                    className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-colors text-sm"
+                  >
+                    Terminar
+                  </button>
+                  <button
+                    onClick={() => handleSendWhatsApp()}
+                    className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-colors text-sm"
+                  >
+                    Enviar WhatsApp
+                  </button>
+                </div>
+              )}
+            </div>
+
+            {/* Input */}
+            <div className="p-4 border-t">
+              <div className="flex space-x-2">
+                <input
+                  type="text"
+                  value={input}
+                  onChange={(e) => setInput(e.target.value)}
+                  onKeyPress={handleKeyPress}
+                  placeholder="Escribe tu mensaje..."
+                  className="flex-1 p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+                  disabled={isTyping}
+                />
+                <button
+                  onClick={handleSendMessage}
+                  disabled={!input.trim() || isTyping}
+                  className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors text-sm"
+                >
+                  <Send size={16} />
+                </button>
+              </div>
+            </div>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+};
+
+export default AIChatbot;

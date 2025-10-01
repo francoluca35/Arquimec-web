@@ -1,22 +1,22 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { ArrowRight, Phone, Mail, MapPin } from "lucide-react";
-import { Button } from "./components/ui/button";
-import { ImageWithFallback } from "./components/figma/ImageWithFallback";
-import Header from "./components/Header";
-import Hero from "./components/Hero";
-import Estudio from "./components/Estudio";
-import Fundador from "./components/Fundador";
-import InterludioVisual from "./components/InterludioVisual";
-import ProcesosTrabajo from "./components/ProcesosTrabajo";
-import NuestroLugar from "./components/NuestroLugar";
-import Proyectos from "./components/Proyectos";
-import Contacto from "./components/Contacto";
-import Footer from "./components/Footer";
-import LoadingScreen from "./components/LoadingScreen";
-import { useLoading } from "./contexts/LoadingContext";
+import { Button } from "./ui/button";
+import { ImageWithFallback } from "./figma/ImageWithFallback";
+import Header from "./Header";
+import Hero from "./Hero";
+import Estudio from "./Estudio";
+import Fundador from "./Fundador";
+import InterludioVisual from "./InterludioVisual";
+import ProcesosTrabajo from "./ProcesosTrabajo";
+import NuestroLugar from "./NuestroLugar";
+import Proyectos from "./Proyectos";
+import Contacto from "./Contacto";
+import Footer from "./Footer";
+import LoadingScreen from "./LoadingScreen";
+import { useLoading } from "../contexts/LoadingContext";
 
-export default function App() {
+export default function MainApp() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [headerVisible, setHeaderVisible] = useState(true);
