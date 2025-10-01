@@ -13,7 +13,6 @@ const ServiceNavigation: React.FC<ServiceNavigationProps> = ({ scrolled, current
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const services = [
-    { name: "INICIO", href: "/", key: "inicio" },
     { name: "RESIDENCIAL", href: "/arquitectura-residencial", key: "residencial" },
     { name: "COMERCIAL", href: "/arquitectura-comercial", key: "comercial" },
     { name: "INTERIORES", href: "/diseno-interiores", key: "interiores" },
@@ -61,9 +60,7 @@ const ServiceNavigation: React.FC<ServiceNavigationProps> = ({ scrolled, current
       {/* Desktop Navigation */}
       <div className="hidden lg:flex items-center space-x-6">
         {services.map((service) => {
-          const isActive = service.key === "inicio" 
-            ? router.pathname === "/" 
-            : currentPage === service.key;
+          const isActive = currentPage === service.key;
           
           return (
             <motion.button
@@ -113,9 +110,7 @@ const ServiceNavigation: React.FC<ServiceNavigationProps> = ({ scrolled, current
         >
           <div className="relative flex flex-col space-y-6 p-8 pt-8 h-full">
             {services.map((service) => {
-              const isActive = service.key === "inicio" 
-                ? router.pathname === "/" 
-                : currentPage === service.key;
+              const isActive = currentPage === service.key;
               
               return (
                 <button

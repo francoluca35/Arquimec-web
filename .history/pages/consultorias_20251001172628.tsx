@@ -110,10 +110,10 @@ const Consultorias: React.FC = () => {
                   <ArrowLeft className="w-5 h-5" />
                   <span>Volver</span>
                 </button>
-                <span className={`hidden lg:block ${scrolled ? "text-gray-400" : "text-gray-300"}`}>|</span>
+                <span className={scrolled ? "text-gray-400" : "text-gray-300"}>|</span>
                 <button
                   onClick={() => router.push('/')}
-                  className={`hidden lg:flex items-center space-x-2 transition-colors ${
+                  className={`flex items-center space-x-2 transition-colors ${
                     scrolled 
                       ? "text-white hover:text-gray-300" 
                       : "text-gray-600 hover:text-gray-900"
@@ -122,17 +122,8 @@ const Consultorias: React.FC = () => {
                   <Home className="w-5 h-5" />
                   <span>Inicio</span>
                 </button>
-                {/* Mobile hamburger button - moved closer to Volver */}
-                <div className="lg:hidden">
-                  <ServiceNavigation scrolled={scrolled} currentPage="consultorias" />
-                </div>
               </div>
-              
-              {/* Desktop navigation */}
-              <div className="hidden lg:block">
-                <ServiceNavigation scrolled={scrolled} currentPage="consultorias" />
-              </div>
-              
+              <ServiceNavigation scrolled={scrolled} currentPage="consultorias" />
               <motion.div
                 className="flex items-center"
                 whileHover={{ scale: 1.02 }}
