@@ -40,7 +40,10 @@ const nextConfig = {
   // Configuración de browserslist para evitar transpilación legacy
   // browserslist se configura en package.json
   
-  // Optimización de bundle ya configurada arriba
+  // Optimización de bundle
+  experimental: {
+    optimizePackageImports: ['lucide-react', 'motion/react'],
+  },
   
   // Headers para caching
   async headers() {

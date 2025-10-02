@@ -27,22 +27,17 @@ function AppContent({ Component, pageProps }: AppProps) {
         <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="anonymous" />
         
         {/* Preload critical fonts for mobile LCP */}
-        <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style" onLoad={() => {}} />
+        <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style" onLoad="this.onload=null;this.rel='stylesheet'" />
         <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" /></noscript>
         
-        {/* Critical CSS inline for above-the-fold content - Mobile optimized */}
+        {/* Critical CSS inline for above-the-fold content */}
         <style dangerouslySetInnerHTML={{
           __html: `
-            /* Critical above-the-fold styles for mobile LCP */
-            body { margin: 0; font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+            /* Critical above-the-fold styles */
+            body { margin: 0; font-family: system-ui, -apple-system, sans-serif; }
             .hero-section { min-height: 100vh; display: flex; align-items: center; }
             header { position: fixed; top: 0; left: 0; right: 0; z-index: 50; }
             img { max-width: 100%; height: auto; }
-            /* Mobile-specific optimizations */
-            @media (max-width: 768px) {
-              .hero-section { min-height: 100vh; }
-              img { width: 100%; height: auto; object-fit: cover; }
-            }
           `
         }} />
       </Head>

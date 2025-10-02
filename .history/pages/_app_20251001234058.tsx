@@ -27,7 +27,7 @@ function AppContent({ Component, pageProps }: AppProps) {
         <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="anonymous" />
         
         {/* Preload critical fonts for mobile LCP */}
-        <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style" onLoad={() => {}} />
+        <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style" onLoad="this.onload=null;this.rel='stylesheet'" />
         <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" /></noscript>
         
         {/* Critical CSS inline for above-the-fold content - Mobile optimized */}
