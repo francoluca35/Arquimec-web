@@ -127,7 +127,7 @@ const Fundador: React.FC = () => {
                 className="w-full h-full"
               >
                 {showLogo ? (
-                  <NextImage
+                  <Image
                     src="/Assets/Fundador-logo.png"
                     alt="Logo Arquimec"
                     className="object-contain"

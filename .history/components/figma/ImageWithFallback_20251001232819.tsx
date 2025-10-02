@@ -37,7 +37,7 @@ export function ImageWithFallback(props: ImageWithFallbackProps) {
       </div>
     </div>
   ) : (
-    <NextImage 
+    <Image 
       src={src} 
       alt={alt} 
       className={className} 

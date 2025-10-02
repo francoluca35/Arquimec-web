@@ -19,7 +19,7 @@ function AppContent({ Component, pageProps }: AppProps) {
         <meta name="keywords" content="arquitectura, construcción, viviendas, proyectos comerciales, Buenos Aires, Córdoba, diseño arquitectónico, renders, obra gruesa, terminaciones" />
         
         {/* Preload critical resources */}
-        <link rel="preload" href="/Assets/logoarqmec.png" as="image" type="image/png" />
+        <link rel="preload" href="/Assets/logoarqmec.png" as="image" type="image/png" fetchpriority="high" />
         
         {/* DNS prefetch for external resources */}
         <link rel="dns-prefetch" href="//images.unsplash.com" />

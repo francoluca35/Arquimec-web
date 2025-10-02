@@ -25,13 +25,6 @@ const nextConfig = {
     removeConsole: process.env.NODE_ENV === 'production',
   },
   
-  // Configuración para evitar JavaScript legacy
-  swcMinify: true,
-  experimental: {
-    optimizePackageImports: ['lucide-react', 'motion/react'],
-    esmExternals: true,
-  },
-  
   // Optimización para mobile - evitar JavaScript legacy
   // swcMinify ya está habilitado por defecto en Next.js 15
   
@@ -117,10 +110,6 @@ const nextConfig = {
       // Optimización para reducir JavaScript legacy
       config.optimization.usedExports = true
       config.optimization.sideEffects = false
-      
-      // Optimización para móvil
-      config.optimization.concatenateModules = true
-      config.optimization.providedExports = true
     }
     return config
   },

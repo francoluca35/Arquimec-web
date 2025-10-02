@@ -51,7 +51,7 @@ export default function Document() {
               "name": "Arquimec",
               "description": "Estudio de arquitectura especializado en diseño y construcción de viviendas unifamiliares, proyectos comerciales y desarrollos urbanísticos.",
               "url": "https://arquimec.com",
-              "logo": "https://arquimec.com/Assets/logoarqmec.png",
+              "logo": "https://arquimec.com/Assets/logo-arqui.png",
               "founder": {
                 "@type": "Person",
                 "name": "Marcelo Eduardo González Silva"

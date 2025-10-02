@@ -117,10 +117,6 @@ const nextConfig = {
       // Optimización para reducir JavaScript legacy
       config.optimization.usedExports = true
       config.optimization.sideEffects = false
-      
-      // Optimización para móvil
-      config.optimization.concatenateModules = true
-      config.optimization.providedExports = true
     }
     return config
   },

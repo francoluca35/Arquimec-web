@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import NextImage from 'next/image';
 
 interface AnimatedLogoProps {
   className?: string;
@@ -38,7 +37,7 @@ const AnimatedLogo: React.FC<AnimatedLogoProps> = ({
           onClick={scrollToTop}
           className="cursor-pointer hover:scale-105 transition-transform duration-200"
         >
-          <NextImage 
+          <Image 
             src="/Assets/logoarqmec.png" 
             alt="ARQUIMEC Logo" 
             width={80}

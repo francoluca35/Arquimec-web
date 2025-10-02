@@ -117,7 +117,7 @@ const ProcesosTrabajo: React.FC = () => {
               {/* Icono */}
               <div className="lg:col-span-4 flex justify-start lg:justify-end">
                 <div className="w-16 h-16 lg:w-20 lg:h-20 relative">
-                  <NextImage
+                  <Image
                     src={step.icon}
                     alt={`Icono paso ${index + 1}`}
                     fill
