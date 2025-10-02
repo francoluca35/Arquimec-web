@@ -93,7 +93,7 @@ const Estudio: React.FC = () => {
           >
             <Button
              
-              className="border  border-white/30 hover:border-amber-600 bg-transparent text-white hover:bg-transparent  hover:text-amber-600 px-8 py-3  text-sm tracking-wider transition-all duration-300"
+              className="border  border-white/30 bg-transparent text-white hover:bg-transparent  hover:text-white px-8 py-3  text-sm tracking-wider transition-all duration-300"
               style={{
                 fontWeight: 400,
                 letterSpacing: "0.1em",
