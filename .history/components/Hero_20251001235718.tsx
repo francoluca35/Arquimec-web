@@ -47,7 +47,8 @@ const Hero: React.FC<HeroProps> = ({ scrolled }) => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        style={{willChange: 'opacity'}}
       >
         <ImageWithFallback
           src={heroImages[currentImageIndex]}
@@ -68,7 +69,8 @@ const Hero: React.FC<HeroProps> = ({ scrolled }) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+            style={{willChange: 'transform, opacity'}}
             className="text-white text-2xl sm:text-3xl md:text-5xl font-light tracking-wide font-['Inter'] text-right"
           >
             {heroTitles[currentImageIndex]}
