@@ -20,7 +20,7 @@ export default function Document() {
         <meta property="og:url" content="https://arquimec.com/" />
         <meta property="og:title" content="Arquimec - Estudio de Arquitectura" />
         <meta property="og:description" content="Especializados en diseño y construcción de viviendas unifamiliares, proyectos comerciales y desarrollos urbanísticos." />
-        <meta property="og:image" content="https://arquimec.com/Assets/logoarqmec.png" />
+        <meta property="og:image" content="https://arquimec.com/Assets/logo-arqui.png" />
         <meta property="og:locale" content="es_AR" />
         
         {/* Twitter */}
@@ -28,7 +28,7 @@ export default function Document() {
         <meta property="twitter:url" content="https://arquimec.com/" />
         <meta property="twitter:title" content="Arquimec - Estudio de Arquitectura" />
         <meta property="twitter:description" content="Especializados en diseño y construcción de viviendas unifamiliares, proyectos comerciales y desarrollos urbanísticos." />
-        <meta property="twitter:image" content="https://arquimec.com/Assets/logoarqmec.png" />
+        <meta property="twitter:image" content="https://arquimec.com/Assets/logo-arqui.png" />
         
         {/* Favicon */}
         <link rel="icon" href="/favicon.ico" />
@@ -51,7 +51,7 @@ export default function Document() {
               "name": "Arquimec",
               "description": "Estudio de arquitectura especializado en diseño y construcción de viviendas unifamiliares, proyectos comerciales y desarrollos urbanísticos.",
               "url": "https://arquimec.com",
-              "logo": "https://arquimec.com/Assets/logoarqmec.png",
+              "logo": "https://arquimec.com/Assets/logo-arqui.png",
               "founder": {
                 "@type": "Person",
                 "name": "Marcelo Eduardo González Silva"

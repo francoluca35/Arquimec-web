@@ -42,7 +42,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
           }}
           className="relative"
         >
-          <NextImage 
+          <Image 
             src="/Assets/logoarqmec.png" 
             alt="ARQUIMEC Logo" 
             width={148}

@@ -135,7 +135,7 @@ const Fundador: React.FC = () => {
                     sizes="(max-width: 768px) 100vw, 384px"
                   />
                 ) : (
-                  <ImageWithFallback
+                  <NextImageWithFallback
                     src="/Assets/fundador.jpeg"
                     alt="Arquitecto fundador"
                     className="object-cover"
