@@ -113,18 +113,6 @@ const nextConfig = {
       // Optimización para móvil
       config.optimization.concatenateModules = true
       config.optimization.providedExports = true
-      
-      // Eliminar JavaScript legacy específicamente
-      config.optimization.splitChunks.cacheGroups = {
-        ...config.optimization.splitChunks.cacheGroups,
-        modern: {
-          test: /[\\/]node_modules[\\/]/,
-          name: 'modern',
-          chunks: 'all',
-          priority: 20,
-          enforce: true,
-        },
-      }
     }
     return config
   },
