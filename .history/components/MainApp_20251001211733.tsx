@@ -111,9 +111,6 @@ export default function MainApp() {
 
           {/* Footer */}
           <Footer />
-
-          {/* Arrow Up Button */}
-          <ArrowUp />
         </main>
       )}
     </div>

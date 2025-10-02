@@ -93,14 +93,14 @@ const Estudio: React.FC = () => {
           >
             <Button
              
-              className="border  border-white/30 hover:border-amber-600 bg-transparent text-white hover:bg-transparent  hover:text-amber-600 px-8 py-3  text-sm tracking-wider transition-all duration-300"
+              className="border border-white/30 bg-gray-800 text-white hover:bg-transparent  hover:text-white px-8 py-3 rounded-full text-sm tracking-wider transition-all duration-300"
               style={{
                 fontWeight: 400,
                 letterSpacing: "0.1em",
               }}
               onClick={() => router.push('/#contacto')}
             >
-              Hablemos de tu proyecto 
+              Hablemos de tu proyect
               <ArrowRight className="ml-2 w-4 h-4" />
             </Button>
           </motion.div>
