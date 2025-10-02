@@ -29,6 +29,7 @@ const nextConfig = {
   },
   
   // Configuración para evitar JavaScript legacy
+  swcMinify: true,
   experimental: {
     optimizePackageImports: ['lucide-react', 'motion/react'],
     esmExternals: true,
@@ -38,9 +39,27 @@ const nextConfig = {
   // swcMinify ya está habilitado por defecto en Next.js 15
   
   // Configuración de browserslist para evitar transpilación legacy
-  // browserslist se configura en package.json
+  browserslist: {
+    production: [
+      '>0.2%',
+      'not dead',
+      'not op_mini all',
+      'not ie <= 11',
+      'not chrome < 90',
+      'not firefox < 88',
+      'not safari < 14'
+    ],
+    development: [
+      'last 1 chrome version',
+      'last 1 firefox version',
+      'last 1 safari version'
+    ]
+  },
   
-  // Optimización de bundle ya configurada arriba
+  // Optimización de bundle
+  experimental: {
+    optimizePackageImports: ['lucide-react', 'motion/react'],
+  },
   
   // Headers para caching
   async headers() {
