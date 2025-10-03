@@ -14,7 +14,6 @@ const NavbarButton = React.forwardRef<HTMLButtonElement, NavbarButtonProps>(
           "border-2 uppercase px-6 py-3 tracking-wider",
           "rounded-none", // Sin bordes redondeados
           "bg-transparent", // Fondo transparente
-          "contact-button-border",
           scrolled
             ? "border-gray-800 text-black hover:text-amber-700 hover:border-gray-800"
             : "border-white text-white hover:text-amber-500 hover:border-amber-400",
