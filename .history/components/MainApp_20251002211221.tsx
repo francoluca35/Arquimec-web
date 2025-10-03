@@ -16,18 +16,14 @@ import Footer from "./Footer";
 import LoadingScreen from "./LoadingScreen";
 import ArrowUp from "./ArrowUp";
 import { useLoading } from "../contexts/LoadingContext";
-import { useOptimizedScroll } from "../hooks/useOptimizedScroll";
 
 export default function MainApp() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [headerVisible, setHeaderVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const { isLoading, setIsLoading } = useLoading();
-  
-  // Usar hook optimizado para scroll
-  const { scrolled, headerVisible } = useOptimizedScroll({
-    threshold: 50,
-    headerThreshold: 100
-  });
 
   // Imágenes para el carousel del hero
   const heroImages = [
@@ -37,6 +33,35 @@ export default function MainApp() {
     "https://images.unsplash.com/photo-1667375186583-0e90493826c2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhcmNoaXRlY3R1cmFsJTIwcGhvdG9ncmFwaHklMjBpbnRlcmlvcnxlbnwxfHx8fDE3NTg1ODQ2MTF8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
   ];
 
+  useEffect(() => {
+    let ticking = false;
+    
+    const handleScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const currentScrollY = window.scrollY;
+          
+          // Mostrar/ocultar header basado en dirección de scroll
+          if (currentScrollY > lastScrollY && currentScrollY > 100) {
+            // Scrolling down - hide header
+            setHeaderVisible(false);
+          } else {
+            // Scrolling up - show header
+            setHeaderVisible(true);
+          }
+          
+          setScrolled(currentScrollY > 50);
+          setLastScrollY(currentScrollY);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+    
+    // Usar passive listener para mejor rendimiento
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
 
   // Auto-cambio de imágenes en el hero
   useEffect(() => {

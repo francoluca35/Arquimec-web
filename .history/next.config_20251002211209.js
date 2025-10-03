@@ -21,6 +21,8 @@ const nextConfig = {
     // Optimización específica para móvil - mejor compresión
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+    // Configuración de calidad optimizada para móvil
+    quality: 85,
     // Configuración de compresión mejorada
     loader: 'default',
     unoptimized: false,
@@ -35,6 +37,13 @@ const nextConfig = {
   experimental: {
     optimizePackageImports: ['lucide-react', 'motion/react'],
     esmExternals: true,
+    // Optimización para evitar polyfills innecesarios
+    swcMinify: true,
+    // Configuración para navegadores modernos
+    browserslist: {
+      production: ['>0.5%', 'last 2 versions', 'not dead', 'not ie 11'],
+      development: ['last 1 chrome version', 'last 1 firefox version', 'last 1 safari version']
+    }
   },
   
   // Configuración específica para evitar transpilación legacy - SIMPLIFICADA

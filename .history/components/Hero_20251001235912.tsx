@@ -56,10 +56,8 @@ const Hero: React.FC<HeroProps> = ({ scrolled }) => {
           fill={true}
           sizes="(max-width: 768px) 100vw, 100vw"
           priority={currentImageIndex === 0}
-          quality={currentImageIndex === 0 ? 85 : 70}
-          fetchPriority={currentImageIndex === 0 ? "high" : "low"}
-          placeholder="blur"
-          blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
+          quality={currentImageIndex === 0 ? 90 : 75}
+          fetchPriority={currentImageIndex === 0 ? "high" : "auto"}
         />
         <div className="absolute inset-0 bg-black/20"></div>
         
