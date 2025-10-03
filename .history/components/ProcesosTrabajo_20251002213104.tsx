@@ -83,7 +83,7 @@ const ProcesosTrabajo: React.FC = () => {
                 "Hacemos una presentación del proyecto arquitectónico con renders hiperrealistas para su revisión, ajustes y aprobación.",
             },
             {
-              icon: "/Assets/icons/grua.webp",
+              icon: "/Assets/icons/grua.png",
               title: (
                 <>
                   Construcción y <span className="underline underline-offset-[6px] decoration-[1px]">entrega</span>.

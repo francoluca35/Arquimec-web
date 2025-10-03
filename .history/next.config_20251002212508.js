@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // OPTIMIZACIÓN EXTREMA DE IMÁGENES PARA MÓVIL
+  // Optimización de imágenes para móvil
   images: {
     domains: [
       'images.unsplash.com',
@@ -14,15 +14,14 @@ const nextConfig = {
         pathname: '/**',
       },
     ],
-    // FORMATOS MÁS EFICIENTES - WEBP PRIORITARIO
     formats: ['image/webp', 'image/avif'],
-    // TAMAÑOS OPTIMIZADOS PARA MÓVIL
-    deviceSizes: [640, 750, 828, 1080],
-    imageSizes: [16, 32, 48, 64, 96, 128, 256],
-    minimumCacheTTL: 31536000,
-    // CONFIGURACIÓN EXTREMA
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    minimumCacheTTL: 31536000, // 1 año para imágenes estáticas
+    // Optimización específica para móvil - mejor compresión
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+    // Configuración de compresión mejorada
     loader: 'default',
     unoptimized: false,
   },
@@ -154,10 +153,12 @@ const nextConfig = {
         'core-js': false,
         'regenerator-runtime': false,
         // Optimizar imports pesados
+        'motion/react': 'motion/react/index.js',
         'lucide-react': 'lucide-react/dist/esm/lucide-react.js',
       }
       
       // TREE SHAKING EXTREMO
+      config.optimization.treeShaking = true
       config.optimization.usedExports = true
       config.optimization.sideEffects = false
       

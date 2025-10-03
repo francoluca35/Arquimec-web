@@ -14,8 +14,8 @@ const nextConfig = {
         pathname: '/**',
       },
     ],
-    // FORMATOS MÁS EFICIENTES - WEBP PRIORITARIO
-    formats: ['image/webp', 'image/avif'],
+    // FORMATOS MÁS EFICIENTES
+    formats: ['image/avif', 'image/webp'],
     // TAMAÑOS OPTIMIZADOS PARA MÓVIL
     deviceSizes: [640, 750, 828, 1080],
     imageSizes: [16, 32, 48, 64, 96, 128, 256],
@@ -25,6 +25,12 @@ const nextConfig = {
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
     loader: 'default',
     unoptimized: false,
+    // COMPRESIÓN EXTREMA
+    quality: 75, // Reducido de 85 a 75
+    // CONFIGURACIÓN ESPECÍFICA PARA MÓVIL
+    priority: true,
+    placeholder: 'blur',
+    blurDataURL: 'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k=',
   },
   
   // Optimización de compilación
@@ -154,10 +160,12 @@ const nextConfig = {
         'core-js': false,
         'regenerator-runtime': false,
         // Optimizar imports pesados
+        'motion/react': 'motion/react/index.js',
         'lucide-react': 'lucide-react/dist/esm/lucide-react.js',
       }
       
       // TREE SHAKING EXTREMO
+      config.optimization.treeShaking = true
       config.optimization.usedExports = true
       config.optimization.sideEffects = false
       

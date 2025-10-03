@@ -73,7 +73,7 @@ const ProcesosTrabajo: React.FC = () => {
                 "Relevamos en detalle tus necesidades para poder satisfacer cada uno de los requerimientos funcionales y estéticos del espacio de vivienda.",
             },
             {
-              icon: "/Assets/icons/presentacion.webp",
+              icon: "/Assets/icons/presentacion.png",
               title: (
                 <>
                   Presentación del <span className="underline underline-offset-[6px] decoration-[1px]">proyecto</span>.
@@ -83,7 +83,7 @@ const ProcesosTrabajo: React.FC = () => {
                 "Hacemos una presentación del proyecto arquitectónico con renders hiperrealistas para su revisión, ajustes y aprobación.",
             },
             {
-              icon: "/Assets/icons/grua.webp",
+              icon: "/Assets/icons/grua.png",
               title: (
                 <>
                   Construcción y <span className="underline underline-offset-[6px] decoration-[1px]">entrega</span>.
