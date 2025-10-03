@@ -48,49 +48,6 @@ module.exports = {
   future: {
     hoverOnlyWhenSupported: true,
   },
-  // Optimización para producción
-  purge: {
-    enabled: process.env.NODE_ENV === 'production',
-    content: [
-      './pages/**/*.{js,ts,jsx,tsx,mdx}',
-      './components/**/*.{js,ts,jsx,tsx,mdx}',
-      './app/**/*.{js,ts,jsx,tsx,mdx}',
-      './*.{js,ts,jsx,tsx,mdx}',
-    ],
-    options: {
-      safelist: [
-        /^motion-/,
-        /^animate-/,
-        /^transition-/,
-        /^duration-/,
-        /^ease-/,
-        /^opacity-/,
-        /^scale-/,
-        /^translate-/,
-        /^rotate-/,
-        /^skew-/,
-        /^transform/,
-        /^backdrop-/,
-        /^bg-gradient-/,
-        /^text-gradient-/,
-        /^shadow-/,
-        /^drop-shadow-/,
-        /^blur-/,
-        /^brightness-/,
-        /^contrast-/,
-        /^grayscale-/,
-        /^hue-rotate-/,
-        /^invert-/,
-        /^saturate-/,
-        /^sepia-/,
-        /^sm:/,
-        /^md:/,
-        /^lg:/,
-        /^xl:/,
-        /^2xl:/,
-      ],
-    },
-  },
   theme: {
     extend: {
       colors: {
