@@ -39,7 +39,7 @@ const AnimatedLogo: React.FC<AnimatedLogoProps> = ({
           className="cursor-pointer hover:scale-105 transition-transform duration-200"
         >
           <NextImage 
-            src="/Assets/logoarqmec.webp" 
+            src="/Assets/logoarqmec.png" 
             alt="ARQUIMEC Logo" 
             width={80}
             height={80}

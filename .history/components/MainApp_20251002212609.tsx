@@ -72,38 +72,32 @@ export default function MainApp() {
           {/* Hero Section - Solo imágenes cambiando */}
           <Hero scrolled={scrolled}/>
 
-          {/* LAZY LOADING EXTREMO - COMPONENTES NO CRÍTICOS */}
-          <Suspense fallback={<div className="h-screen bg-white" />}>
-            <Estudio/>
-          </Suspense>
+          {/* Sección Estudio - Inspirada en la segunda imagen */}
+          <Estudio/>
 
-          <Suspense fallback={<div className="h-screen bg-white" />}>
-            <Fundador/>
-          </Suspense>
+          {/* Sección Fundador - Inspirada en la tercera imagen */}
+          <Fundador/>
 
-          <Suspense fallback={<div className="h-screen bg-white" />}>
-            <InterludioVisual/>
-          </Suspense>
+          {/* Interludio Visual - Casa Moderna */}
+          <InterludioVisual/>
 
-          <Suspense fallback={<div className="h-screen bg-white" />}>
-            <ProcesosTrabajo/>
-          </Suspense>
+          {/* Sección Proceso de Trabajo */}
+          <ProcesosTrabajo/>
 
-          <Suspense fallback={<div className="h-screen bg-white" />}>
-            <Proyectos/>
-          </Suspense>
+          {/* Sección Nuestro Lugar - Inspirada en la primera imagen */}
+          {/* <NuestroLugar/> */}
 
-          <Suspense fallback={<div className="h-screen bg-white" />}>
-            <Contacto/>
-          </Suspense>
+          {/* Sección de Proyectos */}
+          <Proyectos/>
 
-          <Suspense fallback={<div className="h-screen bg-white" />}>
-            <Footer />
-          </Suspense>
+          {/* Sección de Contacto */}
+          <Contacto/>
 
-          <Suspense fallback={null}>
-            <ArrowUp />
-          </Suspense>
+          {/* Footer */}
+          <Footer />
+
+          {/* Arrow Up Button */}
+          <ArrowUp />
         </main>
       )}
     </div>

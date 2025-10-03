@@ -136,7 +136,7 @@ const Fundador: React.FC = () => {
                   />
                 ) : (
                   <ImageWithFallback
-                    src="/Assets/fundador.webp"
+                    src="/Assets/fundador.jpeg"
                     alt="Arquitecto fundador"
                     className="object-cover"
                     fill={true}

@@ -14,8 +14,8 @@ const nextConfig = {
         pathname: '/**',
       },
     ],
-    // FORMATOS MÁS EFICIENTES - WEBP PRIORITARIO
-    formats: ['image/webp', 'image/avif'],
+    // FORMATOS MÁS EFICIENTES
+    formats: ['image/avif', 'image/webp'],
     // TAMAÑOS OPTIMIZADOS PARA MÓVIL
     deviceSizes: [640, 750, 828, 1080],
     imageSizes: [16, 32, 48, 64, 96, 128, 256],

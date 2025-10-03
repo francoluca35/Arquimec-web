@@ -18,25 +18,16 @@ function AppContent({ Component, pageProps }: AppProps) {
         <meta name="description" content="Arquimec - Estudio de arquitectura especializado en diseño y construcción de viviendas unifamiliares, proyectos comerciales y desarrollos urbanísticos en Buenos Aires y Córdoba." />
         <meta name="keywords" content="arquitectura, construcción, viviendas, proyectos comerciales, Buenos Aires, Córdoba, diseño arquitectónico, renders, obra gruesa, terminaciones" />
         
-        {/* PRELOAD EXTREMO - RECURSOS CRÍTICOS PARA MÓVIL */}
-        <link rel="preload" href="/Assets/logoarqmec.webp" as="image" type="image/webp" fetchPriority="high" />
-        <link rel="preload" href="https://images.unsplash.com/photo-1624226784657-1e30fccdd59b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBhcmNoaXRlY3R1cmUlMjBleHRlcmlvcnxlbnwxfHx8fDE3NTg1MzkzMDR8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral" as="image" fetchPriority="high" />
+        {/* Preload critical resources for mobile LCP */}
+        <link rel="preload" href="/Assets/logoarqmec.png" as="image" type="image/png" fetchPriority="high" />
         
-        {/* DNS PREFETCH EXTREMO */}
+        {/* DNS prefetch for external resources */}
         <link rel="dns-prefetch" href="//images.unsplash.com" />
-        <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-        <link rel="dns-prefetch" href="//fonts.gstatic.com" />
         <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         
-        {/* PRELOAD FONTS CRÍTICAS */}
+        {/* Preload critical fonts for mobile LCP */}
         <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style" onLoad={() => {}} />
         <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" /></noscript>
-        
-        {/* PRELOAD JS CRÍTICO */}
-        <link rel="modulepreload" href="/_next/static/chunks/webpack.js" />
-        <link rel="modulepreload" href="/_next/static/chunks/main.js" />
         
         {/* CSS CRÍTICO EXTREMO - SOLO LO ESENCIAL PARA MÓVIL */}
         <style dangerouslySetInnerHTML={{

@@ -19,7 +19,7 @@ function AppContent({ Component, pageProps }: AppProps) {
         <meta name="keywords" content="arquitectura, construcción, viviendas, proyectos comerciales, Buenos Aires, Córdoba, diseño arquitectónico, renders, obra gruesa, terminaciones" />
         
         {/* PRELOAD EXTREMO - RECURSOS CRÍTICOS PARA MÓVIL */}
-        <link rel="preload" href="/Assets/logoarqmec.webp" as="image" type="image/webp" fetchPriority="high" />
+        <link rel="preload" href="/Assets/logoarqmec.png" as="image" type="image/png" fetchPriority="high" />
         <link rel="preload" href="https://images.unsplash.com/photo-1624226784657-1e30fccdd59b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBhcmNoaXRlY3R1cmUlMjBleHRlcmlvcnxlbnwxfHx8fDE3NTg1MzkzMDR8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral" as="image" fetchPriority="high" />
         
         {/* DNS PREFETCH EXTREMO */}
