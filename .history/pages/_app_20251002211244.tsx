@@ -42,14 +42,6 @@ function AppContent({ Component, pageProps }: AppProps) {
               .hero-section { min-height: 100vh; }
               img { width: 100%; height: auto; object-fit: cover; }
             }
-            /* Optimizaciones adicionales para móvil */
-            * { box-sizing: border-box; }
-            html { -webkit-text-size-adjust: 100%; }
-            body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-            /* Optimización de scroll en móvil */
-            html { scroll-behavior: smooth; }
-            /* Optimización de touch en móvil */
-            * { touch-action: manipulation; }
           `
         }} />
       </Head>

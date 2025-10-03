@@ -21,6 +21,8 @@ const nextConfig = {
     // Optimización específica para móvil - mejor compresión
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+    // Configuración de calidad optimizada para móvil
+    quality: 85,
     // Configuración de compresión mejorada
     loader: 'default',
     unoptimized: false,

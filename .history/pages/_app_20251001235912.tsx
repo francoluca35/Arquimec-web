@@ -19,7 +19,7 @@ function AppContent({ Component, pageProps }: AppProps) {
         <meta name="keywords" content="arquitectura, construcción, viviendas, proyectos comerciales, Buenos Aires, Córdoba, diseño arquitectónico, renders, obra gruesa, terminaciones" />
         
         {/* Preload critical resources for mobile LCP */}
-        <link rel="preload" href="/Assets/logoarqmec.png" as="image" type="image/png" fetchPriority="high" />
+        <link rel="preload" href="/Assets/logoarqmec.png" as="image" type="image/png" />
         
         {/* DNS prefetch for external resources */}
         <link rel="dns-prefetch" href="//images.unsplash.com" />
@@ -42,14 +42,6 @@ function AppContent({ Component, pageProps }: AppProps) {
               .hero-section { min-height: 100vh; }
               img { width: 100%; height: auto; object-fit: cover; }
             }
-            /* Optimizaciones adicionales para móvil */
-            * { box-sizing: border-box; }
-            html { -webkit-text-size-adjust: 100%; }
-            body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-            /* Optimización de scroll en móvil */
-            html { scroll-behavior: smooth; }
-            /* Optimización de touch en móvil */
-            * { touch-action: manipulation; }
           `
         }} />
       </Head>
