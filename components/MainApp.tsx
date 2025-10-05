@@ -11,6 +11,7 @@ import LoadingScreen from "./LoadingScreen";
 // LAZY LOADING DE COMPONENTES NO CRÍTICOS
 const Estudio = lazy(() => import("./Estudio"));
 const Fundador = lazy(() => import("./Fundador"));
+const MisionVision = lazy(() => import("./MisionVision"));
 const InterludioVisual = lazy(() => import("./InterludioVisual"));
 const ProcesosTrabajo = lazy(() => import("./ProcesosTrabajo"));
 const Proyectos = lazy(() => import("./Proyectos"));
@@ -79,6 +80,10 @@ export default function MainApp() {
 
           <Suspense fallback={<div className="h-screen bg-white" />}>
             <Fundador/>
+          </Suspense>
+
+          <Suspense fallback={<div className="h-screen bg-white" />}>
+            <MisionVision/>
           </Suspense>
 
           <Suspense fallback={<div className="h-screen bg-white" />}>
