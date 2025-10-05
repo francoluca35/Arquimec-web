@@ -38,7 +38,7 @@ const ProcesosTrabajo: React.FC = () => {
         viewport={{ once: true }}
       >
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-10">
-          <div>
+          <div className="text-center lg:text-left">
             <h2
               className="text-3xl lg:text-4xl text-gray-100 mb-2 leading-tight"
               style={{ fontWeight: 300 }}
@@ -46,7 +46,7 @@ const ProcesosTrabajo: React.FC = () => {
               Conocé nuestro proceso de trabajo
             </h2>
           </div>
-          <div className="text-right">
+          <div className="text-center lg:text-right">
             <p
               className="text-gray-100 text-xs tracking-wider"
               style={{ letterSpacing: "0.15em" }}
@@ -102,20 +102,20 @@ const ProcesosTrabajo: React.FC = () => {
               viewport={{ once: true }}
             >
               {/* Título y descripción */}
-              <div className="lg:col-span-8">
+              <div className="lg:col-span-8 text-center lg:text-left">
                 <h3
                   className="text-xl lg:text-2xl text-gray-200 mb-2 leading-tight"
                   style={{ fontWeight: 300 }}
                 >
                   {step.title}
                 </h3>
-                <p className="text-gray-200 text-base leading-relaxed max-w-2xl">
+                <p className="text-gray-200 text-base leading-relaxed max-w-2xl mx-auto lg:mx-0">
                   {step.description}
                 </p>
               </div>
 
               {/* Icono */}
-              <div className="lg:col-span-4 flex justify-start lg:justify-end">
+              <div className="lg:col-span-4 flex justify-center lg:justify-end">
                 <div className="w-16 h-16 lg:w-20 lg:h-20 relative">
                   <NextImage
                     src={step.icon}
@@ -141,7 +141,7 @@ const ProcesosTrabajo: React.FC = () => {
 
         {/* Botón al final */}
         <motion.div
-          className="mt-12"
+          className="mt-12 flex justify-center lg:justify-start"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
