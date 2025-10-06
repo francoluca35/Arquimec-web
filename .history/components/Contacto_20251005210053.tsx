@@ -144,7 +144,7 @@ const Contacto: React.FC = () => {
                   />
                   <label 
                     htmlFor="mensaje" 
-                    className="absolute left-0 top-6 text-sm font-medium text-gray-500 uppercase tracking-widest transition-all duration-500 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:text-xs peer-focus:text-gray-700 peer-focus:-translate-y-4 peer-focus:tracking-widest cursor-text"
+                    className="absolute left-0 top-6 text-sm font-medium text-gray-500 uppercase tracking-widest transition-all duration-500 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:text-xs peer-focus:text-gray-700 peer-focus:-translate-y-2 peer-focus:tracking-widest cursor-text"
                   >
                     Mensaje
                   </label>

@@ -53,11 +53,14 @@ const Contacto: React.FC = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <form onSubmit={handleSubmit} className="space-y-10">
+            <form onSubmit={handleSubmit} className="space-y-8">
               {/* Grid de dos columnas para nombre y email */}
-              <div className="grid md:grid-cols-2 gap-8">
+              <div className="grid md:grid-cols-2 gap-6">
                 {/* NOMBRE */}
-                <div className="group relative">
+                <div className="group">
+                  <label htmlFor="nombre" className="block text-xs font-medium text-gray-600 mb-2 uppercase tracking-widest">
+                    Nombre
+                  </label>
                   <div className="relative">
                     <input
                       type="text"
@@ -66,22 +69,18 @@ const Contacto: React.FC = () => {
                       value={formData.nombre}
                       onChange={handleChange}
                       required
-                      className="w-full px-0 pt-6 pb-2 border-0 border-b-2 border-gray-200 bg-transparent text-gray-900 focus:outline-none transition-all duration-500 text-base peer"
-                      placeholder=" "
+                      className="w-full px-0 py-3 border-0 border-b border-gray-200 bg-transparent text-gray-900 placeholder-gray-400 focus:outline-none focus:border-black transition-all duration-300 text-base"
+                      placeholder="Tu nombre"
                     />
-                    <label 
-                      htmlFor="nombre" 
-                      className="absolute left-0 top-6 text-sm font-medium text-gray-500 uppercase tracking-widest transition-all duration-500 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:text-xs peer-focus:text-gray-700 peer-focus:-translate-y-4 peer-focus:tracking-widest cursor-text"
-                    >
-                      Nombre
-                    </label>
-                    <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-black to-gray-600 transition-all duration-500 peer-focus:w-full shadow-lg"></div>
-                    <div className="absolute -bottom-1 left-0 w-full h-px bg-gray-100 peer-focus:bg-transparent transition-all duration-500"></div>
+                    <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-black transition-all duration-300 group-focus-within:w-full"></div>
                   </div>
                 </div>
 
                 {/* CORREO ELECTRÓNICO */}
-                <div className="group relative">
+                <div className="group">
+                  <label htmlFor="email" className="block text-xs font-medium text-gray-600 mb-2 uppercase tracking-widest">
+                    Email
+                  </label>
                   <div className="relative">
                     <input
                       type="email"
@@ -90,23 +89,19 @@ const Contacto: React.FC = () => {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-0 pt-6 pb-2 border-0 border-b-2 border-gray-200 bg-transparent text-gray-900 focus:outline-none transition-all duration-500 text-base peer"
-                      placeholder=" "
+                      className="w-full px-0 py-3 border-0 border-b border-gray-200 bg-transparent text-gray-900 placeholder-gray-400 focus:outline-none focus:border-black transition-all duration-300 text-base"
+                      placeholder="tu@email.com"
                     />
-                    <label 
-                      htmlFor="email" 
-                      className="absolute left-0 top-6 text-sm font-medium text-gray-500 uppercase tracking-widest transition-all duration-500 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:text-xs peer-focus:text-gray-700 peer-focus:-translate-y-4 peer-focus:tracking-widest cursor-text"
-                    >
-                      Email
-                    </label>
-                    <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-black to-gray-600 transition-all duration-500 peer-focus:w-full shadow-lg"></div>
-                    <div className="absolute -bottom-1 left-0 w-full h-px bg-gray-100 peer-focus:bg-transparent transition-all duration-500"></div>
+                    <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-black transition-all duration-300 group-focus-within:w-full"></div>
                   </div>
                 </div>
               </div>
 
               {/* TELÉFONO */}
-              <div className="group relative">
+              <div className="group">
+                <label htmlFor="telefono" className="block text-xs font-medium text-gray-600 mb-2 uppercase tracking-widest">
+                  Teléfono <span className="text-gray-400 font-normal">(opcional)</span>
+                </label>
                 <div className="relative">
                   <input
                     type="tel"
@@ -114,23 +109,18 @@ const Contacto: React.FC = () => {
                     name="telefono"
                     value={formData.telefono}
                     onChange={handleChange}
-                    className="w-full px-0 pt-6 pb-2 border-0 border-b-2 border-gray-200 bg-transparent text-gray-900 focus:outline-none transition-all duration-500 text-base peer"
-                    placeholder=" "
+                    className="w-full px-0 py-3 border-0 border-b border-gray-200 bg-transparent text-gray-900 placeholder-gray-400 focus:outline-none focus:border-black transition-all duration-300 text-base"
+                    placeholder="+54 11 1234-5678"
                   />
-                  <label 
-                    htmlFor="telefono" 
-                    className="absolute left-0 top-6 text-sm font-medium text-gray-500 uppercase tracking-widest transition-all duration-500 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:text-xs peer-focus:text-gray-700 peer-focus:-translate-y-4 peer-focus:tracking-widest cursor-text"
-                  >
-                    <span>Teléfono</span>
-                    <span className="text-gray-400 font-normal ml-2">(opcional)</span>
-                  </label>
-                  <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-black to-gray-600 transition-all duration-500 peer-focus:w-full shadow-lg"></div>
-                  <div className="absolute -bottom-1 left-0 w-full h-px bg-gray-100 peer-focus:bg-transparent transition-all duration-500"></div>
+                  <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-black transition-all duration-300 group-focus-within:w-full"></div>
                 </div>
               </div>
 
               {/* MENSAJE */}
-              <div className="group relative">
+              <div className="group">
+                <label htmlFor="mensaje" className="block text-xs font-medium text-gray-600 mb-2 uppercase tracking-widest">
+                  Mensaje
+                </label>
                 <div className="relative">
                   <textarea
                     id="mensaje"
@@ -139,39 +129,28 @@ const Contacto: React.FC = () => {
                     onChange={handleChange}
                     required
                     rows={5}
-                    className="w-full px-0 pt-6 pb-2 border-0 border-b-2 border-gray-200 bg-transparent text-gray-900 focus:outline-none transition-all duration-500 text-base resize-none peer"
-                    placeholder=" "
+                    className="w-full px-0 py-3 border-0 border-b border-gray-200 bg-transparent text-gray-900 placeholder-gray-400 focus:outline-none focus:border-black transition-all duration-300 text-base resize-none"
+                    placeholder="Cuéntanos sobre tu proyecto..."
                   />
-                  <label 
-                    htmlFor="mensaje" 
-                    className="absolute left-0 top-6 text-sm font-medium text-gray-500 uppercase tracking-widest transition-all duration-500 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:text-xs peer-focus:text-gray-700 peer-focus:-translate-y-4 peer-focus:tracking-widest cursor-text"
-                  >
-                    Mensaje
-                  </label>
-                  <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-black to-gray-600 transition-all duration-500 peer-focus:w-full shadow-lg"></div>
-                  <div className="absolute -bottom-1 left-0 w-full h-px bg-gray-100 peer-focus:bg-transparent transition-all duration-500"></div>
+                  <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-black transition-all duration-300 group-focus-within:w-full"></div>
                 </div>
               </div>
 
               {/* Botón ENVIAR */}
-              <div className="pt-6">
+              <div className="pt-4">
                 <Button
                   type="submit"
-                  className="group relative w-full bg-black hover:bg-gray-900 text-white py-5 text-sm font-medium tracking-widest uppercase transition-all duration-500 border border-black hover:border-gray-900 overflow-hidden"
+                  className="group relative w-full bg-black hover:bg-gray-800 text-white py-4 text-sm font-medium tracking-widest uppercase transition-all duration-300 border border-black hover:border-gray-800"
                 >
                   <span className="relative z-10 flex items-center justify-center">
-                    <span className="transition-transform duration-500 group-hover:scale-105">Enviar</span>
-                    <Send className="ml-3 w-4 h-4 transition-all duration-500 group-hover:translate-x-2 group-hover:scale-110" />
+                    Enviar
+                    <Send className="ml-2 w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
                   </span>
-                  
-                  {/* Efecto de onda al hacer hover */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-gray-800 to-black transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
-                  
-                  {/* Efecto de brillo */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-10 transform translate-x-[-100%] group-hover:translate-x-[100%] transition-all duration-1000"></div>
-                  
-                  {/* Borde animado */}
-                  <div className="absolute inset-0 border-2 border-transparent group-hover:border-gray-700 transition-all duration-500 rounded-sm"></div>
+                  <div className="absolute inset-0 bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                  <span className="absolute inset-0 flex items-center justify-center text-black font-medium tracking-widest uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    Enviar
+                    <Send className="ml-2 w-4 h-4" />
+                  </span>
                 </Button>
               </div>
             </form>
