@@ -128,8 +128,8 @@ const Proyectos: React.FC = () => {
           viewport={{ once: true }}
         >
           <button
-            onClick={() => router.push('/proyectos')}
-            className="bg-[#0F1516] text-white px-8 py-4 text-sm tracking-wider hover:bg-gray-800 transition-all duration-500 ease-in-out hover:shadow-lg hover:shadow-gray-400/50"
+            onClick={() => router.push('/servicios')}
+            className="bg-gray-900 text-white px-8 py-4 text-sm tracking-wider hover:bg-gray-500 transition-all duration-500 ease-in-out hover:shadow-lg hover:shadow-gray-400/50"
             style={{ fontWeight: 300 }}
           >
             TODOS LOS PROYECTOS

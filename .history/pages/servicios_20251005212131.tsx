@@ -101,7 +101,7 @@ const Servicios: React.FC = () => {
           transition={{ duration: 0.8 }}
         >
           {/* Imagen de fondo */}
-          <div className="absolute inset-0 overflow-x-hidden">
+          <div className="absolute inset-0 overflow-hidden">
             <ImageWithFallback
               src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&h=1080&fit=crop"
               alt="Arquitectura moderna"
