@@ -157,7 +157,7 @@ const Contacto: React.FC = () => {
               <div className="pt-6">
                 <Button
                   type="submit"
-                  className="group relative w-full bg-[#0F1516] hover:bg-[#151c1e] text-white py-5 text-sm font-medium tracking-widest uppercase transition-all duration-500 border border-black hover:border-gray-900 overflow-hidden"
+                  className="group relative w-full bg-[#0F1516] hover:bg-gray-900 text-white py-5 text-sm font-medium tracking-widest uppercase transition-all duration-500 border border-black hover:border-gray-900 overflow-hidden"
                 >
                   <span className="relative z-10 flex items-center justify-center">
                     <span className="transition-transform duration-500 group-hover:scale-105">Enviar</span>

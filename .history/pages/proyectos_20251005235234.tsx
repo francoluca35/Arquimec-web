@@ -6,6 +6,7 @@ import Head from "next/head";
 import AnimatedLogo from "../components/AnimatedLogo";
 import Footer from "../components/Footer";
 import { proyectoDestacado } from "../data/proyectosData";
+import ImagePreloader from "../components/optimized/ImagePreloader";
 
 const ProyectosPage: React.FC = () => {
   const router = useRouter();

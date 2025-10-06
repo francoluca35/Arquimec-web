@@ -6,6 +6,7 @@ import Head from "next/head";
 import AnimatedLogo from "../components/AnimatedLogo";
 import Footer from "../components/Footer";
 import { proyectoDestacado } from "../data/proyectosData";
+import ImagePreloader from "../components/optimized/ImagePreloader";
 
 const ProyectosPage: React.FC = () => {
   const router = useRouter();
@@ -104,16 +105,27 @@ const ProyectosPage: React.FC = () => {
     : proyectos.filter(p => p.categoria === filtroCategoria);
 
   const handleProjectClick = (proyectoId: number) => {
-    console.log('Navegando a proyecto con ID:', proyectoId);
     router.push(`/proyecto?id=${proyectoId}&from=proyectos`);
   };
+
+  // Imágenes críticas para preload
+  const criticalImages = [
+    proyectoDestacado.imagenHero,
+    ...proyectos.slice(0, 3).map(p => p.imagen)
+  ];
 
   return (
     <>
       <Head>
         <title>Proyectos - Arquimec</title>
         <meta name="description" content="Descubre todos nuestros proyectos de arquitectura, diseño y construcción." />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="preconnect" href="https://images.unsplash.com" />
+        <link rel="dns-prefetch" href="https://images.unsplash.com" />
       </Head>
+      
+      {/* Preload de imágenes críticas */}
+      <ImagePreloader images={criticalImages} priority={true} />
       
       {/* Header */}
       <motion.header
@@ -228,6 +240,9 @@ const ProyectosPage: React.FC = () => {
                     className="w-full h-full object-cover"
                     fill={true}
                     sizes="(max-width:1024px) 100vw, 50vw"
+                    quality={85}
+                    priority={true}
+                    loading="eager"
                   />
                   {/* Badge destacado */}
                   <div className="absolute top-4 left-4 bg-gradient-to-r from-yellow-400 to-amber-500 text-white px-3 py-1 rounded-full text-sm font-medium shadow-lg">
@@ -268,12 +283,7 @@ const ProyectosPage: React.FC = () => {
 
                 {/* Botón de acción */}
                 <motion.button
-                  onClick={() => {
-                    console.log('Proyecto destacado:', proyectoDestacado);
-                    console.log('ID del proyecto destacado:', proyectoDestacado.id);
-                    console.log('Router:', router);
-                    router.push(`/proyecto?id=${proyectoDestacado.id}&from=proyectos`);
-                  }}
+                  onClick={() => handleProjectClick(proyectoDestacado.id)}
                   className="bg-gradient-to-r from-amber-500 to-yellow-600 text-white px-8 py-4 rounded-xl font-medium text-lg shadow-lg z-10 hover:shadow-xl transition-all duration-300 self-start"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -340,6 +350,9 @@ const ProyectosPage: React.FC = () => {
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     fill={true}
                     sizes="(max-width:768px) 100vw, (max-width:1024px) 50vw, 33vw"
+                    quality={75}
+                    loading="lazy"
+                    priority={index < 3}
                   />
                   
                   {/* Overlay con hover */}

@@ -52,14 +52,19 @@ export const proyectoDestacado: Proyecto = {
       ]
     },
     {
-      titulo: "Patio Trasero",
+      titulo: "Vista Aérea",
       imagenes: [
-        "/Assets/destacado/patio-trasero.webp"
+        "https://images.unsplash.com/photo-1639405091806-01e8ab3cd13a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBtb2Rlcm4lMjBob3VzZXxlbnwxfHx8fDE3NTg1ODQyMDd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
       ]
     }
   ],
   caracteristicas: [
-   
+    {
+      titulo: "Unidades",
+      valor: "12",
+      descripcion: "Viviendas modulares independientes",
+      icono: "🏠"
+    },
     {
       titulo: "Superficie",
       valor: "45 m²",

@@ -274,7 +274,7 @@ const ProyectosPage: React.FC = () => {
                     console.log('Router:', router);
                     router.push(`/proyecto?id=${proyectoDestacado.id}&from=proyectos`);
                   }}
-                  className="bg-gradient-to-r from-amber-500 to-yellow-600 text-white px-8 py-4 rounded-xl font-medium text-lg shadow-lg z-10 hover:shadow-xl transition-all duration-300 self-start"
+                  className="bg-gradient-to-r from-amber-500 to-yellow-600 text-white px-8 py-4 rounded-xl font-medium text-lg shadow-lg hover:shadow-xl transition-all duration-300 self-start"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >

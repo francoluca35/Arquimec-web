@@ -104,7 +104,6 @@ const ProyectosPage: React.FC = () => {
     : proyectos.filter(p => p.categoria === filtroCategoria);
 
   const handleProjectClick = (proyectoId: number) => {
-    console.log('Navegando a proyecto con ID:', proyectoId);
     router.push(`/proyecto?id=${proyectoId}&from=proyectos`);
   };
 
@@ -268,13 +267,8 @@ const ProyectosPage: React.FC = () => {
 
                 {/* Botón de acción */}
                 <motion.button
-                  onClick={() => {
-                    console.log('Proyecto destacado:', proyectoDestacado);
-                    console.log('ID del proyecto destacado:', proyectoDestacado.id);
-                    console.log('Router:', router);
-                    router.push(`/proyecto?id=${proyectoDestacado.id}&from=proyectos`);
-                  }}
-                  className="bg-gradient-to-r from-amber-500 to-yellow-600 text-white px-8 py-4 rounded-xl font-medium text-lg shadow-lg z-10 hover:shadow-xl transition-all duration-300 self-start"
+                  onClick={() => handleProjectClick(proyectoDestacado.id)}
+                  className="bg-gradient-to-r from-amber-500 to-yellow-600 text-white px-8 py-4 rounded-xl font-medium text-lg shadow-lg hover:shadow-xl transition-all duration-300 self-start"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -289,31 +283,6 @@ const ProyectosPage: React.FC = () => {
               <div className="absolute bottom-10 right-10 w-24 h-24 bg-yellow-400 rounded-full"></div>
               <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-amber-300 rounded-full"></div>
             </div>
-          </div>
-        </motion.div>
-
-        {/* Filtros */}
-        <motion.div
-          className="max-w-7xl mx-auto px-6 lg:px-8 mb-12"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.7 }}
-        >
-          <div className="flex flex-wrap justify-center gap-4">
-            {categorias.map((categoria) => (
-              <button
-                key={categoria}
-                onClick={() => setFiltroCategoria(categoria)}
-                className={`px-6 py-3 text-sm tracking-wider transition-all duration-300 ${
-                  filtroCategoria === categoria
-                    ? "bg-[#0F1516] text-white"
-                    : "bg-white text-gray-700 hover:bg-gray-100"
-                }`}
-                style={{ fontWeight: 300 }}
-              >
-                {categoria.toUpperCase()}
-              </button>
-            ))}
           </div>
         </motion.div>
 

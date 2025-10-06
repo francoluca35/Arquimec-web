@@ -13,20 +13,18 @@ const Hero: React.FC<HeroProps> = ({ scrolled }) => {
 
   // Imágenes para el carousel del hero
   const heroImages = [
-    "/Assets/hero/arqmoder.webp",
-    "/Assets/hero/innovacion.webp",
-    "/Assets/hero/interior.webp",
-    "/Assets/hero/disenoarquitectonico.webp",
-  
+    "/Assets/destacado/principal.webp",
+    "https://images.unsplash.com/photo-1706808849777-96e0d7be3bb7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb250ZW1wb3JhcnklMjBob3VzZSUyMGRlc2lnbnxlbnwxfHx8fDE3NTg1NDY3NTJ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    "https://images.unsplash.com/photo-1651510351672-620d8dc31b72?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaGl0ZWN0dXJlfGVufDF8fHx8MTc1ODU4NDYxMXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    "https://images.unsplash.com/photo-1667375186583-0e90493826c2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhcmNoaXRlY3R1cmFsJTIwcGhvdG9ncmFwaHklMjBpbnRlcmlvcnxlbnwxfHx8fDE3NTg1ODQ2MTF8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
   ];
 
   // Títulos para cada imagen
   const heroTitles = [
     "Arquitectura Moderna",
     "Diseño Contemporáneo", 
-     "Espacios e Interiores Únicos",
-    "Innovación Arquitectónica"
-   
+    "Innovación Arquitectónica",
+    "Espacios Únicos"
   ];
 
   // Auto-cambio de imágenes en el hero
