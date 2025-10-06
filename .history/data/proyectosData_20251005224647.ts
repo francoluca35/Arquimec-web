@@ -33,33 +33,38 @@ export const proyectoDestacado: Proyecto = {
   categoria: "PROYECTO DESTACADO",
   ubicacion: "San Isidro, Buenos Aires",
   año: "2024",
-  imagenHero: "/Assets/destacado/principal.webp",
+  imagenHero: "https://images.unsplash.com/photo-1627141234469-24711efb373c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBob3VzZSUyMGV4dGVyaW9yJTIwYXJjaGl0ZWN0dXJlfGVufDF8fHx8MTc1ODUzNDk5Mnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
   descripcion: "Complejo de viviendas temporales diseñado para brindar comodidad y funcionalidad en espacios reducidos. Cada unidad combina eficiencia espacial con diseño contemporáneo, creando ambientes acogedores que maximizan la calidad de vida de sus habitantes.",
   conceptoArquitectonico: "El diseño se basa en la optimización del espacio y la flexibilidad funcional. Utilizamos materiales sustentables y sistemas constructivos modulares que permiten adaptabilidad y eficiencia energética. La integración con el entorno natural es fundamental, creando espacios que se conectan fluidamente con el exterior.",
   galeriaVistas: [
     {
       titulo: "Fachada Principal",
       imagenes: [
-        "/Assets/destacado/principal.webp",
-        "/Assets/destacado/MODELO.webp"
+        "https://images.unsplash.com/photo-1627141234469-24711efb373c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBob3VzZSUyMGV4dGVyaW9yJTIwYXJjaGl0ZWN0dXJlfGVufDF8fHx8MTc1ODUzNDk5Mnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+        "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBob3VzZXxlbnwxfHx8fDE3NTg1MzkzMDR8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
       ]
     },
     {
       titulo: "Interior",
       imagenes: [
-        "/Assets/destacado/interior.webp",
-       
+        "https://images.unsplash.com/photo-1600210491369-e753d80a41f3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBpbnRlcmlvciUyMGRlc2lnbnxlbnwxfHx8fDE3NTg1Mjc5Njh8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+        "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBob3VzZXxlbnwxfHx8fDE3NTg1MzkzMDR8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
       ]
     },
     {
-      titulo: "Patio Trasero",
+      titulo: "Vista Aérea",
       imagenes: [
-        "/Assets/destacado/patio-trasero.webp"
+        "https://images.unsplash.com/photo-1639405091806-01e8ab3cd13a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBtb2Rlcm4lMjBob3VzZXxlbnwxfHx8fDE3NTg1ODQyMDd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
       ]
     }
   ],
   caracteristicas: [
-   
+    {
+      titulo: "Unidades",
+      valor: "12",
+      descripcion: "Viviendas modulares independientes",
+      icono: "🏠"
+    },
     {
       titulo: "Superficie",
       valor: "45 m²",

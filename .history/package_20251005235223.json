@@ -1,0 +1,49 @@
+{
+  "name": "arquimec-web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "optimize-images": "node scripts/optimize-images.js",
+    "analyze": "cross-env ANALYZE=true next build",
+    "lighthouse": "lighthouse http://localhost:3000 --output html --output-path ./lighthouse-report.html --chrome-flags=\"--headless\"",
+    "performance": "npm run build && npm run lighthouse"
+  },
+  "dependencies": {
+    "next": "15.0.3",
+    "react": "^18",
+    "react-dom": "^18",
+    "motion": "^11.0.0",
+    "lucide-react": "^0.263.1",
+    "sharp": "^0.33.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "autoprefixer": "^10.0.1",
+    "cross-env": "^7.0.3",
+    "eslint": "^8",
+    "eslint-config-next": "15.0.3",
+    "lighthouse": "^11.0.0",
+    "postcss": "^8",
+    "tailwindcss": "^3.3.0",
+    "terser-webpack-plugin": "^5.3.9",
+    "typescript": "^5"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

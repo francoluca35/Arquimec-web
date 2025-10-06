@@ -59,7 +59,12 @@ export const proyectoDestacado: Proyecto = {
     }
   ],
   caracteristicas: [
-   
+    {
+      titulo: "Unidades",
+      valor: "12",
+      descripcion: "Viviendas modulares independientes",
+      icono: "🏠"
+    },
     {
       titulo: "Superficie",
       valor: "45 m²",

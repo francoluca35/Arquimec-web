@@ -91,7 +91,7 @@ const Fundador: React.FC = () => {
         // La imagen del fundador se muestra por 5 segundos
         timeoutId = setTimeout(() => {
           setShowLogo(true);
-        }, 6000);
+        }, 5000);
       }
     };
 
@@ -140,7 +140,7 @@ const Fundador: React.FC = () => {
                     alt="Arquitecto fundador"
                     className="object-cover"
                     fill={true}
-                    sizes="(max-width: 800px) 150vw, 400px"
+                    sizes="(max-width: 768px) 105vw, 400px"
                   />
                 )}
               </motion.div>

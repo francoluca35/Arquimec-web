@@ -47,19 +47,24 @@ export const proyectoDestacado: Proyecto = {
     {
       titulo: "Interior",
       imagenes: [
-        "/Assets/destacado/interior.webp",
-       
+        "https://images.unsplash.com/photo-1600210491369-e753d80a41f3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBpbnRlcmlvciUyMGRlc2lnbnxlbnwxfHx8fDE3NTg1Mjc5Njh8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+        "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBob3VzZXxlbnwxfHx8fDE3NTg1MzkzMDR8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
       ]
     },
     {
-      titulo: "Patio Trasero",
+      titulo: "Vista Aérea",
       imagenes: [
-        "/Assets/destacado/patio-trasero.webp"
+        "https://images.unsplash.com/photo-1639405091806-01e8ab3cd13a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBtb2Rlcm4lMjBob3VzZXxlbnwxfHx8fDE3NTg1ODQyMDd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
       ]
     }
   ],
   caracteristicas: [
-   
+    {
+      titulo: "Unidades",
+      valor: "12",
+      descripcion: "Viviendas modulares independientes",
+      icono: "🏠"
+    },
     {
       titulo: "Superficie",
       valor: "45 m²",

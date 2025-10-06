@@ -6,6 +6,7 @@ import Head from "next/head";
 import AnimatedLogo from "../components/AnimatedLogo";
 import Footer from "../components/Footer";
 import { proyectoDestacado } from "../data/proyectosData";
+import ImagePreloader from "../components/optimized/ImagePreloader";
 
 const ProyectosPage: React.FC = () => {
   const router = useRouter();
@@ -108,12 +109,24 @@ const ProyectosPage: React.FC = () => {
     router.push(`/proyecto?id=${proyectoId}&from=proyectos`);
   };
 
+  // Imágenes críticas para preload
+  const criticalImages = [
+    proyectoDestacado.imagenHero,
+    ...proyectos.slice(0, 3).map(p => p.imagen)
+  ];
+
   return (
     <>
       <Head>
         <title>Proyectos - Arquimec</title>
         <meta name="description" content="Descubre todos nuestros proyectos de arquitectura, diseño y construcción." />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="preconnect" href="https://images.unsplash.com" />
+        <link rel="dns-prefetch" href="https://images.unsplash.com" />
       </Head>
+      
+      {/* Preload de imágenes críticas */}
+      <ImagePreloader images={criticalImages} priority={true} />
       
       {/* Header */}
       <motion.header
