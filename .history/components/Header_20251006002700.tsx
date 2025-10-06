@@ -162,23 +162,22 @@ const Header: React.FC<HeaderProps> = ({ scrolled, headerVisible }) => {
         </div>
 
         {/* Mobile Navigation */}
-        <AnimatePresence>
-          {mobileMenuOpen && (
-            <motion.div
-              id="mobile-menu"
-              className={` lg:hidden fixed top-20 right-0 h-[calc(103vh-6rem)] w-80 shadow-lg z-100 ${
-                scrolled ? 'bg-[#f3f3f3]' : 'bg-[#0F1516]'
-              }`}
-              initial={{ opacity: 0, x: 320 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: 320 }}
-              transition={{ 
-                duration: 0.6,
-                ease: "easeInOut"
-              }}
-              role="navigation"
-              aria-label="Menú de navegación móvil"
-            >
+        {mobileMenuOpen && (
+          <motion.div
+            id="mobile-menu"
+            className={` lg:hidden fixed top-20 right-0 h-[calc(103vh-6rem)] w-80 shadow-lg z-100 ${
+              scrolled ? 'bg-[#f3f3f3]' : 'bg-[#0F1516]'
+            }`}
+            initial={{ opacity: 0, x: 320 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 320 }}
+            transition={{ 
+              duration: 0.6,
+              ease: "easeInOut"
+            }}
+            role="navigation"
+            aria-label="Menú de navegación móvil"
+          >
             <div className="relative flex flex-col space-y-6 p-8 pt-8 h-full">
               {[
                 { name: "ESTUDIO", href: "#estudio" },
@@ -288,8 +287,7 @@ const Header: React.FC<HeaderProps> = ({ scrolled, headerVisible }) => {
               </div>
             </div>
           </motion.div>
-          )}
-        </AnimatePresence>
+        )}
       </div>
     </motion.header>
     </>
