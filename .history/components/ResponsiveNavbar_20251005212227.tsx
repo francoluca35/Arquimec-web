@@ -72,7 +72,7 @@ const ResponsiveNavbar: React.FC<ResponsiveNavbarProps> = ({ scrolled, currentPa
       </a>
       
       <motion.nav
-        className={`fixed top-0 left-0 right-0 z-50  transition-all duration-500 ${
+        className={`fixed top-0 left-0 right-0 z-50 overflow-x-hidden transition-all duration-500 ${
           scrolled 
             ? "bg-[#ffffff] shadow-lg" 
             : "bg-[#0F1516]"
@@ -82,7 +82,7 @@ const ResponsiveNavbar: React.FC<ResponsiveNavbarProps> = ({ scrolled, currentPa
         transition={{ duration: 0.6 }}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="flex items-center overflow-y-hidden justify-between py-4">
+          <div className="flex items-center justify-between py-4">
             {/* Logo */}
             <motion.div
               className="flex items-center"

@@ -128,11 +128,15 @@ const Proyectos: React.FC = () => {
           viewport={{ once: true }}
         >
           <button
-            onClick={() => router.push('/proyectos')}
-            className="bg-[#0F1516] text-white px-8 py-4 text-sm tracking-wider hover:bg-gray-800 transition-all duration-500 ease-in-out hover:shadow-lg hover:shadow-gray-400/50"
+            onClick={() => router.push('/servicios')}
+            className="relative bg-gray-900 text-white px-8 py-4 text-sm tracking-wider overflow-hidden group transition-all duration-300 hover:scale-105 active:scale-95"
             style={{ fontWeight: 300 }}
           >
-            TODOS LOS PROYECTOS
+            {/* Degradado de fondo en hover */}
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            
+            {/* Texto con z-index para estar encima del degradado */}
+            <span className="relative z-10">TODOS LOS PROYECTOS</span>
           </button>
         </motion.div>
       </div>

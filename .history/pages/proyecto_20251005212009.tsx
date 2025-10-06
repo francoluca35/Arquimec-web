@@ -70,11 +70,11 @@ const ProyectoIndividual: React.FC = () => {
       <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-sm py-4 px-6 lg:px-8">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <button
-            onClick={backButtonInfo.action}
+            onClick={() => router.back()}
             className="flex items-center gap-2 text-gray-800 hover:text-gray-950 transition-colors"
           >
             <ArrowLeft className="w-5 h-5" />
-            <span>{backButtonInfo.text}</span>
+            <span>Volver a Proyectos</span>
           </button>
           <h1 className="text-2xl font-light text-gray-900">ARQUIMEC.</h1>
         </div>
