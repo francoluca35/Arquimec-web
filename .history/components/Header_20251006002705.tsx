@@ -288,8 +288,7 @@ const Header: React.FC<HeaderProps> = ({ scrolled, headerVisible }) => {
               </div>
             </div>
           </motion.div>
-          )}
-        </AnimatePresence>
+        )}
       </div>
     </motion.header>
     </>
