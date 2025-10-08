@@ -15,7 +15,6 @@ const MisionVision = lazy(() => import("./MisionVision"));
 const InterludioVisual = lazy(() => import("./InterludioVisual"));
 const ProcesosTrabajo = lazy(() => import("./ProcesosTrabajo"));
 const Proyectos = lazy(() => import("./Proyectos"));
-const Resenas = lazy(() => import("./Resenas"));
 const Contacto = lazy(() => import("./Contacto"));
 const Footer = lazy(() => import("./Footer"));
 const ArrowUp = lazy(() => import("./ArrowUp"));
@@ -97,10 +96,6 @@ export default function MainApp() {
 
           <Suspense fallback={<div className="h-screen bg-white" />}>
             <Proyectos/>
-          </Suspense>
-
-          <Suspense fallback={<div className="h-screen bg-white" />}>
-            <Resenas/>
           </Suspense>
 
           <Suspense fallback={<div className="h-screen bg-white" />}>

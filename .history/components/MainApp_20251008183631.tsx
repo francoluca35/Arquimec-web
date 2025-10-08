@@ -15,7 +15,6 @@ const MisionVision = lazy(() => import("./MisionVision"));
 const InterludioVisual = lazy(() => import("./InterludioVisual"));
 const ProcesosTrabajo = lazy(() => import("./ProcesosTrabajo"));
 const Proyectos = lazy(() => import("./Proyectos"));
-const Resenas = lazy(() => import("./Resenas"));
 const Contacto = lazy(() => import("./Contacto"));
 const Footer = lazy(() => import("./Footer"));
 const ArrowUp = lazy(() => import("./ArrowUp"));
