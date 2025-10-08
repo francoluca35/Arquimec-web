@@ -18,7 +18,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     // Parsear el formulario con formidable
     const form = formidable({
       maxFileSize: 5 * 1024 * 1024, // 5MB
-      filter: ({ mimetype }: { mimetype?: string }) => {
+      filter: ({ mimetype }: { mimetype?: string | null }) => {
         const allowedTypes = [
           'application/pdf',
           'image/jpeg',
@@ -27,7 +27,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           'image/gif',
           'image/webp'
         ];
-        return allowedTypes.includes(mimetype || '');
+        return mimetype ? allowedTypes.includes(mimetype) : false;
       }
     });
 
