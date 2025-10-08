@@ -100,10 +100,6 @@ export default function MainApp() {
           </Suspense>
 
           <Suspense fallback={<div className="h-screen bg-white" />}>
-            <Resenas/>
-          </Suspense>
-
-          <Suspense fallback={<div className="h-screen bg-white" />}>
             <Contacto/>
           </Suspense>
 
