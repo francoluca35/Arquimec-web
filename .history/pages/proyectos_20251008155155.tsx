@@ -146,7 +146,7 @@ const ProyectosPage: React.FC = () => {
               onClick={() => router.push('/')}
               className={`px-6 py-3 text-sm tracking-wider transition-all duration-300 hover:scale-105 ${
                 scrolled 
-                  ? "bg-[#1a2a3c] text-white hover:bg-gray-800" 
+                  ? "bg-[#0F1516] text-white hover:bg-gray-800" 
                   : "bg-white text-[#0F1516] hover:bg-gray-100"
               }`}
               style={{ fontWeight: 300 }}
@@ -170,7 +170,7 @@ const ProyectosPage: React.FC = () => {
           <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center mt-10">
         
             <motion.h2
-              className="text-4xl lg:text-6xl uppercase text-gray-900 mb-8 leading-tight"
+              className="text-4xl lg:text-6xl text-gray-900 mb-8 leading-tight"
               style={{ fontWeight: 300 }}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
