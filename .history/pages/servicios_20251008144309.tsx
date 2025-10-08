@@ -71,8 +71,8 @@ const Servicios: React.FC = () => {
       titulo: "Arquitectura Residencial",
       descripcion: "Diseñamos hogares únicos que reflejan la personalidad y estilo de vida de nuestros clientes. Desde casas unifamiliares hasta complejos residenciales, creamos espacios que combinan funcionalidad, estética y sostenibilidad.",
       imagen: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=600&fit=crop",
-      icono: <IconoResidencial />,
-      color: "from-gray-700 to-gray-900",
+      icono: <Building className="w-8 h-8" />,
+      color: "from-blue-500 to-blue-700",
       posicion: "derecha"
     },
     {
@@ -80,8 +80,8 @@ const Servicios: React.FC = () => {
       titulo: "Arquitectura Comercial",
       descripcion: "Desarrollamos espacios comerciales que potencian la experiencia del cliente y optimizan el flujo de trabajo. Oficinas corporativas, retail, restaurantes y espacios públicos con diseño innovador.",
       imagen: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop",
-      icono: <IconoComercial />,
-      color: "from-gray-600 to-gray-800",
+      icono: <Building2 className="w-8 h-8" />,
+      color: "from-green-500 to-green-700",
       posicion: "izquierda"
     },
     {
@@ -89,17 +89,17 @@ const Servicios: React.FC = () => {
       titulo: "Diseño de Interiores",
       descripcion: "Transformamos espacios interiores creando ambientes únicos y funcionales. Desde la conceptualización hasta la ejecución, cada proyecto refleja la identidad y necesidades específicas de nuestros clientes.",
       imagen: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop",
-      icono: <IconoInteriores />,
-      color: "from-gray-500 to-gray-700",
+      icono: <Palette className="w-8 h-8" />,
+      color: "from-purple-500 to-purple-700",
       posicion: "derecha"
     },
     {
       id: 4,
       titulo: "Consultorías",
       descripcion: "Brindamos asesoramiento especializado en arquitectura y diseño. Evaluamos proyectos existentes, optimizamos espacios y proporcionamos soluciones innovadoras para desafíos arquitectónicos complejos.",
-      imagen: "/Assets/consultoria-2.avif",
-      icono: <IconoConsultorias />,
-      color: "from-gray-800 to-black",
+      imagen: "https://images.unsplash.com/photo-1560185127-6c7c354e2105?w=800&h=600&fit=crop",
+      icono: <Users className="w-8 h-8" />,
+      color: "from-orange-500 to-orange-700",
       posicion: "izquierda"
     }
   ];

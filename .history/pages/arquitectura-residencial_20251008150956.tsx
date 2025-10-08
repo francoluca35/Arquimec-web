@@ -308,18 +308,18 @@ const ArquitecturaResidencial: React.FC = () => {
                       sizes="(max-width: 768px) 100vw, 50vw"
                     />
 
-                    {/* Overlay con información completa en hover */}
-                    <div className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                    {/* Overlay con información */}
+                    <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
                       <div>
                         <h3 className="text-2xl font-bold mb-2">{proyecto.titulo}</h3>
                         <p className="text-white/90 mb-1">{proyecto.ubicacion}</p>
                         <p className="text-white/90 mb-3">{proyecto.superficie}</p>
-                        <p className="text-sm text-white/80 leading-relaxed">{proyecto.descripcion}</p>
+                        <p className="text-sm text-white/80">{proyecto.descripcion}</p>
                       </div>
                     </div>
 
-                    {/* Información inicial que desaparece en hover */}
-                    <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent opacity-100 group-hover:opacity-0 transition-opacity duration-300">
+                    {/* Información visible sin hover */}
+                    <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
                       <h3 className="text-2xl font-bold mb-1">{proyecto.titulo}</h3>
                       <p className="text-white/90 text-sm">{proyecto.ubicacion}</p>
                       <p className="text-white/90 text-sm">{proyecto.superficie}</p>

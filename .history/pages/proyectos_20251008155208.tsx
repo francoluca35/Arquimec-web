@@ -170,7 +170,7 @@ const ProyectosPage: React.FC = () => {
           <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center mt-10">
         
             <motion.h2
-              className="text-4xl lg:text-6xl uppercase text-gray-900 mb-8 leading-tight"
+              className="text-4xl lg:text-6xl text-gray-900 mb-8 leading-tight"
               style={{ fontWeight: 300 }}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}

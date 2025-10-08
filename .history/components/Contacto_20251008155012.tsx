@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "motion/react";
-import { Phone, Mail, MapPin, Send, CheckCircle, AlertCircle, Upload, X, FileText, Image, ChevronDown, ChevronUp } from "lucide-react";
+import { Phone, Mail, MapPin, Send, CheckCircle, AlertCircle, Upload, X, FileText, Image } from "lucide-react";
 import { Button } from "./ui/button";
 
 const Contacto: React.FC = () => {
@@ -14,7 +14,6 @@ const Contacto: React.FC = () => {
   });
 
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
-  const [isFileUploadOpen, setIsFileUploadOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [submitMessage, setSubmitMessage] = useState("");
@@ -25,24 +24,12 @@ const Contacto: React.FC = () => {
     setSubmitStatus('idle');
 
     try {
-      const formDataToSend = new FormData();
-      
-      // Agregar datos del formulario
-      formDataToSend.append('nombre', formData.nombre);
-      formDataToSend.append('apellido', formData.apellido);
-      formDataToSend.append('empresa', formData.empresa);
-      formDataToSend.append('email', formData.email);
-      formDataToSend.append('telefono', formData.telefono);
-      formDataToSend.append('mensaje', formData.mensaje);
-      
-      // Agregar archivo si existe
-      if (selectedFile) {
-        formDataToSend.append('archivo', selectedFile);
-      }
-
       const response = await fetch('/api/contact', {
         method: 'POST',
-        body: formDataToSend,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
       });
 
       const result = await response.json();
@@ -59,8 +46,6 @@ const Contacto: React.FC = () => {
           telefono: "",
           mensaje: ""
         });
-        setSelectedFile(null);
-        setIsFileUploadOpen(false);
       } else {
         setSubmitStatus('error');
         setSubmitMessage(result.message || 'Error al enviar el mensaje. Inténtalo de nuevo.');
@@ -78,54 +63,6 @@ const Contacto: React.FC = () => {
       ...formData,
       [e.target.name]: e.target.value
     });
-  };
-
-  const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      // Validar tamaño (5MB = 5 * 1024 * 1024 bytes)
-      if (file.size > 5 * 1024 * 1024) {
-        setSubmitStatus('error');
-        setSubmitMessage('El archivo no puede superar los 5MB.');
-        return;
-      }
-
-      // Validar tipo de archivo
-      const allowedTypes = [
-        'application/pdf',
-        'image/jpeg',
-        'image/jpg',
-        'image/png',
-        'image/gif',
-        'image/webp'
-      ];
-
-      if (!allowedTypes.includes(file.type)) {
-        setSubmitStatus('error');
-        setSubmitMessage('Solo se permiten archivos PDF o imágenes (JPG, PNG, GIF, WEBP).');
-        return;
-      }
-
-      setSelectedFile(file);
-      setSubmitStatus('idle'); // Limpiar mensaje de error si había uno
-    }
-  };
-
-  const removeFile = () => {
-    setSelectedFile(null);
-    setIsFileUploadOpen(false);
-  };
-
-  const toggleFileUpload = () => {
-    setIsFileUploadOpen(!isFileUploadOpen);
-  };
-
-  const formatFileSize = (bytes: number) => {
-    if (bytes === 0) return '0 Bytes';
-    const k = 1024;
-    const sizes = ['Bytes', 'KB', 'MB'];
-    const i = Math.floor(Math.log(bytes) / Math.log(k));
-    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
   };
 
   return (
@@ -304,128 +241,6 @@ const Contacto: React.FC = () => {
                   </label>
                   <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-black to-gray-600 transition-all duration-500 peer-focus:w-full shadow-lg"></div>
                   <div className="absolute -bottom-1 left-0 w-full h-px bg-gray-100 peer-focus:bg-transparent transition-all duration-500"></div>
-                </div>
-              </div>
-
-              {/* SUBIDA DE ARCHIVO COLAPSABLE */}
-              <div className="group relative">
-                <div className="relative">
-                  {/* Header colapsable */}
-                  <button
-                    type="button"
-                    onClick={toggleFileUpload}
-                    className="w-full flex items-center justify-between text-sm font-medium text-gray-500 uppercase tracking-widest mb-4 hover:text-gray-700 transition-colors duration-200"
-                  >
-                    <span>
-                      Archivo Adjunto
-                      <span className="text-gray-400 font-normal ml-2">(opcional - máx. 5MB)</span>
-                    </span>
-                    {isFileUploadOpen ? (
-                      <ChevronUp className="w-4 h-4" />
-                    ) : (
-                      <ChevronDown className="w-4 h-4" />
-                    )}
-                  </button>
-                  
-                  {/* Área de subida - solo visible cuando está abierta */}
-                  <motion.div
-                    initial={false}
-                    animate={{ 
-                      height: isFileUploadOpen ? "auto" : 0,
-                      opacity: isFileUploadOpen ? 1 : 0
-                    }}
-                    transition={{ duration: 0.3, ease: "easeInOut" }}
-                    className="overflow-hidden"
-                  >
-                    <div className="border-2 border-dashed border-gray-200 rounded-lg p-6 text-center hover:border-gray-300 transition-colors duration-300">
-                      <input
-                        type="file"
-                        id="archivo"
-                        name="archivo"
-                        onChange={handleFileSelect}
-                        accept=".pdf,.jpg,.jpeg,.png,.gif,.webp"
-                        className="hidden"
-                      />
-                      
-                      {!selectedFile ? (
-                        <label htmlFor="archivo" className="cursor-pointer">
-                          <Upload className="w-8 h-8 text-gray-400 mx-auto mb-2" />
-                          <p className="text-sm text-gray-600 mb-1">
-                            Haz clic para seleccionar un archivo
-                          </p>
-                          <p className="text-xs text-gray-500">
-                            PDF, JPG, PNG, GIF, WEBP (máx. 5MB)
-                          </p>
-                        </label>
-                      ) : (
-                        <div className="flex items-center justify-between bg-gray-50 p-3 rounded-lg">
-                          <div className="flex items-center space-x-3">
-                            {selectedFile.type === 'application/pdf' ? (
-                              <FileText className="w-6 h-6 text-red-500" />
-                            ) : (
-                              <Image className="w-6 h-6 text-blue-500" />
-                            )}
-                            <div className="text-left">
-                              <p className="text-sm font-medium text-gray-900 truncate max-w-xs">
-                                {selectedFile.name}
-                              </p>
-                              <p className="text-xs text-gray-500">
-                                {formatFileSize(selectedFile.size)}
-                              </p>
-                            </div>
-                          </div>
-                          <button
-                            type="button"
-                            onClick={removeFile}
-                            className="text-gray-400 hover:text-red-500 transition-colors duration-200"
-                          >
-                            <X className="w-5 h-5" />
-                          </button>
-                        </div>
-                      )}
-                    </div>
-                  </motion.div>
-                  
-                  {/* Mostrar archivo seleccionado fuera del área colapsable */}
-                  {selectedFile && !isFileUploadOpen && (
-                    <motion.div
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      className="flex items-center justify-between bg-gray-50 p-3 rounded-lg border border-gray-200"
-                    >
-                      <div className="flex items-center space-x-3">
-                        {selectedFile.type === 'application/pdf' ? (
-                          <FileText className="w-5 h-5 text-red-500" />
-                        ) : (
-                          <Image className="w-5 h-5 text-blue-500" />
-                        )}
-                        <div className="text-left">
-                          <p className="text-sm font-medium text-gray-900 truncate max-w-xs">
-                            {selectedFile.name}
-                          </p>
-                          <p className="text-xs text-gray-500">
-                            {formatFileSize(selectedFile.size)}
-                          </p>
-                        </div>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <button
-                          type="button"
-                          onClick={toggleFileUpload}
-                          className="text-gray-400 hover:text-gray-600 transition-colors duration-200"
-                        >
-                          <ChevronDown className="w-4 h-4" />
-                        </button>
-                        <button
-                          type="button"
-                          onClick={removeFile}
-                          className="text-gray-400 hover:text-red-500 transition-colors duration-200"
-                        >
-                          <X className="w-4 h-4" />
-                        </button>
-                      </div>
-                    </motion.div>
-                  )}
                 </div>
               </div>
 

@@ -2,12 +2,12 @@ import { motion } from "motion/react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
-import { ArrowLeft, Home, Building, Users, MapPin, Calendar, ChevronRight } from "lucide-react";
+import { ArrowLeft, Home, Building2, ShoppingBag, Briefcase, Users, ChevronRight } from "lucide-react";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import AnimatedLogo from "../components/AnimatedLogo";
 import ResponsiveNavbar from "../components/ResponsiveNavbar";
 
-const ArquitecturaResidencial: React.FC = () => {
+const ArquitecturaComercial: React.FC = () => {
   const router = useRouter();
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
   const [scrolled, setScrolled] = useState(false);
@@ -22,75 +22,75 @@ const ArquitecturaResidencial: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const proyectosResidenciales = [
+  const proyectosComerciales = [
     {
       id: 1,
-      titulo: "CASA MODERNA NORTE",
+      titulo: "CENTRO COMERCIAL PLAZA NORTE",
       ubicacion: "Buenos Aires, Argentina",
-      superficie: "280 mts²",
-      imagen: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=600&fit=crop",
-      descripcion: "Vivienda unifamiliar con diseño contemporáneo que integra perfectamente el interior con el exterior, maximizando la luz natural y la ventilación."
+      superficie: "15,000 mts²",
+      imagen: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop",
+      descripcion: "Centro comercial de tres niveles con diseño moderno que optimiza la circulación y maximiza la experiencia del cliente."
     },
     {
       id: 2,
-      titulo: "COMPLEJO RESIDENCIAL HORIZONTE",
+      titulo: "OFICINAS CORPORATIVAS TECH",
       ubicacion: "Córdoba, Argentina",
-      superficie: "1,200 mts²",
-      imagen: "https://images.unsplash.com/photo-1560185127-6c7c354e2105?w=800&h=600&fit=crop",
-      descripcion: "Desarrollo residencial de 8 unidades con espacios comunes, jardines y estacionamiento subterráneo."
+      superficie: "3,500 mts²",
+      imagen: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop",
+      descripcion: "Edificio de oficinas con espacios flexibles, áreas de colaboración y tecnología integrada para empresas innovadoras."
     },
     {
       id: 3,
-      titulo: "CASA FAMILIAR SUR",
+      titulo: "RESTAURANTE GASTRONÓMICO",
       ubicacion: "Rosario, Argentina",
-      superficie: "450 mts²",
-      imagen: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop",
-      descripcion: "Diseño de vivienda familiar que prioriza la funcionalidad y el confort, con espacios amplios y distribución inteligente."
+      superficie: "800 mts²",
+      imagen: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop",
+      descripcion: "Diseño de restaurante que combina funcionalidad operativa con una experiencia gastronómica memorable para los comensales."
     },
     {
       id: 4,
-      titulo: "LOFT URBANO",
+      titulo: "TIENDA FLAGSHIP FASHION",
       ubicacion: "Buenos Aires, Argentina",
-      superficie: "120 mts²",
-      imagen: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop",
-      descripcion: "Reformulación de espacio industrial en loft residencial, optimizando cada metro cuadrado con diseño minimalista."
+      superficie: "1,200 mts²",
+      imagen: "https://images.unsplash.com/photo-1560185127-6c7c354e2105?w=800&h=600&fit=crop",
+      descripcion: "Concepto de tienda que integra la identidad de marca con un diseño espacial que potencia la experiencia de compra."
     }
   ];
 
-  const serviciosResidenciales = [
+  const serviciosComerciales = [
     {
-      icono: <Building className="w-8 h-8" />,
-      titulo: "Viviendas Unifamiliares",
-      descripcion: "Diseño de casas personalizadas que reflejan el estilo de vida y necesidades específicas de cada familia."
+      icono: <Building2 className="w-8 h-8" />,
+      titulo: "Oficinas Corporativas",
+      descripcion: "Diseño de espacios de trabajo que fomentan la productividad, colaboración y bienestar de los empleados."
+    },
+    {
+      icono: <ShoppingBag className="w-8 h-8" />,
+      titulo: "Retail y Tiendas",
+      descripcion: "Creación de espacios comerciales que optimizan la experiencia del cliente y maximizan las ventas."
+    },
+    {
+      icono: <Briefcase className="w-8 h-8" />,
+      titulo: "Centros Comerciales",
+      descripcion: "Desarrollo integral de complejos comerciales con planificación de flujos y distribución estratégica."
     },
     {
       icono: <Users className="w-8 h-8" />,
-      titulo: "Complejos Residenciales",
-      descripcion: "Desarrollo de proyectos multifamiliares con espacios comunes, jardines y servicios compartidos."
-    },
-    {
-      icono: <MapPin className="w-8 h-8" />,
-      titulo: "Urbanizaciones",
-      descripcion: "Planificación integral de barrios y urbanizaciones con infraestructura completa y diseño paisajístico."
-    },
-    {
-      icono: <Calendar className="w-8 h-8" />,
-      titulo: "Remodelaciones",
-      descripcion: "Transformación y modernización de viviendas existentes, optimizando espacios y mejorando la funcionalidad."
+      titulo: "Espacios Gastronómicos",
+      descripcion: "Diseño de restaurantes, bares y cafeterías que combinan funcionalidad operativa con experiencia memorable."
     }
   ];
 
   return (
     <>
       <Head>
-        <title>Arquitectura Residencial | Arquimec - Diseño de Viviendas</title>
-        <meta name="description" content="Especialistas en diseño de viviendas unifamiliares, complejos residenciales y urbanizaciones. Creamos hogares únicos que reflejan tu estilo de vida." />
-        <meta name="keywords" content="arquitectura residencial, viviendas unifamiliares, complejos residenciales, diseño de casas, Buenos Aires, Córdoba" />
+        <title>Arquitectura Comercial | Arquimec - Espacios Comerciales</title>
+        <meta name="description" content="Especialistas en diseño de espacios comerciales, oficinas corporativas, retail y centros comerciales. Creamos entornos que potencian el éxito empresarial." />
+        <meta name="keywords" content="arquitectura comercial, oficinas corporativas, retail, centros comerciales, espacios comerciales, Buenos Aires" />
       </Head>
 
       <div className="min-h-screen bg-white overflow-x-hidden">
         {/* Responsive Navbar */}
-        <ResponsiveNavbar scrolled={scrolled} currentPage="residencial" />
+        <ResponsiveNavbar scrolled={scrolled} currentPage="comercial" />
 
         {/* Hero Section */}
         <motion.section
@@ -103,8 +103,8 @@ const ArquitecturaResidencial: React.FC = () => {
           {/* Imagen de fondo */}
           <div className="absolute inset-0">
             <ImageWithFallback
-              src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&h=1080&fit=crop"
-              alt="Casa residencial moderna"
+              src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&h=1080&fit=crop"
+              alt="Espacio comercial moderno"
               fill
               className="object-cover"
               priority
@@ -121,7 +121,7 @@ const ArquitecturaResidencial: React.FC = () => {
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              ARQUITECTURA RESIDENCIAL
+              ARQUITECTURA COMERCIAL
             </motion.h1>
             <motion.p
               className="text-xl lg:text-2xl mb-6 opacity-90"
@@ -129,7 +129,7 @@ const ArquitecturaResidencial: React.FC = () => {
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              Diseñamos hogares únicos que reflejan tu estilo de vida
+              Espacios que potencian el éxito empresarial
             </motion.p>
             <motion.p
               className="text-lg mb-12 opacity-80"
@@ -137,7 +137,7 @@ const ArquitecturaResidencial: React.FC = () => {
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.6 }}
             >
-              Desde viviendas unifamiliares hasta complejos residenciales, creamos espacios habitables que combinan funcionalidad, estética y sostenibilidad.
+              Desde oficinas corporativas hasta centros comerciales, diseñamos entornos comerciales que optimizan la experiencia del cliente y maximizan la eficiencia operativa.
             </motion.p>
             <motion.button
               onClick={() => router.push('/#contacto')}
@@ -170,30 +170,30 @@ const ArquitecturaResidencial: React.FC = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
               <div>
                 <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-8 leading-tight">
-                  Hogares que inspiran y perduran
+                  Donde el diseño impulsa el negocio
                 </h2>
                 <div className="space-y-6 text-gray-700 text-lg leading-relaxed">
                   <p>
-                    La arquitectura residencial es el arte de crear espacios donde las familias crecen, se desarrollan y crean recuerdos. Cada proyecto es una oportunidad de materializar sueños y necesidades específicas.
+                    La arquitectura comercial va más allá de la estética; es una herramienta estratégica que influye directamente en el éxito empresarial. Cada espacio comercial debe ser diseñado para optimizar la experiencia del cliente y la eficiencia operativa.
                   </p>
                   <p>
-                    Nuestro enfoque combina la funcionalidad práctica con la estética contemporánea, considerando aspectos como la distribución eficiente del espacio, la selección de materiales duraderos y la integración armoniosa con el entorno.
+                    Nuestro enfoque considera factores como la circulación de personas, la identidad de marca, la iluminación, la acústica y la flexibilidad del espacio para adaptarse a futuras necesidades del negocio.
                   </p>
                   <p>
-                    Desde casas unifamiliares hasta complejos residenciales, cada diseño refleja el estilo de vida único de nuestros clientes, priorizando el confort, la sostenibilidad y la calidad de vida.
+                    Desde oficinas corporativas hasta centros comerciales, cada proyecto comercial se convierte en un activo que genera valor, atrae clientes y fomenta el crecimiento empresarial.
                   </p>
                 </div>
               </div>
 
               <div className="space-y-6 text-gray-700 text-lg leading-relaxed">
                 <p>
-                  Trabajamos en estrecha colaboración con nuestros clientes para entender sus necesidades, aspiraciones y presupuesto, asegurando que cada proyecto sea una inversión inteligente y duradera.
+                  Trabajamos en estrecha colaboración con empresarios, inversionistas y equipos de marketing para entender la visión del negocio y traducirla en espacios arquitectónicos funcionales y atractivos.
                 </p>
                 <p>
-                  Nuestra experiencia abarca desde la planificación inicial hasta la supervisión de obra, garantizando que cada detalle se ejecute con la máxima calidad y precisión.
+                  Nuestra experiencia abarca desde la planificación estratégica hasta la supervisión de obra, asegurando que cada detalle contribuya al éxito comercial del proyecto.
                 </p>
                 <p>
-                  El resultado son hogares que no solo cumplen con las expectativas funcionales, sino que superan las aspiraciones estéticas y emocionales de quienes los habitan.
+                  El resultado son espacios comerciales que no solo cumplen con las expectativas funcionales, sino que superan las aspiraciones de rentabilidad y crecimiento de nuestros clientes.
                 </p>
               </div>
             </div>
@@ -212,12 +212,12 @@ const ArquitecturaResidencial: React.FC = () => {
             <div className="text-center mb-16">
               <h2 className="text-4xl font-bold text-gray-900 mb-4">Nuestros Servicios</h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Ofrecemos soluciones integrales para cada tipo de proyecto residencial
+                Soluciones integrales para cada tipo de proyecto comercial
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 overflow-hidden">
-              {serviciosResidenciales.map((servicio, index) => (
+              {serviciosComerciales.map((servicio, index) => (
                 <motion.div
                   key={index}
                   className="text-center p-6 rounded-lg hover:shadow-lg transition-shadow duration-300"
@@ -226,7 +226,7 @@ const ArquitecturaResidencial: React.FC = () => {
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   viewport={{ once: true }}
                 >
-                  <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-blue-600">
+                  <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-green-600">
                     {servicio.icono}
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-3">{servicio.titulo}</h3>
@@ -248,8 +248,8 @@ const ArquitecturaResidencial: React.FC = () => {
           {/* Imagen de fondo */}
           <div className="absolute inset-0">
             <ImageWithFallback
-              src="https://images.unsplash.com/photo-1560185127-6c7c354e2105?w=1920&h=1080&fit=crop"
-              alt="Interior residencial"
+              src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=1920&h=1080&fit=crop"
+              alt="Interior comercial"
               fill
               className="object-cover"
               sizes="100vw"
@@ -266,7 +266,7 @@ const ArquitecturaResidencial: React.FC = () => {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              Donde la arquitectura se encuentra con la vida
+              Donde la arquitectura se encuentra con el éxito
             </motion.h2>
           </div>
         </motion.section>
@@ -281,14 +281,14 @@ const ArquitecturaResidencial: React.FC = () => {
         >
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold mb-4">Proyectos Residenciales</h2>
+              <h2 className="text-4xl font-bold mb-4">Proyectos Comerciales</h2>
               <p className="text-gray-300 max-w-3xl mx-auto">
-                Una selección de nuestros proyectos residenciales más destacados, donde cada diseño cuenta una historia única.
+                Una selección de nuestros proyectos comerciales más exitosos, donde cada diseño contribuye al crecimiento empresarial.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 overflow-hidden">
-              {proyectosResidenciales.map((proyecto, index) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {proyectosComerciales.map((proyecto, index) => (
                 <motion.div
                   key={proyecto.id}
                   className="relative group cursor-pointer"
@@ -308,18 +308,18 @@ const ArquitecturaResidencial: React.FC = () => {
                       sizes="(max-width: 768px) 100vw, 50vw"
                     />
 
-                    {/* Overlay con información completa en hover */}
-                    <div className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                    {/* Overlay con información */}
+                    <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
                       <div>
                         <h3 className="text-2xl font-bold mb-2">{proyecto.titulo}</h3>
                         <p className="text-white/90 mb-1">{proyecto.ubicacion}</p>
                         <p className="text-white/90 mb-3">{proyecto.superficie}</p>
-                        <p className="text-sm text-white/80 leading-relaxed">{proyecto.descripcion}</p>
+                        <p className="text-sm text-white/80">{proyecto.descripcion}</p>
                       </div>
                     </div>
 
-                    {/* Información inicial que desaparece en hover */}
-                    <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent opacity-100 group-hover:opacity-0 transition-opacity duration-300">
+                    {/* Información visible sin hover */}
+                    <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
                       <h3 className="text-2xl font-bold mb-1">{proyecto.titulo}</h3>
                       <p className="text-white/90 text-sm">{proyecto.ubicacion}</p>
                       <p className="text-white/90 text-sm">{proyecto.superficie}</p>
@@ -341,10 +341,10 @@ const ArquitecturaResidencial: React.FC = () => {
         >
           <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center">
             <h2 className="text-4xl lg:text-5xl font-light tracking-wider mb-8 text-gray-900">
-              ¿LISTO PARA TU HOGAR IDEAL?
+              ¿LISTO PARA IMPULSAR TU NEGOCIO?
             </h2>
             <p className="text-xl text-gray-600 mb-12 max-w-3xl mx-auto">
-              Comencemos a diseñar el hogar de tus sueños. Nuestro equipo está listo para transformar tu visión en una realidad arquitectónica excepcional.
+              Comencemos a diseñar el espacio comercial que tu empresa necesita para crecer y prosperar. Nuestro equipo está listo para transformar tu visión empresarial en una realidad arquitectónica exitosa.
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <button
@@ -430,4 +430,4 @@ const ArquitecturaResidencial: React.FC = () => {
   );
 };
 
-export default ArquitecturaResidencial;
+export default ArquitecturaComercial;
