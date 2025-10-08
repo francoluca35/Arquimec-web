@@ -70,7 +70,7 @@ const Footer: React.FC = () => {
             >
               SERVICIOS
             </h2>
-            <ul className="space-y-3 text-gray-300 ">
+            <ul className="space-y-3 text-gray-300 hover:text-ambar-600">
               {[
                 { name: "Arquitectura Residencial", href: "/arquitectura-residencial" },
                 { name: "Arquitectura Comercial", href: "/arquitectura-comercial" },
@@ -81,7 +81,7 @@ const Footer: React.FC = () => {
                   {service.href.startsWith('/') ? (
                     <button
                       onClick={() => router.push(service.href)}
-                      className="hover:hover:text-[#b48f42] transition-colors underline-offset-2 hover:underline text-left"
+                      className="hover:text-white transition-colors underline-offset-2 hover:underline text-left"
                     >
                       {service.name}
                     </button>

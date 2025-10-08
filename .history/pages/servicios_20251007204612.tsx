@@ -257,10 +257,10 @@ const Servicios: React.FC = () => {
                   SERVICIOS
                 </h2>
                 <ul className="space-y-3 text-gray-300 ">
-                  <li><button onClick={() => router.push('/arquitectura-residencial')} className="hover:hover:text-[#b48f42] hover:underline transition-colors">Arquitectura Residencial</button></li>
-                  <li><button onClick={() => router.push('/arquitectura-comercial')} className="hover:hover:text-[#b48f42] hover:underline transition-colors">Arquitectura Comercial</button></li>
-                  <li><button onClick={() => router.push('/diseno-interiores')} className="hover:hover:text-[#b48f42] hover:underline transition-colors">Diseño de Interiores</button></li>
-                  <li><button onClick={() => router.push('/consultorias')} className="hover:hover:text-[#b48f42] hover:underline transition-colors">Consultorías</button></li>
+                  <li><button onClick={() => router.push('/arquitectura-residencial')} className="hover:hover:text-amber-600 hover:underline transition-colors">Arquitectura Residencial</button></li>
+                  <li><button onClick={() => router.push('/arquitectura-comercial')} className="hover:hover:text-amber-600 hover:underline transition-colors">Arquitectura Comercial</button></li>
+                  <li><button onClick={() => router.push('/diseno-interiores')} className="hover:hover:text-amber-600 hover:underline transition-colors">Diseño de Interiores</button></li>
+                  <li><button onClick={() => router.push('/consultorias')} className="hover:hover:text-amber-600 hover:underline transition-colors">Consultorías</button></li>
                 </ul>
               </div>
 

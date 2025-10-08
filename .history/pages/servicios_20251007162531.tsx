@@ -216,7 +216,7 @@ const Servicios: React.FC = () => {
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <button
                 onClick={() => router.push('/#contacto')}
-                className="bg-white text-gray-900 px-8 py-4 text-lg font-medium hover:text-white hover:bg-[#b48f42]  transition-colors duration-300"
+                className="bg-white text-gray-900 px-8 py-4 text-lg font-medium hover:bg-gray-100 transition-colors duration-300"
               >
                 Contactar Ahora
               </button>
@@ -257,10 +257,10 @@ const Servicios: React.FC = () => {
                   SERVICIOS
                 </h2>
                 <ul className="space-y-3 text-gray-300 ">
-                  <li><button onClick={() => router.push('/arquitectura-residencial')} className="hover:hover:text-[#b48f42] hover:underline transition-colors">Arquitectura Residencial</button></li>
-                  <li><button onClick={() => router.push('/arquitectura-comercial')} className="hover:hover:text-[#b48f42] hover:underline transition-colors">Arquitectura Comercial</button></li>
-                  <li><button onClick={() => router.push('/diseno-interiores')} className="hover:hover:text-[#b48f42] hover:underline transition-colors">Diseño de Interiores</button></li>
-                  <li><button onClick={() => router.push('/consultorias')} className="hover:hover:text-[#b48f42] hover:underline transition-colors">Consultorías</button></li>
+                  <li><button onClick={() => router.push('/arquitectura-residencial')} className="hover:hover:text-amber-600 transition-colors">Arquitectura Residencial</button></li>
+                  <li><button onClick={() => router.push('/arquitectura-comercial')} className="hover:hover:text-amber-600 transition-colors">Arquitectura Comercial</button></li>
+                  <li><button onClick={() => router.push('/diseno-interiores')} className="hover:hover:text-amber-600 transition-colors">Diseño de Interiores</button></li>
+                  <li><button onClick={() => router.push('/consultorias')} className="hover:hover:text-amber-600 transition-colors">Consultorías</button></li>
                 </ul>
               </div>
 

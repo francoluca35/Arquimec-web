@@ -48,7 +48,7 @@ const ArrowUp: React.FC = () => {
             ease: "easeInOut",
           }}
           onClick={scrollToTop}
-          className="fixed bottom-0 left-6 z-50 bg-gray-900 hover:bg-[#b48f42] text-white p-3  shadow-lg transition-all duration-300 hover:shadow-xl group"
+          className="fixed bottom-0 left-6 z-50 bg-gray-900 hover:bg-[#b48f42]  text-white p-3  shadow-lg transition-all duration-300 hover:shadow-xl group"
           aria-label="Volver arriba"
           title="Volver arriba"
         >

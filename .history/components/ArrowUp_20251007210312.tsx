@@ -56,7 +56,7 @@ const ArrowUp: React.FC = () => {
             whileHover={{ y: -2 }}
             transition={{ duration: 0.2 }}
           >
-            <ChevronUp size={24} className="group-hover:text-white transition-colors duration-200" />
+            <ChevronUp size={24} className="group-hover:text-amber-400 transition-colors duration-200" />
           </motion.div>
         </motion.button>
       )}
