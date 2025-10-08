@@ -223,8 +223,8 @@ const ResponsiveNavbar: React.FC<ResponsiveNavbarProps> = ({ scrolled, currentPa
                               ? "bg-gray-100 font-semibold"
                               : "bg-gray-700 font-semibold"
                             : scrolled 
-                              ? "text-black hover:text-[#b48f42] hover:bg-gray-50" 
-                              : "text-white hover:text-[#b48f42] hover:bg-gray-800"
+                              ? "text-black hover:text-amber-600 hover:bg-gray-50" 
+                              : "text-white hover:text-amber-600 hover:bg-gray-800"
                         }`}
                         style={{
                           fontWeight: active ? 600 : 400,

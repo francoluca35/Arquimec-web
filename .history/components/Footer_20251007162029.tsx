@@ -81,7 +81,7 @@ const Footer: React.FC = () => {
                   {service.href.startsWith('/') ? (
                     <button
                       onClick={() => router.push(service.href)}
-                      className="hover:hover:text-[#b48f42] transition-colors underline-offset-2 hover:underline text-left"
+                      className="hover:hover:text-amber-600 transition-colors underline-offset-2 hover:underline text-left"
                     >
                       {service.name}
                     </button>
