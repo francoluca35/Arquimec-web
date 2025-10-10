@@ -34,8 +34,7 @@ const AnimatedLogo: React.FC<AnimatedLogoProps> = ({
         // Empezar mostrando el logo
         setShowLogo(true);
         setDisplayText("");
-        // Reiniciar el GIF cambiando temporalmente la fuente
-        setGifSrc(`/Assets/logo-mov.gif?t=${Date.now()}`);
+        setLogoKey(prev => prev + 1); // Incrementar key para forzar reinicio del GIF
         timeout = setTimeout(() => {
           setAnimationPhase('fading');
         }, logoDisplayDuration); // Mostrar logo por 4 segundos
@@ -97,7 +96,7 @@ const AnimatedLogo: React.FC<AnimatedLogoProps> = ({
         >
           <img 
             key={logoKey}
-            src={gifSrc} 
+            src={`/Assets/logo-mov.gif?t=${Date.now()}`} 
             alt="ARQUIMEC Logo" 
             width={100}
             height={100}

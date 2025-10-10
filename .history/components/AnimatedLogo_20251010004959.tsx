@@ -17,8 +17,6 @@ const AnimatedLogo: React.FC<AnimatedLogoProps> = ({
   const [displayText, setDisplayText] = useState("");
   const [showCursor, setShowCursor] = useState(true);
   const [animationPhase, setAnimationPhase] = useState<'logo' | 'fading' | 'typing' | 'pausing'>('logo');
-  const [logoKey, setLogoKey] = useState(0); // Key para forzar reinicio del GIF
-  const [gifSrc, setGifSrc] = useState("/Assets/logo-mov.gif"); // Estado para controlar la fuente del GIF
   
   const fullText = "ARQUIMEC.";
   const typingSpeed = 250; // Velocidad de escritura más fluida
@@ -34,11 +32,9 @@ const AnimatedLogo: React.FC<AnimatedLogoProps> = ({
         // Empezar mostrando el logo
         setShowLogo(true);
         setDisplayText("");
-        // Reiniciar el GIF cambiando temporalmente la fuente
-        setGifSrc(`/Assets/logo-mov.gif?t=${Date.now()}`);
         timeout = setTimeout(() => {
           setAnimationPhase('fading');
-        }, logoDisplayDuration); // Mostrar logo por 4 segundos
+        }, logoDisplayDuration); // Mostrar logo por 8 segundos
         break;
 
       case 'fading':
@@ -96,8 +92,7 @@ const AnimatedLogo: React.FC<AnimatedLogoProps> = ({
           className="cursor-pointer hover:scale-105 transition-transform duration-200"
         >
           <img 
-            key={logoKey}
-            src={gifSrc} 
+            src="/Assets/logo-mov.gif" 
             alt="ARQUIMEC Logo" 
             width={100}
             height={100}
