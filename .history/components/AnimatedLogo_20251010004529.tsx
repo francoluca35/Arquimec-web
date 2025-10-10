@@ -16,39 +16,18 @@ const AnimatedLogo: React.FC<AnimatedLogoProps> = ({
   const [showLogo, setShowLogo] = useState(false);
   const [displayText, setDisplayText] = useState("");
   const [showCursor, setShowCursor] = useState(true);
-  const [animationPhase, setAnimationPhase] = useState<'logo' | 'fading' | 'typing' | 'pausing'>('logo');
-  const [logoKey, setLogoKey] = useState(0); // Key para forzar reinicio del GIF
-  const [gifSrc, setGifSrc] = useState("/Assets/logo-mov.gif"); // Estado para controlar la fuente del GIF
+  const [animationPhase, setAnimationPhase] = useState<'typing' | 'pausing' | 'fading' | 'logo'>('typing');
   
   const fullText = "ARQUIMEC.";
-  const typingSpeed = 250; // Velocidad de escritura más fluida
-  const pauseDuration = 3000; // Pausa después de escribir (3 segundos)
-  const fadeDuration = 2000; // Duración de la transición más suave
+  const typingSpeed = 300; // Velocidad de escritura más lenta en ms
+  const pauseDuration = 2000; // Pausa después de escribir (2 segundos)
+  const fadeDuration = 1500; // Duración de la transición más lenta
   const logoDisplayDuration = 4000; // Logo visible por 4 segundos
 
   useEffect(() => {
     let timeout: NodeJS.Timeout;
 
     switch (animationPhase) {
-      case 'logo':
-        // Empezar mostrando el logo
-        setShowLogo(true);
-        setDisplayText("");
-        // Reiniciar el GIF cambiando temporalmente la fuente
-        setGifSrc(`/Assets/logo-mov.gif?t=${Date.now()}`);
-        timeout = setTimeout(() => {
-          setAnimationPhase('fading');
-        }, logoDisplayDuration); // Mostrar logo por 4 segundos
-        break;
-
-      case 'fading':
-        // Transición suave del logo al texto
-        setShowLogo(false);
-        timeout = setTimeout(() => {
-          setAnimationPhase('typing');
-        }, fadeDuration);
-        break;
-
       case 'typing':
         if (displayText.length < fullText.length) {
           timeout = setTimeout(() => {
@@ -63,20 +42,35 @@ const AnimatedLogo: React.FC<AnimatedLogoProps> = ({
 
       case 'pausing':
         timeout = setTimeout(() => {
-          // Volver al logo para empezar el ciclo de nuevo
-          setAnimationPhase('logo');
+          setAnimationPhase('fading');
         }, pauseDuration);
+        break;
+
+      case 'fading':
+        timeout = setTimeout(() => {
+          setShowLogo(true);
+          setAnimationPhase('logo');
+        }, fadeDuration);
+        break;
+
+      case 'logo':
+        timeout = setTimeout(() => {
+          // Resetear para volver a empezar el ciclo
+          setShowLogo(false);
+          setDisplayText("");
+          setAnimationPhase('typing');
+        }, logoDisplayDuration); // Mostrar logo por 4 segundos
         break;
     }
 
     return () => clearTimeout(timeout);
   }, [displayText, animationPhase]);
 
-  // Efecto del cursor parpadeante más suave
+  // Efecto del cursor parpadeante
   useEffect(() => {
     const cursorInterval = setInterval(() => {
       setShowCursor(prev => !prev);
-    }, 600); // Más lento para ser más suave
+    }, 500);
 
     return () => clearInterval(cursorInterval);
   }, []);
@@ -96,11 +90,10 @@ const AnimatedLogo: React.FC<AnimatedLogoProps> = ({
           className="cursor-pointer hover:scale-105 transition-transform duration-200"
         >
           <img 
-            key={logoKey}
-            src={gifSrc} 
+            src="/Assets/logo-mov.gif" 
             alt="ARQUIMEC Logo" 
-            width={100}
-            height={100}
+            width={80}
+            height={80}
             className="object-contain drop-shadow-lg"
             style={{maxWidth: '100px', maxHeight: '100px'}}
             loading="eager"
@@ -109,7 +102,7 @@ const AnimatedLogo: React.FC<AnimatedLogoProps> = ({
       </div>
 
       {/* Texto ARQUIMEC con efecto de escritura - Botón para ir arriba */}
-      <div className={`absolute ml-3 inset-0 flex items-center justify-center transition-opacity duration-[2000ms] ease-in-out ${
+      <div className={`absolute ml-3 inset-0 flex items-center justify-center transition-opacity duration-[1500ms] ${
         !showLogo ? 'opacity-100' : 'opacity-0'
       }`}>
         <button 
@@ -123,7 +116,7 @@ const AnimatedLogo: React.FC<AnimatedLogoProps> = ({
           }`} style={{letterSpacing: '0.2em', textShadow: '2px 2px 4px rgba(0,0,0,0.3)'}}>
             {displayText}
             {animationPhase === 'typing' && showCursor && (
-              <span className="opacity-75 transition-opacity duration-300">|</span>
+              <span className="animate-pulse">|</span>
             )}
           </span>
         </button>

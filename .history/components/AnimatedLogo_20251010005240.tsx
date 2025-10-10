@@ -97,7 +97,7 @@ const AnimatedLogo: React.FC<AnimatedLogoProps> = ({
         >
           <img 
             key={logoKey}
-            src={gifSrc} 
+            src={`/Assets/logo-mov.gif?t=${Date.now()}`} 
             alt="ARQUIMEC Logo" 
             width={100}
             height={100}
