@@ -126,7 +126,7 @@ const MisionVision: React.FC = () => {
             </motion.div>
           </div>
 
-          {/* Servicios */}
+          {/* Valores */}
           <motion.div
             className="mt-16"
             initial={{ opacity: 0, y: 30 }}
@@ -136,42 +136,33 @@ const MisionVision: React.FC = () => {
           >
             <div className="text-center lg:text-left mb-8">
               <h3 className="text-2xl lg:text-3xl text-gray-100 mb-4 font-light">
-                Nuestros <button 
-                  onClick={() => router.push('/servicios')}
-                  className="text-gray-400 hover:text-white underline underline-offset-4 hover:underline-offset-8 transition-all duration-300 cursor-pointer"
-                >
-                  Servicios
-                </button>
+                Nuestros <span className="text-gray-400">Valores</span>
               </h3>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
                 {
-                  title: "Arquitectura Residencial",
-                  description: "Diseñamos hogares únicos que reflejan la personalidad y estilo de vida de nuestros clientes.",
-                  icon: Home,
-                  route: "/arquitectura-residencial"
+                  title: "Excelencia",
+                  description: "Compromiso con la más alta calidad en cada proyecto",
+                  icon: Award
                 },
                 {
-                  title: "Arquitectura Comercial",
-                  description: "Desarrollamos espacios comerciales que potencian la experiencia del cliente y optimizan el flujo de trabajo.",
-                  icon: Building,
-                  route: "/arquitectura-comercial"
+                  title: "Innovación",
+                  description: "Búsqueda constante de soluciones creativas y eficientes",
+                  icon: Zap
                 },
                 {
-                  title: "Diseño de Interiores",
-                  description: "Transformamos espacios interiores creando ambientes únicos y funcionales.",
-                  icon: Palette,
-                  route: "/diseno-interiores"
+                  title: "Precisión",
+                  description: "Atención meticulosa a cada detalle del diseño",
+                  icon: Ruler
                 },
                 {
-                  title: "Consultorías",
-                  description: "Brindamos asesoramiento especializado en arquitectura y diseño.",
-                  icon: Users,
-                  route: "/consultorias"
+                  title: "Visión",
+                  description: "Anticipación de las necesidades futuras del espacio",
+                  icon: Telescope
                 }
-              ].map((service, index) => (
+              ].map((value, index) => (
                 <motion.div
                   key={index}
                   className="group"
@@ -180,22 +171,16 @@ const MisionVision: React.FC = () => {
                   transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
                   viewport={{ once: true }}
                 >
-                  <div className="bg-gradient-to-br from-[#1a1f20] to-[#0f1516] border border-[#3e4b51] rounded-xl p-6 h-full hover:border-[#4a5568] transition-all duration-300 group-hover:scale-105 flex flex-col">
+                  <div className="bg-gradient-to-br from-[#1a1f20] to-[#0f1516] border border-[#3e4b51] rounded-xl p-6 h-full hover:border-[#4a5568] transition-all duration-300 group-hover:scale-105">
                     <div className="w-12 h-12 border border-gray-600 rounded-lg flex items-center justify-center mb-4 mx-auto lg:mx-0 group-hover:border-gray-400 transition-all duration-300">
-                      <service.icon className="w-6 h-6 text-gray-300" strokeWidth={1.5} />
+                      <value.icon className="w-6 h-6 text-gray-300" strokeWidth={1.5} />
                     </div>
-                    <h4 className="text-lg text-gray-100 mb-3 font-medium text-center lg:text-left">
-                      {service.title}
+                    <h4 className="text-lg text-gray-100 mb-2 font-medium text-center lg:text-left">
+                      {value.title}
                     </h4>
-                    <p className="text-gray-400 text-sm leading-relaxed text-center lg:text-left mb-4 flex-grow">
-                      {service.description}
+                    <p className="text-gray-400 text-sm leading-relaxed text-center lg:text-left">
+                      {value.description}
                     </p>
-                    <button
-                      onClick={() => router.push(service.route)}
-                      className="w-full text-center underline text-xs text-gray-300 hover:text-white border border-gray-600 hover:border-gray-400 rounded-lg py-2 px-4 transition-all duration-300 group-hover:bg-gray-800 mt-auto"
-                    >
-                      Leer más
-                    </button>
                   </div>
                 </motion.div>
               ))}

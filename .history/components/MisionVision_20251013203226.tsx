@@ -180,19 +180,19 @@ const MisionVision: React.FC = () => {
                   transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
                   viewport={{ once: true }}
                 >
-                  <div className="bg-gradient-to-br from-[#1a1f20] to-[#0f1516] border border-[#3e4b51] rounded-xl p-6 h-full hover:border-[#4a5568] transition-all duration-300 group-hover:scale-105 flex flex-col">
+                  <div className="bg-gradient-to-br from-[#1a1f20] to-[#0f1516] border border-[#3e4b51] rounded-xl p-6 h-full hover:border-[#4a5568] transition-all duration-300 group-hover:scale-105">
                     <div className="w-12 h-12 border border-gray-600 rounded-lg flex items-center justify-center mb-4 mx-auto lg:mx-0 group-hover:border-gray-400 transition-all duration-300">
                       <service.icon className="w-6 h-6 text-gray-300" strokeWidth={1.5} />
                     </div>
                     <h4 className="text-lg text-gray-100 mb-3 font-medium text-center lg:text-left">
                       {service.title}
                     </h4>
-                    <p className="text-gray-400 text-sm leading-relaxed text-center lg:text-left mb-4 flex-grow">
+                    <p className="text-gray-400 text-sm leading-relaxed text-center lg:text-left mb-4">
                       {service.description}
                     </p>
                     <button
                       onClick={() => router.push(service.route)}
-                      className="w-full text-center underline text-xs text-gray-300 hover:text-white border border-gray-600 hover:border-gray-400 rounded-lg py-2 px-4 transition-all duration-300 group-hover:bg-gray-800 mt-auto"
+                      className="w-full text-center uperline text-xs text-gray-300 hover:text-white border border-gray-600 hover:border-gray-400 rounded-lg py-2 px-4 transition-all duration-300 group-hover:bg-gray-800"
                     >
                       Leer más
                     </button>
