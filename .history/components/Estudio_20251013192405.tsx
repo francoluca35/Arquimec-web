@@ -47,7 +47,7 @@ const Estudio: React.FC = () => {
           </div>
 
           <div className="mb-12">
-            <div className="text-3xl lg:text-4xl text-white mb-8 leading-tight">
+            <div className="text-4xl lg:text-5xl text-white mb-8 leading-tight">
               <motion.div
                 style={{ 
                   fontWeight: 300,
@@ -62,7 +62,7 @@ const Estudio: React.FC = () => {
                   opacity: line2Opacity
                 }}
               >
-                Diseñamos y construimos con la máxima precisión, un servicio
+                Diseñamos y construimos con la máxima precisión,
               </motion.div>
               <motion.div
                 style={{ 
@@ -70,7 +70,7 @@ const Estudio: React.FC = () => {
                   opacity: line3Opacity
                 }}
               >
-                 pensado para satisfacer a los estándares más exigentes
+                un servicio pensado para satisfacer a los
               </motion.div>
               <motion.div
                 style={{ 
@@ -78,7 +78,7 @@ const Estudio: React.FC = () => {
                   opacity: line4Opacity
                 }}
               >
-              y garantizar una   calidad
+                estándares más exigentes y garantizar 
               </motion.div>
               <motion.div
                 style={{ 
@@ -86,7 +86,7 @@ const Estudio: React.FC = () => {
                   opacity: line4Opacity
                 }}
               >
-               constructiva excepcional.
+                una calidad constructiva excepcional.
               </motion.div>
             </div>
           </div>

@@ -93,7 +93,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
             delay: 0.5,
           }}
         >
-        <p className="text-xl md:text-3xl -mt-8 font-light tracking-wider text-[#1a2a3c] drop-shadow-lg text-center">
+        <p className="text-2xl -mt-10 font-light tracking-wider text-[#1a2a3c] drop-shadow-lg">
             Arquitectura & construcción
           </p>
           </motion.div>

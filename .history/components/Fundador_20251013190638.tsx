@@ -108,7 +108,7 @@ const Fundador: React.FC = () => {
           className="flex justify-center lg:justify-start"
         >
           <div className="relative">
-            <div className="w-80 sm:w-96 h-[24rem] sm:h-[28rem] rounded-lg overflow-hidden relative bg-transparent">
+            <div className="w-80 sm:w-96 h-[24rem] sm:h-[28rem] rounded-lg overflow-hidden relative bg-gray-100">
               <motion.div
                 key={currentImageIndex}
                 initial={{ opacity: 0 }}
@@ -138,7 +138,17 @@ const Fundador: React.FC = () => {
             </div>
             
             {/* Indicadores de imagen */}
-           
+            <div className="flex justify-center mt-4 space-x-2">
+              {images.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentImageIndex(index)}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    index === currentImageIndex ? 'bg-gray-600' : 'bg-gray-300'
+                  }`}
+                />
+              ))}
+            </div>
           </div>
         </motion.div>
 

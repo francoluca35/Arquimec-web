@@ -45,12 +45,12 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
           <NextImage 
             src="/Assets/logoarqmec.webp" 
             alt="ARQUIMEC Logo" 
-            width={160}
-            height={160}
+            width={148}
+            height={148}
             className="object-contain drop-shadow-lg"
             priority={true}
             quality={90}
-            sizes="160px"
+            sizes="128px"
             onError={(e) => {
               console.error('Error loading logo:', e);
               const target = e.target as HTMLImageElement;
@@ -79,24 +79,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
           <h1 className="text-4xl -mt-10 font-light tracking-wider text-[#1a2a3c] drop-shadow-lg">
             ARQUIMEC
           </h1>
-         
         </motion.div>
-        <motion.div
-          animate={{
-            scale: [1, 1.05, 1],
-            opacity: [0.7, 1, 0.7],
-          }}
-          transition={{
-            duration: 2,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 0.5,
-          }}
-        >
-        <p className="text-xl md:text-3xl -mt-8 font-light tracking-wider text-[#1a2a3c] drop-shadow-lg text-center">
-            Arquitectura & construcción
-          </p>
-          </motion.div>
       </div>
     </motion.div>
   );
