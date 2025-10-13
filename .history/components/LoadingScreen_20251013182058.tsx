@@ -79,24 +79,10 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onLoadingComplete }) => {
           <h1 className="text-4xl -mt-10 font-light tracking-wider text-[#1a2a3c] drop-shadow-lg">
             ARQUIMEC
           </h1>
-         
-        </motion.div>
-        <motion.div
-          animate={{
-            scale: [1, 1.05, 1],
-            opacity: [0.7, 1, 0.7],
-          }}
-          transition={{
-            duration: 2,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 0.5,
-          }}
-        >
-        <p className="text-xl md:text-3xl -mt-8 font-light tracking-wider text-[#1a2a3c] drop-shadow-lg text-center">
+          <p className="text-4xl -mt-10 font-light tracking-wider text-[#1a2a3c] drop-shadow-lg">
             Arquitectura & construcción
           </p>
-          </motion.div>
+        </motion.div>
       </div>
     </motion.div>
   );

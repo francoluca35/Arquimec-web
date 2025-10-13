@@ -97,7 +97,9 @@ const MisionVision: React.FC = () => {
                   Nuestra <span className="text-gray-300">Visión</span>
                 </h3>
                 <p className="text-gray-300 leading-relaxed text-lg mb-6">
-                Ser la empresa referente en arquitectura y construcción, reconocida por transformar ideas y diseños innovadores en realidades edificadas de la más alta calidad, que superan las expectativas y mejoran la vida de las personas, siendo el puente esencial entre la visión y su materialización duradera.
+                  Consolidarnos como una constructora profesional de nivel global, líder en el desarrollo 
+                  de proyectos arquitectónicos integrales que combinen diseño innovador con ejecución 
+                  constructiva de excelencia, estableciendo nuevos estándares de calidad y sostenibilidad.
                 </p>
                 <div className="space-y-3">
                   <div className="flex items-start gap-3">

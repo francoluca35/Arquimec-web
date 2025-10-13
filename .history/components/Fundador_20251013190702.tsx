@@ -108,7 +108,7 @@ const Fundador: React.FC = () => {
           className="flex justify-center lg:justify-start"
         >
           <div className="relative">
-            <div className="w-80 sm:w-96 h-[24rem] sm:h-[28rem] rounded-lg overflow-hidden relative bg-transparent">
+            <div className="w-80 sm:w-96 h-[24rem] sm:h-[28rem] rounded-lg overflow-hidden relative bg-gray-100">
               <motion.div
                 key={currentImageIndex}
                 initial={{ opacity: 0 }}

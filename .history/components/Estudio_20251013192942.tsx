@@ -70,7 +70,7 @@ const Estudio: React.FC = () => {
                   opacity: line3Opacity
                 }}
               >
-                 pensado para satisfacer a los estándares más exigentes
+                 pensado para satisfacer a los estándares más
               </motion.div>
               <motion.div
                 style={{ 
@@ -78,7 +78,7 @@ const Estudio: React.FC = () => {
                   opacity: line4Opacity
                 }}
               >
-              y garantizar una   calidad
+             exigentes y garantizar una   calidad
               </motion.div>
               <motion.div
                 style={{ 
@@ -86,7 +86,7 @@ const Estudio: React.FC = () => {
                   opacity: line4Opacity
                 }}
               >
-               constructiva excepcional.
+                calidad constructiva excepcional.
               </motion.div>
             </div>
           </div>

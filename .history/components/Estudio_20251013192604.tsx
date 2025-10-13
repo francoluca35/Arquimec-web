@@ -54,7 +54,7 @@ const Estudio: React.FC = () => {
                   opacity: line1Opacity
                 }}
               >
-                Somos el puente que da vida a tus proyectos.
+                Somos el puente que da vida a tus proyectos, Diseñamos y construimos  con la máxima precisión,
               </motion.div>
               <motion.div
                 style={{ 
@@ -62,7 +62,7 @@ const Estudio: React.FC = () => {
                   opacity: line2Opacity
                 }}
               >
-                Diseñamos y construimos con la máxima precisión, un servicio
+              
               </motion.div>
               <motion.div
                 style={{ 
@@ -70,7 +70,7 @@ const Estudio: React.FC = () => {
                   opacity: line3Opacity
                 }}
               >
-                 pensado para satisfacer a los estándares más exigentes
+                un servicio pensado para satisfacer a los
               </motion.div>
               <motion.div
                 style={{ 
@@ -78,7 +78,7 @@ const Estudio: React.FC = () => {
                   opacity: line4Opacity
                 }}
               >
-              y garantizar una   calidad
+                estándares más exigentes y garantizar una
               </motion.div>
               <motion.div
                 style={{ 
@@ -86,7 +86,7 @@ const Estudio: React.FC = () => {
                   opacity: line4Opacity
                 }}
               >
-               constructiva excepcional.
+                calidad constructiva excepcional.
               </motion.div>
             </div>
           </div>

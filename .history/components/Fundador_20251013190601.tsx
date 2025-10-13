@@ -108,27 +108,27 @@ const Fundador: React.FC = () => {
           className="flex justify-center lg:justify-start"
         >
           <div className="relative">
-            <div className="w-80 sm:w-96 h-[24rem] sm:h-[28rem] rounded-lg overflow-hidden relative bg-transparent">
+            <div className={`w-80 sm:w-96 h-[24rem] sm:h-[28rem] rounded-lg overflow-hidden relative ${showLogo ? 'bg-transparent' : 'bg-transparent'}`}>
               <motion.div
-                key={currentImageIndex}
+                key={showLogo ? 'logo' : 'fundador'}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 1, ease: "easeInOut" }}
+                transition={{ duration: 2, ease: "easeInOut" }}
                 className="w-full h-full"
               >
-                {images[currentImageIndex].src.includes('Fundadorlogo.png') ? (
+                {showLogo ? (
                   <NextImage
-                    src={images[currentImageIndex].src}
-                    alt={images[currentImageIndex].alt}
+                    src="/Assets/Fundadorlogo.png"
+                    alt="Logo Arquimec"
                     className="object-contain"
                     fill={true}
                     sizes="(max-width: 768px) 100vw, 384px"
                   />
                 ) : (
                   <ImageWithFallback
-                    src={images[currentImageIndex].src}
-                    alt={images[currentImageIndex].alt}
+                    src="/Assets/fundadores.webp"
+                    alt="Arquitecto fundador"
                     className="object-cover"
                     fill={true}
                     sizes="(max-width: 800px) 150vw, 400px"
@@ -136,9 +136,6 @@ const Fundador: React.FC = () => {
                 )}
               </motion.div>
             </div>
-            
-            {/* Indicadores de imagen */}
-           
           </div>
         </motion.div>
 

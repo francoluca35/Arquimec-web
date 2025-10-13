@@ -86,7 +86,7 @@ const Estudio: React.FC = () => {
                   opacity: line4Opacity
                 }}
               >
-               constructiva excepcional.
+                calidad constructiva excepcional.
               </motion.div>
             </div>
           </div>
