@@ -379,7 +379,7 @@ const ProyectoIndividual: React.FC = () => {
             <div className="space-y-4">
               <div className="flex items-center">
                 <img 
-                  src="/Assets/logoarqmec.webp" 
+                  src="/Assets/Fundador-logo.webp" 
                   alt="ARQUIMEC Logo" 
                   className="h-20 w-auto"
                 />
