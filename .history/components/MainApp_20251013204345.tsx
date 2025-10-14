@@ -81,10 +81,6 @@ export default function MainApp() {
           </Suspense>
 
           <Suspense fallback={<div className="h-screen bg-white" />}>
-            <Constructora/>
-          </Suspense>
-
-          <Suspense fallback={<div className="h-screen bg-white" />}>
             <Fundador/>
           </Suspense>
 

@@ -24,8 +24,12 @@ export const useOptimizedScroll = (options: UseOptimizedScrollOptions = {}) => {
       const scrollDiff = Math.abs(currentScrollY - lastScrollY);
       
       if (scrollDiff > 5) {
-        // Header siempre visible
-        setHeaderVisible(true);
+        // Mostrar/ocultar header basado en dirección de scroll
+        if (currentScrollY > lastScrollY && currentScrollY > headerThreshold) {
+          setHeaderVisible(false);
+        } else {
+          setHeaderVisible(true);
+        }
         
         setScrolled(currentScrollY > threshold);
         setLastScrollY(currentScrollY);

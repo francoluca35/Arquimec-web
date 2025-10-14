@@ -53,7 +53,9 @@ const Header: React.FC<HeaderProps> = ({ scrolled, headerVisible }) => {
       </a>
       
       <motion.header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 translate-y-0 ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+          headerVisible ? "translate-y-0" : "-translate-y-full"
+        } ${
           scrolled 
             ? "bg-[#ffffff] shadow-lg backdrop-blur-sm" 
             : "bg-[#1a2a3c] backdrop-blur-sm"
