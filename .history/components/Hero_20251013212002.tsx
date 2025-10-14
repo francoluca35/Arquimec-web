@@ -18,7 +18,6 @@ const Hero: React.FC<HeroProps> = ({ scrolled }) => {
     "/Assets/hero/innovacion.webp",
     "/Assets/hero/interior.webp",
     "/Assets/hero/disenoarquitectonico.webp",
-
     
    
   

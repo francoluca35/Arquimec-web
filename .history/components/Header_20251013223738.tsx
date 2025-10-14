@@ -53,10 +53,12 @@ const Header: React.FC<HeaderProps> = ({ scrolled, headerVisible }) => {
       </a>
       
       <motion.header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 translate-y-0 ${
+        className={`fixed-header transition-all duration-500 ${
+          headerVisible ? "translate-y-0" : "-translate-y-full"
+        } ${
           scrolled 
-            ? "bg-[#ffffff] shadow-lg backdrop-blur-sm" 
-            : "bg-[#1a2a3c] backdrop-blur-sm"
+            ? "bg-[#ffffff] shadow-lg" 
+            : "bg-[#1a2a3c]"
         }`}
         initial={{ opacity: 0, y: -100 }}
         animate={{ opacity: 1, y: 0 }}
@@ -165,7 +167,7 @@ const Header: React.FC<HeaderProps> = ({ scrolled, headerVisible }) => {
           {mobileMenuOpen && (
             <motion.div
               id="mobile-menu"
-              className={` lg:hidden fixed top-20 right-0 h-[calc(103vh-6rem)] w-80 shadow-lg z-[9998] ${
+              className={` lg:hidden fixed top-20 right-0 h-[calc(103vh-6rem)] w-80 shadow-lg z-100 ${
                 scrolled ? 'bg-[#f3f3f3]' : 'bg-[#1a2a3c]'
               }`}
               initial={{ opacity: 0, x: 320 }}

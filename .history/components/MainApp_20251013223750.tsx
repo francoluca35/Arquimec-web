@@ -68,7 +68,7 @@ export default function MainApp() {
 
       {/* Contenido principal - solo se muestra cuando no está cargando */}
       {!isLoading && (
-        <main id="main-content">
+        <main id="main-content" className="header-offset">
           {/* Header */}
           <Header scrolled={scrolled} headerVisible={headerVisible}/>
 

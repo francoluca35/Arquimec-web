@@ -14,7 +14,7 @@ const Hero: React.FC<HeroProps> = ({ scrolled }) => {
   // Imágenes para el carousel del hero
   const heroImages = [
     "/Assets/hero/arqmoder.webp",
-    "/Assets/hero/heroconst.webp",
+    "/Assets/oficina.webp",
     "/Assets/hero/innovacion.webp",
     "/Assets/hero/interior.webp",
     "/Assets/hero/disenoarquitectonico.webp",

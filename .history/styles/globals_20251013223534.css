@@ -61,6 +61,74 @@
   }
 }
 
+/* Ocultar scrollbar para todos los navegadores */
+html {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+html::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+body {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+/* Ocultar scrollbar en todos los elementos scrollables */
+* {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+*::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+/* Optimización de scroll y animaciones */
+html {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch; /* iOS smooth scrolling */
+}
+
+body {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch; /* iOS smooth scrolling */
+  will-change: scroll-position; /* Optimización para GPU */
+}
+
+/* Optimización de animaciones para mejor performance */
+.motion-component,
+[data-motion] {
+  will-change: transform, opacity;
+  transform: translateZ(0); /* Force hardware acceleration */
+  backface-visibility: hidden;
+}
+
+/* Optimización específica para elementos con whileInView */
+[data-motion-while-in-view] {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Reducir repaints durante scroll */
+section,
+div {
+  contain: layout style paint;
+}
+
+/* Optimización para imágenes */
+img {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
 /* Prevent horizontal overflow */
 .container {
   max-width: 100vw;
@@ -95,50 +163,6 @@ section {
 img {
   max-width: 100%;
   height: auto;
-}
-
-/* Ocultar scrollbar específicamente en la página de constructora */
-.constructora-page section,
-.constructora-page div,
-.constructora-page main,
-.constructora-page article {
-  scrollbar-width: none !important; /* Firefox */
-  -ms-overflow-style: none !important; /* IE and Edge */
-}
-
-.constructora-page section::-webkit-scrollbar,
-.constructora-page div::-webkit-scrollbar,
-.constructora-page main::-webkit-scrollbar,
-.constructora-page article::-webkit-scrollbar {
-  display: none !important; /* Chrome, Safari, Opera */
-  width: 0 !important;
-  height: 0 !important;
-  background: transparent !important;
-}
-
-/* Ocultar scrollbar en secciones específicas de constructora */
-#servicios,
-#procesos,
-#galeria,
-.hero-section,
-.services-section,
-.process-section,
-.gallery-section {
-  scrollbar-width: none !important; /* Firefox */
-  -ms-overflow-style: none !important; /* IE and Edge */
-}
-
-#servicios::-webkit-scrollbar,
-#procesos::-webkit-scrollbar,
-#galeria::-webkit-scrollbar,
-.hero-section::-webkit-scrollbar,
-.services-section::-webkit-scrollbar,
-.process-section::-webkit-scrollbar,
-.gallery-section::-webkit-scrollbar {
-  display: none !important; /* Chrome, Safari, Opera */
-  width: 0 !important;
-  height: 0 !important;
-  background: transparent !important;
 }
 
 /* Custom contact button borders */
