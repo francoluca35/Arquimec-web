@@ -23,7 +23,11 @@ const Constructora: React.FC = () => {
 
   // Imágenes del carrusel (imagen existente + 3 nuevas)
   const carouselImages = [
-   
+    {
+      src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760413555/Imagen_de_WhatsApp_2025-10-13_a_las_19.46.12_da24b00b_nams5h.jpg",
+      alt: "construcción-profesional-en-progreso",
+      titulo: "Construcción Profesional"
+    },
     {
       src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760495653/constructora/construccion-carousel-1.jpg",
       alt: "construcción-en-progreso-1",
@@ -47,7 +51,7 @@ const Constructora: React.FC = () => {
       setCurrentImageIndex((prevIndex) => 
         prevIndex === carouselImages.length - 1 ? 0 : prevIndex + 1
       );
-    }, 4000); // Cambiar imagen cada 3.1 segundos (2.5s visible + 0.6s transición)
+    }, 2500); // Cambiar imagen cada 2.5 segundos
 
     return () => clearInterval(interval);
   }, [carouselImages.length]);

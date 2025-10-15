@@ -328,7 +328,7 @@ const ConstructoraPage: React.FC = () => {
           {/* Imagen de fondo */}
           <div className="absolute inset-0">
             <ImageWithFallback
-              src="https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760494867/constru/construccion-19.jpg"
+              src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1920&h=1080&fit=crop"
               alt="Construcción profesional"
               fill
               className="object-cover"

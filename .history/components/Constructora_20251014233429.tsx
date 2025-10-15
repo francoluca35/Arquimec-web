@@ -18,40 +18,6 @@ const Constructora: React.FC = () => {
   const line2Opacity = useTransform(scrollYProgress, [0.1, 0.3, 0.5], [0.2, 0.8, 1]);
   const line3Opacity = useTransform(scrollYProgress, [0.2, 0.4, 0.6], [0.2, 0.8, 1]);
 
-  // Estado para el carrusel
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-  // Imágenes del carrusel (imagen existente + 3 nuevas)
-  const carouselImages = [
-   
-    {
-      src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760495653/constructora/construccion-carousel-1.jpg",
-      alt: "construcción-en-progreso-1",
-      titulo: "Construcción en Progreso 1"
-    },
-    {
-      src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760495654/constructora/construccion-carousel-2.jpg",
-      alt: "construcción-en-progreso-2",
-      titulo: "Construcción en Progreso 2"
-    },
-    {
-      src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760495656/constructora/construccion-carousel-3.jpg",
-      alt: "construcción-en-progreso-3",
-      titulo: "Construcción en Progreso 3"
-    }
-  ];
-
-  // Efecto para el carrusel automático
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => 
-        prevIndex === carouselImages.length - 1 ? 0 : prevIndex + 1
-      );
-    }, 4000); // Cambiar imagen cada 3.1 segundos (2.5s visible + 0.6s transición)
-
-    return () => clearInterval(interval);
-  }, [carouselImages.length]);
-
   const servicios = [
     {
       icono: Building2,
@@ -92,27 +58,13 @@ const Constructora: React.FC = () => {
             viewport={{ once: true }}
           >
             <div className="relative h-[500px] lg:h-[600px] overflow-hidden rounded-lg">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={currentImageIndex}
-                  initial={{ opacity: 0, scale: 1.1 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
-                  transition={{ duration: 0.6, ease: "easeInOut" }}
-                  className="w-full h-full"
-                >
-                  <ImageWithFallback
-                    src={carouselImages[currentImageIndex].src}
-                    alt={carouselImages[currentImageIndex].alt}
-                    className="w-full h-full object-cover"
-                    fill={true}
-                    sizes="(max-width:1024px) 100vw, 50vw"
-                  />
-                </motion.div>
-              </AnimatePresence>
-              
-              {/* Indicadores del carrusel */}
-             
+              <ImageWithFallback
+                src="https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760413555/Imagen_de_WhatsApp_2025-10-13_a_las_19.46.12_da24b00b_nams5h.jpg"
+                alt="Construcción profesional en progreso"
+                className="w-full h-full object-cover"
+                fill={true}
+                sizes="(max-width:1024px) 100vw, 50vw"
+              />
             </div>
           </motion.div>
 
