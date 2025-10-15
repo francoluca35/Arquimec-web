@@ -86,7 +86,31 @@ const ConstructoraPage: React.FC = () => {
   // Array con todas las imágenes de construcción
   const allImages = [
     // Imágenes originales de constru
-   
+    {
+      src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760417149/constru/proces05.jpg",
+      alt: "proceso-05",
+      titulo: "Proceso 05"
+    },
+    {
+      src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760417150/constru/proces01.jpg",
+      alt: "proceso-01",
+      titulo: "Proceso 01"
+    },
+    {
+      src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760417151/constru/proces02.jpg",
+      alt: "proceso-02",
+      titulo: "Proceso 02"
+    },
+    {
+      src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760417152/constru/Proceso03.jpg",
+      alt: "proceso-03",
+      titulo: "Proceso 03"
+    },
+    {
+      src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760417154/constru/C1.jpg",
+      alt: "construcción-c1",
+      titulo: "Construcción C1"
+    },
     // Imágenes de construcciones
     {
       src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760494843/constru/construccion-01.jpg",
@@ -237,32 +261,7 @@ const ConstructoraPage: React.FC = () => {
       src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760494882/constru/construccion-31.jpg",
       alt: "construcción-31",
       titulo: "Construcción 31"
-    },
-    {
-      src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760417149/constru/proces05.jpg",
-      alt: "proceso-05",
-      titulo: "Construcción 32"
-    },
-    {
-      src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760417150/constru/proces01.jpg",
-      alt: "proceso-01",
-      titulo: "Construcción 33"
-    },
-    {
-      src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760417151/constru/proces02.jpg",
-      alt: "proceso-02",
-      titulo: "Construcción 34"
-    },
-    {
-      src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760417152/constru/Proceso03.jpg",
-      alt: "proceso-03",
-      titulo: "Construcción 35"
-    },
-    {
-      src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760417154/constru/C1.jpg",
-      alt: "construcción-c1",
-      titulo: "Construcción 36"
-    },
+    }
   ];
 
   // Cerrar modal con ESC
@@ -328,7 +327,7 @@ const ConstructoraPage: React.FC = () => {
           {/* Imagen de fondo */}
           <div className="absolute inset-0">
             <ImageWithFallback
-              src="https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760494867/constru/construccion-19.jpg"
+              src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1920&h=1080&fit=crop"
               alt="Construcción profesional"
               fill
               className="object-cover"
@@ -369,15 +368,10 @@ const ConstructoraPage: React.FC = () => {
                 Solicitar Presupuesto
               </button>
               <button
-                onClick={() => {
-                  const galeriaSection = document.getElementById('galeria');
-                  if (galeriaSection) {
-                    galeriaSection.scrollIntoView({ behavior: 'smooth' });
-                  }
-                }}
+                onClick={() => router.push('/#proyectos')}
                 className="border-2 border-white text-white px-8 py-4 text-lg font-medium hover:bg-white hover:text-gray-900 transition-colors duration-300"
               >
-                Ver Galería
+                Ver Proyectos
               </button>
             </motion.div>
           </div>

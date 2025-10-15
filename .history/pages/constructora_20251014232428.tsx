@@ -10,7 +10,6 @@ const ConstructoraPage: React.FC = () => {
   const router = useRouter();
   const [scrolled, setScrolled] = useState(false);
   const [selectedImage, setSelectedImage] = useState<{src: string, titulo: string, alt: string} | null>(null);
-  const [visibleImages, setVisibleImages] = useState(12);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -79,192 +78,6 @@ const ConstructoraPage: React.FC = () => {
     document.body.style.overflow = 'unset'; // Restaurar scroll del body
   };
 
-  const loadMoreImages = () => {
-    setVisibleImages(prev => prev + 12);
-  };
-
-  // Array con todas las imágenes de construcción
-  const allImages = [
-    // Imágenes originales de constru
-   
-    // Imágenes de construcciones
-    {
-      src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760494843/constru/construccion-01.jpg",
-      alt: "construcción-01",
-      titulo: "Construcción 01"
-    },
-    {
-      src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760494845/constru/construccion-02.jpg",
-      alt: "construcción-02",
-      titulo: "Construcción 02"
-    },
-    {
-      src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760494846/constru/construccion-03.jpg",
-      alt: "construcción-03",
-      titulo: "Construcción 03"
-    },
-    {
-      src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760494847/constru/construccion-04.jpg",
-      alt: "construcción-04",
-      titulo: "Construcción 04"
-    },
-    {
-      src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760494848/constru/construccion-05.jpg",
-      alt: "construcción-05",
-      titulo: "Construcción 05"
-    },
-    {
-      src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760494850/constru/construccion-06.jpg",
-      alt: "construcción-06",
-      titulo: "Construcción 06"
-    },
-    {
-      src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760494851/constru/construccion-07.jpg",
-      alt: "construcción-07",
-      titulo: "Construcción 07"
-    },
-    {
-      src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760494852/constru/construccion-08.jpg",
-      alt: "construcción-08",
-      titulo: "Construcción 08"
-    },
-    {
-      src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760494853/constru/construccion-09.jpg",
-      alt: "construcción-09",
-      titulo: "Construcción 09"
-    },
-    {
-      src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760494855/constru/construccion-10.jpg",
-      alt: "construcción-10",
-      titulo: "Construcción 10"
-    },
-    {
-      src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760494856/constru/construccion-11.jpg",
-      alt: "construcción-11",
-      titulo: "Construcción 11"
-    },
-    {
-      src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760494857/constru/construccion-12.jpg",
-      alt: "construcción-12",
-      titulo: "Construcción 12"
-    },
-    {
-      src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760494859/constru/construccion-13.jpg",
-      alt: "construcción-13",
-      titulo: "Construcción 13"
-    },
-    {
-      src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760494860/constru/construccion-14.jpg",
-      alt: "construcción-14",
-      titulo: "Construcción 14"
-    },
-    {
-      src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760494861/constru/construccion-15.jpg",
-      alt: "construcción-15",
-      titulo: "Construcción 15"
-    },
-    {
-      src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760494863/constru/construccion-16.jpg",
-      alt: "construcción-16",
-      titulo: "Construcción 16"
-    },
-    {
-      src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760494864/constru/construccion-17.jpg",
-      alt: "construcción-17",
-      titulo: "Construcción 17"
-    },
-    {
-      src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760494865/constru/construccion-18.jpg",
-      alt: "construcción-18",
-      titulo: "Construcción 18"
-    },
-    {
-      src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760494867/constru/construccion-19.jpg",
-      alt: "construcción-19",
-      titulo: "Construcción 19"
-    },
-    {
-      src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760494868/constru/construccion-20.jpg",
-      alt: "construcción-20",
-      titulo: "Construcción 20"
-    },
-    {
-      src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760494870/constru/construccion-21.jpg",
-      alt: "construcción-21",
-      titulo: "Construcción 21"
-    },
-    {
-      src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760494872/constru/construccion-22.jpg",
-      alt: "construcción-22",
-      titulo: "Construcción 22"
-    },
-    {
-      src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760494873/constru/construccion-24.jpg",
-      alt: "construcción-24",
-      titulo: "Construcción 24"
-    },
-    {
-      src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760494874/constru/construccion-25.jpg",
-      alt: "construcción-25",
-      titulo: "Construcción 25"
-    },
-    {
-      src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760494875/constru/construccion-26.jpg",
-      alt: "construcción-26",
-      titulo: "Construcción 26"
-    },
-    {
-      src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760494876/constru/construccion-27.jpg",
-      alt: "construcción-27",
-      titulo: "Construcción 27"
-    },
-    {
-      src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760494877/constru/construccion-28.jpg",
-      alt: "construcción-28",
-      titulo: "Construcción 28"
-    },
-    {
-      src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760494879/constru/construccion-29.jpg",
-      alt: "construcción-29",
-      titulo: "Construcción 29"
-    },
-    {
-      src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760494880/constru/construccion-30.jpg",
-      alt: "construcción-30",
-      titulo: "Construcción 30"
-    },
-    {
-      src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760494882/constru/construccion-31.jpg",
-      alt: "construcción-31",
-      titulo: "Construcción 31"
-    },
-    {
-      src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760417149/constru/proces05.jpg",
-      alt: "proceso-05",
-      titulo: "Construcción 32"
-    },
-    {
-      src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760417150/constru/proces01.jpg",
-      alt: "proceso-01",
-      titulo: "Construcción 33"
-    },
-    {
-      src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760417151/constru/proces02.jpg",
-      alt: "proceso-02",
-      titulo: "Construcción 34"
-    },
-    {
-      src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760417152/constru/Proceso03.jpg",
-      alt: "proceso-03",
-      titulo: "Construcción 35"
-    },
-    {
-      src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760417154/constru/C1.jpg",
-      alt: "construcción-c1",
-      titulo: "Construcción 36"
-    },
-  ];
-
   // Cerrar modal con ESC
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -328,7 +141,7 @@ const ConstructoraPage: React.FC = () => {
           {/* Imagen de fondo */}
           <div className="absolute inset-0">
             <ImageWithFallback
-              src="https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760494867/constru/construccion-19.jpg"
+              src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1920&h=1080&fit=crop"
               alt="Construcción profesional"
               fill
               className="object-cover"
@@ -369,15 +182,10 @@ const ConstructoraPage: React.FC = () => {
                 Solicitar Presupuesto
               </button>
               <button
-                onClick={() => {
-                  const galeriaSection = document.getElementById('galeria');
-                  if (galeriaSection) {
-                    galeriaSection.scrollIntoView({ behavior: 'smooth' });
-                  }
-                }}
+                onClick={() => router.push('/#proyectos')}
                 className="border-2 border-white text-white px-8 py-4 text-lg font-medium hover:bg-white hover:text-gray-900 transition-colors duration-300"
               >
-                Ver Galería
+                Ver Proyectos
               </button>
             </motion.div>
           </div>
@@ -501,7 +309,158 @@ const ConstructoraPage: React.FC = () => {
             </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {allImages.slice(0, visibleImages).map((proyecto, index) => (
+              {[
+                {
+                  src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760494843/constru/construccion-01.jpg",
+                  alt: "construcción-01",
+                  titulo: "Construcción 01"
+                },
+                {
+                  src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760494845/constru/construccion-02.jpg",
+                  alt: "construcción-02",
+                  titulo: "Construcción 02"
+                },
+                {
+                  src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760494846/constru/construccion-03.jpg",
+                  alt: "construcción-03",
+                  titulo: "Construcción 03"
+                },
+                {
+                  src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760494847/constru/construccion-04.jpg",
+                  alt: "construcción-04",
+                  titulo: "Construcción 04"
+                },
+                {
+                  src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760494848/constru/construccion-05.jpg",
+                  alt: "construcción-05",
+                  titulo: "Construcción 05"
+                },
+                {
+                  src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760494850/constru/construccion-06.jpg",
+                  alt: "construcción-06",
+                  titulo: "Construcción 06"
+                },
+                {
+                  src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760494851/constru/construccion-07.jpg",
+                  alt: "construcción-07",
+                  titulo: "Construcción 07"
+                },
+                {
+                  src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760494852/constru/construccion-08.jpg",
+                  alt: "construcción-08",
+                  titulo: "Construcción 08"
+                },
+                {
+                  src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760494853/constru/construccion-09.jpg",
+                  alt: "construcción-09",
+                  titulo: "Construcción 09"
+                },
+                {
+                  src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760494855/constru/construccion-10.jpg",
+                  alt: "construcción-10",
+                  titulo: "Construcción 10"
+                },
+                {
+                  src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760494856/constru/construccion-11.jpg",
+                  alt: "construcción-11",
+                  titulo: "Construcción 11"
+                },
+                {
+                  src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760494857/constru/construccion-12.jpg",
+                  alt: "construcción-12",
+                  titulo: "Construcción 12"
+                },
+                {
+                  src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760494859/constru/construccion-13.jpg",
+                  alt: "construcción-13",
+                  titulo: "Construcción 13"
+                },
+                {
+                  src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760494860/constru/construccion-14.jpg",
+                  alt: "construcción-14",
+                  titulo: "Construcción 14"
+                },
+                {
+                  src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760494861/constru/construccion-15.jpg",
+                  alt: "construcción-15",
+                  titulo: "Construcción 15"
+                },
+                {
+                  src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760494863/constru/construccion-16.jpg",
+                  alt: "construcción-16",
+                  titulo: "Construcción 16"
+                },
+                {
+                  src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760494864/constru/construccion-17.jpg",
+                  alt: "construcción-17",
+                  titulo: "Construcción 17"
+                },
+                {
+                  src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760494865/constru/construccion-18.jpg",
+                  alt: "construcción-18",
+                  titulo: "Construcción 18"
+                },
+                {
+                  src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760494867/constru/construccion-19.jpg",
+                  alt: "construcción-19",
+                  titulo: "Construcción 19"
+                },
+                {
+                  src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760494868/constru/construccion-20.jpg",
+                  alt: "construcción-20",
+                  titulo: "Construcción 20"
+                },
+                {
+                  src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760494870/constru/construccion-21.jpg",
+                  alt: "construcción-21",
+                  titulo: "Construcción 21"
+                },
+                {
+                  src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760494872/constru/construccion-22.jpg",
+                  alt: "construcción-22",
+                  titulo: "Construcción 22"
+                },
+                {
+                  src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760494873/constru/construccion-24.jpg",
+                  alt: "construcción-24",
+                  titulo: "Construcción 24"
+                },
+                {
+                  src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760494874/constru/construccion-25.jpg",
+                  alt: "construcción-25",
+                  titulo: "Construcción 25"
+                },
+                {
+                  src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760494875/constru/construccion-26.jpg",
+                  alt: "construcción-26",
+                  titulo: "Construcción 26"
+                },
+                {
+                  src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760494876/constru/construccion-27.jpg",
+                  alt: "construcción-27",
+                  titulo: "Construcción 27"
+                },
+                {
+                  src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760494877/constru/construccion-28.jpg",
+                  alt: "construcción-28",
+                  titulo: "Construcción 28"
+                },
+                {
+                  src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760494879/constru/construccion-29.jpg",
+                  alt: "construcción-29",
+                  titulo: "Construcción 29"
+                },
+                {
+                  src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760494880/constru/construccion-30.jpg",
+                  alt: "construcción-30",
+                  titulo: "Construcción 30"
+                },
+                {
+                  src: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760494882/constru/construccion-31.jpg",
+                  alt: "construcción-31",
+                  titulo: "Construcción 31"
+                }
+              ].map((proyecto, index) => (
                 <motion.div
                   key={index}
                   className="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer"
@@ -533,24 +492,22 @@ const ConstructoraPage: React.FC = () => {
               ))}
             </div>
 
-            {/* Botón para ver más imágenes */}
-            {visibleImages < allImages.length && (
-              <motion.div
-                className="text-center mt-12"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.6 }}
-                viewport={{ once: true }}
+            {/* Botón para ver más proyectos */}
+            <motion.div
+              className="text-center mt-12"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <button
+                onClick={() => router.push('/#proyectos')}
+                className="bg-[#e5a648] text-black px-8 py-3 text-sm font-medium tracking-wider hover:bg-[#d4941e] transition-colors duration-300 flex items-center mx-auto"
               >
-                <button
-                  onClick={loadMoreImages}
-                  className="bg-[#e5a648] text-black px-8 py-3 text-sm font-medium tracking-wider hover:bg-[#d4941e] transition-colors duration-300 flex items-center mx-auto"
-                >
-                  Ver más imágenes ({allImages.length - visibleImages} restantes)
-                  <ChevronRight className="ml-2 w-4 h-4" />
-                </button>
-              </motion.div>
-            )}
+                Ver más proyectos
+                <ChevronRight className="ml-2 w-4 h-4" />
+              </button>
+            </motion.div>
           </div>
         </section>
 

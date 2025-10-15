@@ -47,7 +47,7 @@ const Constructora: React.FC = () => {
       setCurrentImageIndex((prevIndex) => 
         prevIndex === carouselImages.length - 1 ? 0 : prevIndex + 1
       );
-    }, 4000); // Cambiar imagen cada 3.1 segundos (2.5s visible + 0.6s transición)
+    }, 3100); // Cambiar imagen cada 3.1 segundos (2.5s visible + 0.6s transición)
 
     return () => clearInterval(interval);
   }, [carouselImages.length]);
