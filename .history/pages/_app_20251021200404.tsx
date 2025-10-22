@@ -23,10 +23,10 @@ function AppContent({ Component, pageProps }: AppProps) {
         <link rel="preload" href="https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760413291/estudio/oficina.jpg" as="image" fetchPriority="high" />
         
         {/* DNS PREFETCH EXTREMO */}
-        <link rel="dns-prefetch" href="//res.cloudinary.com" />
+        <link rel="dns-prefetch" href="//images.unsplash.com" />
         <link rel="dns-prefetch" href="//fonts.googleapis.com" />
         <link rel="dns-prefetch" href="//fonts.gstatic.com" />
-        <link rel="preconnect" href="https://res.cloudinary.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         

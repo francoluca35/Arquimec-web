@@ -24,7 +24,7 @@ const nextConfig = {
     // FORMATOS MÁS EFICIENTES - WEBP PRIORITARIO
     formats: ['image/webp', 'image/avif'],
     // CALIDADES DE IMAGEN CONFIGURADAS
-    qualities: [25, 50, 60, 75, 80, 85, 90, 100],
+    qualities: [25, 50, 75, 85, 100],
     // TAMAÑOS OPTIMIZADOS PARA MÓVIL
     deviceSizes: [640, 750, 828, 1080],
     imageSizes: [16, 32, 48, 64, 96, 128, 256],
