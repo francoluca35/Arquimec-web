@@ -14,7 +14,7 @@ const Hero: React.FC<HeroProps> = ({ scrolled }) => {
   // Imágenes para el carousel del hero
   const heroImages = [
     "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760413134/hero/arqmoder.jpg",
-   "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1761745994/constructora1_qk1kos.png",
+   "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1761745546/imagen_2025-10-29_104543664_w1dybx.png",
     "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760413134/hero/innovacion.jpg",
     "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760413134/hero/interior.jpg",
     "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760413134/hero/disenoarquitectonico.jpg"

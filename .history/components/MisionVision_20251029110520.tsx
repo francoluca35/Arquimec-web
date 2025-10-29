@@ -41,39 +41,39 @@ const MisionVision: React.FC = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              <div className="bg-white border-2 border-gray-200 rounded-3xl p-10 h-full hover:border-amber-300 hover:shadow-2xl transition-all duration-500 group-hover:-translate-y-2">
+              <div className="bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700 rounded-2xl p-8 h-full hover:border-amber-500 hover:shadow-2xl transition-all duration-500 group-hover:-translate-y-2">
                 {/* Icono */}
-                <div className="flex items-center justify-center lg:justify-start mb-8">
-                  <div className="w-20 h-20 bg-gradient-to-br from-amber-50 to-amber-100 border-2 border-amber-200 rounded-2xl flex items-center justify-center group-hover:border-amber-300 group-hover:from-amber-100 group-hover:to-amber-200 transition-all duration-500">
-                    <Target className="w-10 h-10 text-gray-950" strokeWidth={1.5} />
+                <div className="flex items-start gap-4 mb-6">
+                  <div className="w-12 h-12 bg-gradient-to-br from-amber-500 to-amber-600 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                    <Target className="w-6 h-6 text-white" strokeWidth={1.5} />
                   </div>
-                </div>
-
-                {/* Contenido */}
-                <h3 className="text-3xl lg:text-4xl text-black mb-6 font-light tracking-tight">
-                  Nuestra <span className="text-amber-600 font-normal">Misión</span>
-                </h3>
-                <p className="text-gray-800 leading-relaxed text-lg mb-8 font-light">
-                Materializar con excelencia cada proyecto, actuando como socios estratégicos de nuestros clientes para convertir sus visiones en espacios funcionales, estéticos y sostenibles que inspiren y perduren en el tiempo.
-                </p>
-                <div className="space-y-4">
-                  <div className="flex items-start gap-4">
-                    <div className="w-3 h-3 bg-gradient-to-r from-amber-400 to-amber-500 rounded-full mt-2 flex-shrink-0 shadow-sm"></div>
-                    <p className="text-gray-700 text-base font-light">
-                      Diseño centrado en las necesidades humanas
+                  <div className="flex-1">
+                    <h3 className="text-2xl text-amber-500 mb-3 font-semibold">
+                      Nuestra Misión
+                    </h3>
+                    <p className="text-gray-300 leading-relaxed text-base mb-6">
+                      Materializar con excelencia cada proyecto, actuando como socios estratégicos de nuestros clientes para convertir sus visiones en espacios funcionales, estéticos y sostenibles que inspiren y perduren en el tiempo.
                     </p>
-                  </div>
-                  <div className="flex items-start gap-4">
-                    <div className="w-3 h-3 bg-gradient-to-r from-amber-400 to-amber-500 rounded-full mt-2 flex-shrink-0 shadow-sm"></div>
-                    <p className="text-gray-700 text-base font-light">
-                      Compromiso con la excelencia constructiva
-                    </p>
-                  </div>
-                  <div className="flex items-start gap-4">
-                    <div className="w-3 h-3 bg-gradient-to-r from-amber-400 to-amber-500 rounded-full mt-2 flex-shrink-0 shadow-sm"></div>
-                    <p className="text-gray-700 text-base font-light">
-                      Innovación en materiales y tecnologías
-                    </p>
+                    <div className="space-y-3">
+                      <div className="flex items-start gap-3">
+                        <div className="w-2 h-2 bg-amber-500 rounded-full mt-2 flex-shrink-0"></div>
+                        <p className="text-gray-400 text-sm">
+                          Diseño centrado en las necesidades humanas
+                        </p>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <div className="w-2 h-2 bg-amber-500 rounded-full mt-2 flex-shrink-0"></div>
+                        <p className="text-gray-400 text-sm">
+                          Compromiso con la excelencia constructiva
+                        </p>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <div className="w-2 h-2 bg-amber-500 rounded-full mt-2 flex-shrink-0"></div>
+                        <p className="text-gray-400 text-sm">
+                          Innovación en materiales y tecnologías
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

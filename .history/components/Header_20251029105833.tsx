@@ -81,7 +81,7 @@ const Header: React.FC<HeaderProps> = ({ scrolled, headerVisible }) => {
           <div className="hidden lg:flex items-center space-x-6 pr-4">
             <nav className="flex items-center space-x-4">
               {[
-                 { name: "NOSOTROS", href: "#nosotros" },
+                 { name: "NOSOTROS", href: "#estudio" },
                 { name: "ESTUDIO", href: "#estudio" },
                 { name: "CONSTRUCTORA", href: "#constructora" },
                 { name: "TRABAJO", href: "#procesos" },

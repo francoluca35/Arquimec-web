@@ -97,7 +97,7 @@ const Servicios: React.FC = () => {
       id: 4,
       titulo: "Consultorías",
       descripcion: "Brindamos asesoramiento especializado en arquitectura y diseño. Evaluamos proyectos existentes, optimizamos espacios y proporcionamos soluciones innovadoras para desafíos arquitectónicos complejos.",
-      imagen: "/Assets/consultoria-2.avif",
+      imagen: "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760414269/protrabajos/1.jpg",
       icono: <IconoConsultorias />,
       color: "from-gray-800 to-black",
       posicion: "izquierda"

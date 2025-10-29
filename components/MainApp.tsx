@@ -36,7 +36,7 @@ export default function MainApp() {
   // Imágenes para el carousel del hero
   const heroImages = [
     "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760413134/hero/arqmoder.jpg",
-    "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760413134/hero/heroconst.jpg",
+    "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760414274/protrabajos/5.jpg",
     "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760413134/hero/innovacion.jpg",
     "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760413134/hero/interior.jpg",
     "https://res.cloudinary.com/dmfy5ohhf/image/upload/v1760413134/hero/disenoarquitectonico.jpg"
@@ -76,35 +76,37 @@ export default function MainApp() {
 
           {/* Hero Section - Solo imágenes cambiando */}
           <Hero scrolled={scrolled}/>
-
+    <Suspense fallback={<div className="h-screen bg-white" />}>
+            <Fundador/>
+          </Suspense>
+          <Suspense fallback={<div className="h-screen bg-white" />}>
+            <Constructora/>
+          </Suspense>
           {/* LAZY LOADING EXTREMO - COMPONENTES NO CRÍTICOS */}
           <Suspense fallback={<div className="h-screen bg-white" />}>
             <Estudio/>
           </Suspense>
 
-          <Suspense fallback={<div className="h-screen bg-white" />}>
-            <Constructora/>
-          </Suspense>
+        
 
-          <Suspense fallback={<div className="h-screen bg-white" />}>
-            <Fundador/>
-          </Suspense>
+      
 
           <Suspense fallback={<div className="h-screen bg-white" />}>
             <MisionVision/>
+          </Suspense>  
+           <Suspense fallback={<div className="h-screen bg-white" />}>
+            <ProcesosTrabajo/>
           </Suspense>
 
+ <Suspense fallback={<div className="h-screen bg-white" />}>
+            <Proyectos/>
+          </Suspense>
           <Suspense fallback={<div className="h-screen bg-white" />}>
             <InterludioVisual/>
           </Suspense>
 
-          <Suspense fallback={<div className="h-screen bg-white" />}>
-            <ProcesosTrabajo/>
-          </Suspense>
-
-          <Suspense fallback={<div className="h-screen bg-white" />}>
-            <Proyectos/>
-          </Suspense>
+       
+         
 
           <Suspense fallback={<div className="h-screen bg-white" />}>
             <Renders/>
